@@ -1,13 +1,140 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+/*
+ * Tokens primitivos del manual de marca + escala tipográfica.
+ * Definidos en @theme para que Tailwind v4 los exponga como utilities
+ * (bg-brand-orange, text-2xl, font-display, rounded-md, ...) y como CSS
+ * variables (var(--color-brand-orange)). Las desviaciones intencionales
+ * del manual están registradas en ADR-0005.
+ */
+@theme {
+  --color-brand-orange: oklch(0.667 0.146 58);
+  --color-brand-orange-hover: oklch(0.613 0.146 58);
+  --color-brand-orange-active: oklch(0.566 0.146 58);
+  --color-brand-orange-soft: oklch(0.95 0.04 58);
+  --color-brand-black: oklch(0 0 0);
+  --color-brand-white: oklch(1 0 0);
+
+  --color-gray-50: oklch(0.97 0 0);
+  --color-gray-100: oklch(0.93 0 0);
+  --color-gray-200: oklch(0.86 0 0);
+  --color-gray-300: oklch(0.78 0 0);
+  --color-gray-400: oklch(0.65 0 0);
+  --color-gray-500: oklch(0.52 0 0);
+  --color-gray-600: oklch(0.4 0 0);
+  --color-gray-700: oklch(0.3 0 0);
+  --color-gray-800: oklch(0.2 0 0);
+  --color-gray-900: oklch(0.12 0 0);
+
+  --font-sans: "Helvetica Neue", "Helvetica", "Arial", system-ui, sans-serif;
+  --font-display: "Helvetica Neue", "Helvetica", "Arial", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3.5rem;
+  --text-6xl: 4.5rem;
+
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-full: 9999px;
+
+  --shadow-2xs: none;
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+  --shadow-2xl: none;
+  --shadow-inner: none;
+  --shadow-popover:
+    0 4px 12px oklch(0 0 0 / 0.08), 0 1px 3px oklch(0 0 0 / 0.06);
+  --shadow-modal:
+    0 20px 40px oklch(0 0 0 / 0.12), 0 4px 12px oklch(0 0 0 / 0.08);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*
+ * Mapeo semántico que consumen componentes y shadcn.
+ * Apuntan a los primitivos de @theme — un swap aquí cambia el sistema
+ * sin tocar código de componentes.
+ */
+:root {
+  --background: var(--color-brand-white);
+  --foreground: var(--color-gray-900);
+  --foreground-muted: var(--color-gray-600);
+  --foreground-subtle: var(--color-gray-400);
+
+  --primary: var(--color-brand-orange);
+  --primary-foreground: var(--color-brand-white);
+  --primary-hover: var(--color-brand-orange-hover);
+  --primary-active: var(--color-brand-orange-active);
+
+  --border: var(--color-gray-200);
+  --border-strong: var(--color-gray-300);
+  --input: var(--color-gray-200);
+  --ring: var(--color-brand-orange);
+
+  --surface: var(--color-brand-white);
+  --surface-muted: var(--color-gray-50);
+  --surface-inverse: var(--color-brand-black);
+
+  --radius: var(--radius-none);
+
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 4px;
+
+  --space-section-y-mobile: 4rem;
+  --space-section-y-desktop: 7rem;
+  --space-section-x-mobile: 1rem;
+  --space-section-x-desktop: 2rem;
+
+  --container-max: 80rem;
+  --container-prose: 65ch;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --font-weight-display: 700;
+
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.15em;
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.7;
+
+  --z-base: 0;
+  --z-sticky: 10;
+  --z-fab: 20;
+  --z-dropdown: 30;
+  --z-modal: 40;
+  --z-toast: 50;
+}
+
+.dark {
+  --background: var(--color-brand-black);
+  --foreground: var(--color-brand-white);
+  --foreground-muted: var(--color-gray-300);
+  --foreground-subtle: var(--color-gray-400);
+  --surface: var(--color-gray-900);
+  --surface-muted: var(--color-gray-800);
+  --border: var(--color-gray-700);
+  --border-strong: var(--color-gray-600);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -24,17 +151,25 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-normal);
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-display);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  color: var(--foreground);
 }
 
 a {
@@ -42,8 +177,9 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.label-upper {
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-xs);
 }
