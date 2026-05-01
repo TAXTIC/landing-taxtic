@@ -25,9 +25,14 @@ const variantClasses: Record<SectionVariant, string> = {
  * Wrapper de sección con padding vertical estándar y variant de superficie.
  *
  * Por default (`bleed=false`) wrappea el contenido en un container con
- * `max-width: var(--container-max)` y padding lateral. Para secciones que
- * deben llegar de borde a borde (heroes con imagen full-bleed, CTAs con fondo
- * extendido), pasar `bleed` y agregar el container interno donde corresponda.
+ * `max-width: var(--container-max)` y padding lateral consumiendo
+ * `--space-section-x-*`. Para secciones que deben llegar de borde a borde
+ * (heroes con imagen full-bleed, CTAs con fondo extendido), pasar `bleed`
+ * y agregar el container interno donde corresponda.
+ *
+ * El prop `as` está restringido a `"section"` (default) o `"div"`
+ * deliberadamente — abrir la unión cuando aparezca un caso de uso real
+ * para `<article>` / `<aside>`.
  */
 export function Section({
   variant = "light",
@@ -40,7 +45,7 @@ export function Section({
   const innerContainer = bleed ? (
     children
   ) : (
-    <div className="mx-auto max-w-[var(--container-max)] px-4 lg:px-8">
+    <div className="mx-auto max-w-[var(--container-max)] px-[var(--space-section-x-mobile)] lg:px-[var(--space-section-x-desktop)]">
       {children}
     </div>
   );
