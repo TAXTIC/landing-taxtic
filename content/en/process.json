@@ -1,0 +1,27 @@
+{
+  "eyebrow": "Cómo trabajamos",
+  "title": "Cuatro pasos del proceso comercial",
+  "subtitle": "[placeholder hasta confirmación de Taxtic]",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Descubrimiento",
+      "description": "[placeholder — pendiente confirmación de los 4 pasos reales del proceso comercial]"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Propuesta",
+      "description": "[placeholder]"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Onboarding",
+      "description": "[placeholder]"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Operación",
+      "description": "[placeholder]"
+    }
+  ]
+}
