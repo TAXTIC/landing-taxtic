@@ -13,7 +13,7 @@ import type { HomeContent } from "@/content-lib/schemas/home.schema";
 import { Link } from "@/i18n/navigation";
 
 interface HeroProps {
-  content: HomeContent["hero"];
+  content: Omit<HomeContent["hero"], "ctaPrimary" | "ctaSecondary">;
   ctaPrimary: ResolvedCta;
   ctaSecondary: ResolvedCta;
 }
