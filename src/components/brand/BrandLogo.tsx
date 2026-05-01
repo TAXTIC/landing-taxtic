@@ -13,18 +13,20 @@ interface BrandLogoProps {
   surface?: Surface;
   tone?: Tone;
   size?: Size;
-  priority?: boolean;
+  preload?: boolean;
   className?: string;
   alt?: string;
 }
 
 const sizePx: Record<Size, number> = { sm: 24, md: 40, lg: 56 };
 
+// Aspect ratios derivados de los viewBox reales de cada SVG en public/brand/.
+// Garantizan que el width que pasamos a <Image> coincide con la geometría
+// real del asset (sin letterbox/pillarbox interno y sin layout shift en
+// inline-flex containers).
 const variantWidthRatio: Record<Exclude<Variant, "auto">, number> = {
-  // Aproximaciones del aspect ratio (width/height) por SVG.
-  // Permiten que el width de Image se calcule a partir del height (size).
-  principal: 3.5,
-  secundario: 1.6,
+  principal: 4306 / 1200,
+  secundario: 1880 / 1200,
   isologo: 1,
 };
 
@@ -49,22 +51,24 @@ function fileFor(
 /**
  * Render del imagotipo oficial de Taxtic. Encapsula las restricciones del
  * manual de marca: blanco sobre superficies oscuras o naranjo, sin sombras,
- * sin transformaciones, área de seguridad enforced por wrapper.
+ * sin transformaciones, área de seguridad enforced por wrapper como `0.5X`
+ * (o `1.0X` sobre fotos), donde X = altura del isotipo derivada del prop `size`.
  *
  * `tone` sólo aplica cuando `surface="light"`. En `surface="dark" | "orange"
  * | "photo"`, el componente fuerza la versión blanca (warning en dev si el
  * consumer pasa `tone` redundante).
  *
  * `variant="auto"` renderiza dos `<Image>`: principal en desktop (≥md),
- * secundario en mobile (<md). Trade-off aceptado por descarga doble (~24kb
- * gzip total) a cambio de mantener Server Component sin lógica cliente.
+ * secundario en mobile (<md). Para evitar doble preload cuando se usa
+ * `preload={true}` (LCP placements above-the-fold), sólo la versión desktop
+ * emite el preload hint — la mobile lazy-loadea normalmente.
  */
 export function BrandLogo({
   variant = "auto",
   surface = "light",
   tone = "black",
   size = "md",
-  priority = false,
+  preload = false,
   className,
   alt = "Taxtic — Asesoría Tributaria Integral",
 }: BrandLogoProps) {
@@ -81,20 +85,21 @@ export function BrandLogo({
 
   const suffix = resolveSuffix(surface, enforcedTone);
   const height = sizePx[size];
-  const safeAreaClass = surface === "photo" ? "p-[1em]" : "p-[0.5em]";
-  const wrapperClass = cn("inline-flex items-center", safeAreaClass, className);
+  const safeAreaPx = surface === "photo" ? height : Math.round(height * 0.5);
+  const wrapperClass = cn("inline-flex items-center", className);
+  const wrapperStyle = { padding: safeAreaPx };
 
   if (variant === "auto") {
     const desktopFile = fileFor("principal", suffix);
     const mobileFile = fileFor("secundario", suffix);
     return (
-      <span className={wrapperClass}>
+      <span className={wrapperClass} style={wrapperStyle}>
         <Image
           src={desktopFile}
           alt={alt}
           width={Math.round(height * variantWidthRatio.principal)}
           height={height}
-          priority={priority}
+          preload={preload}
           className="hidden md:block"
         />
         <Image
@@ -102,7 +107,7 @@ export function BrandLogo({
           alt={alt}
           width={Math.round(height * variantWidthRatio.secundario)}
           height={height}
-          priority={priority}
+          preload={false}
           className="block md:hidden"
         />
       </span>
@@ -111,13 +116,13 @@ export function BrandLogo({
 
   const file = fileFor(variant, suffix);
   return (
-    <span className={wrapperClass}>
+    <span className={wrapperClass} style={wrapperStyle}>
       <Image
         src={file}
         alt={alt}
         width={Math.round(height * variantWidthRatio[variant])}
         height={height}
-        priority={priority}
+        preload={preload}
       />
     </span>
   );
