@@ -124,7 +124,7 @@ export function Hero({ content }: HeroProps) {
             sizes="(min-width: 1024px) 41vw, 100vw"
             quality={85}
             priority
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover border-l-[3px] border-l-[var(--brand-orange)]"
           />
         </motion.div>
       </motion.div>
