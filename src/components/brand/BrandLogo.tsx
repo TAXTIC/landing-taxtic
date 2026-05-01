@@ -12,6 +12,13 @@ interface BrandLogoProps {
   surface?: Surface;
   tone?: Tone;
   size?: Size;
+  /**
+   * Sólo aplica con `variant="auto"`. Permite usar un `size` distinto en
+   * mobile (<md) cuando el variant secundario tiene el descriptor más
+   * comprimido y necesita más altura para que sea legible. Si no se pasa,
+   * mobile usa el mismo `size` que desktop.
+   */
+  sizeMobile?: Size;
   preload?: boolean;
   className?: string;
   alt?: string;
@@ -67,6 +74,7 @@ export function BrandLogo({
   surface = "light",
   tone = "black",
   size = "md",
+  sizeMobile,
   preload = false,
   className,
   alt = "Taxtic — Asesoría Tributaria Integral",
@@ -83,44 +91,57 @@ export function BrandLogo({
   }
 
   const suffix = resolveSuffix(surface, enforcedTone);
-  const height = sizePx[size];
-  const safeAreaPx = surface === "photo" ? height : Math.round(height * 0.5);
+  const desktopHeight = sizePx[size];
+  const mobileHeight = sizePx[sizeMobile ?? size];
   const wrapperClass = cn("inline-flex items-center", className);
-  const wrapperStyle = { padding: safeAreaPx };
 
   if (variant === "auto") {
     const desktopFile = fileFor("principal", suffix);
     const mobileFile = fileFor("secundario", suffix);
+    const desktopSafeArea =
+      surface === "photo" ? desktopHeight : Math.round(desktopHeight * 0.5);
+    const mobileSafeArea =
+      surface === "photo" ? mobileHeight : Math.round(mobileHeight * 0.5);
     return (
-      <span className={wrapperClass} style={wrapperStyle}>
-        <Image
-          src={desktopFile}
-          alt={alt}
-          width={Math.round(height * variantWidthRatio.principal)}
-          height={height}
-          preload={preload}
-          className="hidden md:block"
-        />
-        <Image
-          src={mobileFile}
-          alt={alt}
-          width={Math.round(height * variantWidthRatio.secundario)}
-          height={height}
-          preload={false}
-          className="block md:hidden"
-        />
+      <span className={wrapperClass}>
+        <span
+          className="hidden md:inline-flex items-center"
+          style={{ padding: desktopSafeArea }}
+        >
+          <Image
+            src={desktopFile}
+            alt={alt}
+            width={Math.round(desktopHeight * variantWidthRatio.principal)}
+            height={desktopHeight}
+            preload={preload}
+          />
+        </span>
+        <span
+          className="inline-flex md:hidden items-center"
+          style={{ padding: mobileSafeArea }}
+        >
+          <Image
+            src={mobileFile}
+            alt={alt}
+            width={Math.round(mobileHeight * variantWidthRatio.secundario)}
+            height={mobileHeight}
+            preload={false}
+          />
+        </span>
       </span>
     );
   }
 
   const file = fileFor(variant, suffix);
+  const safeAreaPx =
+    surface === "photo" ? desktopHeight : Math.round(desktopHeight * 0.5);
   return (
-    <span className={wrapperClass} style={wrapperStyle}>
+    <span className={wrapperClass} style={{ padding: safeAreaPx }}>
       <Image
         src={file}
         alt={alt}
-        width={Math.round(height * variantWidthRatio[variant])}
-        height={height}
+        width={Math.round(desktopHeight * variantWidthRatio[variant])}
+        height={desktopHeight}
         preload={preload}
       />
     </span>
