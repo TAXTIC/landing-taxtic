@@ -3,7 +3,8 @@ import { z } from "zod";
 const phoneSchema = z.object({
   tel: z
     .string()
-    .regex(/^\+?[0-9]+$/, "tel must be digits, optionally prefixed with +"),
+    .regex(/^\+?[0-9]+$/, "tel must be digits, optionally prefixed with +")
+    .min(7, "tel must be at least 7 digits"),
   display: z.string().min(1),
 });
 
@@ -17,7 +18,12 @@ export const siteSchema = z.object({
     city: z.string().min(1),
     region: z.string().min(1),
     country: z.string().min(1),
-    countryCode: z.string().length(2),
+    countryCode: z
+      .string()
+      .regex(
+        /^[A-Z]{2}$/,
+        "countryCode must be 2 uppercase letters (ISO 3166-1 alpha-2)",
+      ),
   }),
   hours: z.object({
     weekdays: z.object({
