@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { PageTransition } from "@/components/layout/PageTransition";
 import { WhatsAppFab } from "@/components/layout/WhatsAppFab";
 import { routing } from "@/i18n/routing";
 
@@ -31,7 +32,9 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider>
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
           <WhatsAppFab />
         </NextIntlClientProvider>
