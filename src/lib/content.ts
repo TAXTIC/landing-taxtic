@@ -60,3 +60,8 @@ export async function loadSite(): Promise<SiteContent> {
   const parsed = JSON.parse(raw) as unknown;
   return siteSchema.parse(parsed);
 }
+
+export async function getAllServiceSlugs(): Promise<string[]> {
+  const services = await loadServicesIndex("es");
+  return services.services.map((s) => s.slug);
+}
