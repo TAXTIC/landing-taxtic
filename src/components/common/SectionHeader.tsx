@@ -1,4 +1,3 @@
-// landing-taxtic/src/components/common/SectionHeader.tsx
 import { cn } from "@/lib/utils";
 
 type Tone = "light" | "dark";

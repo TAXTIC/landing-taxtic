@@ -1,4 +1,3 @@
-// landing-taxtic/src/components/brand/BrandLogo.tsx
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
