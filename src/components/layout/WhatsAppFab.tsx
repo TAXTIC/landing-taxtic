@@ -3,11 +3,14 @@
 import { useTranslations } from "next-intl";
 
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
+import type { SiteContent } from "@/content-lib/schemas/site.schema";
 import { track } from "@/lib/analytics";
 
-const WHATSAPP_URL = "https://wa.me/56942204624";
+interface WhatsAppFabProps {
+  siteData: SiteContent;
+}
 
-export function WhatsAppFab() {
+export function WhatsAppFab({ siteData }: WhatsAppFabProps) {
   const tFab = useTranslations("fab");
 
   const handleClick = () => {
@@ -16,7 +19,7 @@ export function WhatsAppFab() {
 
   return (
     <a
-      href={WHATSAPP_URL}
+      href={siteData.channels.whatsapp.url}
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
