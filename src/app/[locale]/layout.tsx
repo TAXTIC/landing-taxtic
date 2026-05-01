@@ -8,6 +8,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { WhatsAppFab } from "@/components/layout/WhatsAppFab";
 import { routing } from "@/i18n/routing";
+import { loadSite } from "@/lib/content";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://taxtic.com"),
@@ -59,16 +60,18 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
 
+  const site = await loadSite();
+
   return (
     <html lang={locale}>
       <body>
         <NextIntlClientProvider>
-          <Navbar />
+          <Navbar siteData={site} />
           <main className="flex-1">
             <PageTransition>{children}</PageTransition>
           </main>
-          <Footer />
-          <WhatsAppFab />
+          <Footer siteData={site} />
+          <WhatsAppFab siteData={site} />
         </NextIntlClientProvider>
       </body>
     </html>
