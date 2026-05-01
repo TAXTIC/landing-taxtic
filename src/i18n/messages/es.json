@@ -1,5 +1,32 @@
 {
   "common": {
     "siteName": "Taxtic"
+  },
+  "nav": {
+    "items": {
+      "servicios": "Servicios",
+      "nosotros": "Nosotros",
+      "contacto": "Contacto",
+      "recursos": "Recursos"
+    },
+    "portal": "Portal de clientes",
+    "menuToggle": "Abrir menú",
+    "menuClose": "Cerrar menú"
+  },
+  "footer": {
+    "tagline": "Asesoría tributaria integral en Curicó, Chile.",
+    "navHeader": "Navegación",
+    "contactHeader": "Contacto",
+    "socialHeader": "Síguenos",
+    "rights": "Todos los derechos reservados.",
+    "hours": "Lun a Vie · 08:00 – 17:30"
+  },
+  "fab": {
+    "whatsappLabel": "Contactar por WhatsApp"
+  },
+  "locale": {
+    "switchLabel": "Idioma",
+    "es": "Español",
+    "en": "English"
   }
 }

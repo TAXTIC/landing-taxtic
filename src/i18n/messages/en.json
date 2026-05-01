@@ -1,5 +1,32 @@
 {
   "common": {
     "siteName": "Taxtic"
+  },
+  "nav": {
+    "items": {
+      "servicios": "Services",
+      "nosotros": "About",
+      "contacto": "Contact",
+      "recursos": "Resources"
+    },
+    "portal": "Client portal",
+    "menuToggle": "Open menu",
+    "menuClose": "Close menu"
+  },
+  "footer": {
+    "tagline": "Integrated tax advisory in Curicó, Chile.",
+    "navHeader": "Navigation",
+    "contactHeader": "Contact",
+    "socialHeader": "Follow us",
+    "rights": "All rights reserved.",
+    "hours": "Mon to Fri · 08:00 – 17:30"
+  },
+  "fab": {
+    "whatsappLabel": "Contact us on WhatsApp"
+  },
+  "locale": {
+    "switchLabel": "Language",
+    "es": "Español",
+    "en": "English"
   }
 }
