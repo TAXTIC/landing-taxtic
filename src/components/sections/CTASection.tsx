@@ -6,11 +6,13 @@ import { motion, type Variants } from "motion/react";
 import { Section } from "@/components/common/Section";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { Button } from "@/components/ui/button";
+import type { ResolvedCta } from "@/content-lib/schemas/cta.schema";
 import type { HomeContent } from "@/content-lib/schemas/home.schema";
 import { track } from "@/lib/analytics";
 
 interface CTASectionProps {
-  content: HomeContent["cta"];
+  content: Pick<HomeContent["cta"], "title" | "subtitle">;
+  button: ResolvedCta;
 }
 
 const fadeUpVariants: Variants = {
@@ -18,7 +20,7 @@ const fadeUpVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-export function CTASection({ content }: CTASectionProps) {
+export function CTASection({ content, button }: CTASectionProps) {
   function handleClick() {
     track("whatsapp_click", { position: "cta-prefooter" });
   }
@@ -40,13 +42,13 @@ export function CTASection({ content }: CTASectionProps) {
         <div className="mt-8">
           <Button variant="primary-orange" size="lg" asChild>
             <a
-              href={content.buttonHref}
+              href={button.href}
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleClick}
             >
               <MessageCircle size={20} strokeWidth={1.75} aria-hidden="true" />
-              {content.buttonLabel}
+              {button.label}
             </a>
           </Button>
         </div>

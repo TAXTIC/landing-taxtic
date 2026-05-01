@@ -7,11 +7,13 @@ import { SectionHeader } from "@/components/common/SectionHeader";
 import { ValueCard } from "@/components/sections/ValueCard";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import type { ResolvedCta } from "@/content-lib/schemas/cta.schema";
 import type { HomeContent } from "@/content-lib/schemas/home.schema";
 import { Link } from "@/i18n/navigation";
 
 interface AboutTeaserProps {
   content: HomeContent["aboutTeaser"];
+  cta: ResolvedCta;
 }
 
 const containerVariants: Variants = {
@@ -29,7 +31,7 @@ const valuesContainerVariants: Variants = {
   visible: { transition: { staggerChildren: 0.06, delayChildren: 0.24 } },
 };
 
-export function AboutTeaser({ content }: AboutTeaserProps) {
+export function AboutTeaser({ content, cta }: AboutTeaserProps) {
   return (
     <Section variant="light" id="nosotros">
       <motion.div
@@ -101,18 +103,12 @@ export function AboutTeaser({ content }: AboutTeaserProps) {
 
         <motion.div className="mt-10" variants={itemVariants}>
           <Button variant="outline-dark" asChild>
-            {content.cta.external ? (
-              <a
-                href={content.cta.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {content.cta.label} →
+            {cta.external ? (
+              <a href={cta.href} target="_blank" rel="noopener noreferrer">
+                {cta.label} →
               </a>
             ) : (
-              <Link href={content.cta.href as never}>
-                {content.cta.label} →
-              </Link>
+              <Link href={cta.href as never}>{cta.label} →</Link>
             )}
           </Button>
         </motion.div>
