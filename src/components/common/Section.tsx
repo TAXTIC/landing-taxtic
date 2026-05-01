@@ -1,4 +1,3 @@
-// landing-taxtic/src/components/common/Section.tsx
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";

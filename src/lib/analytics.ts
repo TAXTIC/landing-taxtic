@@ -1,4 +1,3 @@
-// landing-taxtic/src/lib/analytics.ts
 type EventProps = Record<string, string | number | boolean>;
 
 interface PlausibleWindow extends Window {
