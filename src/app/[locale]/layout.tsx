@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     default: "Taxtic — Asesoría Tributaria Integral",
   },
   description:
-    "Asesoría contable, tributaria, legal y laboral para empresas en Chile. 12 años acompañando desde Curicó con servicio integral y atención cercana.",
+    "Asesoría contable, tributaria, legal y laboral para empresas en Chile. 10 años acompañando desde Curicó con servicio integral y atención cercana.",
   openGraph: {
     type: "website",
     siteName: "Taxtic",

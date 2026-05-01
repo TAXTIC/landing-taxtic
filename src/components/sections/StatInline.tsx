@@ -3,7 +3,7 @@
 import { useStatCounter } from "@/hooks/use-stat-counter";
 
 interface StatInlineProps {
-  /** Número que se anima desde 0 (ej. 12 para "12+", 200 para "200+", 98 para "98%") */
+  /** Número que se anima desde 0 (ej. 10 para "10+", 200 para "200+", 98 para "98%") */
   numericValue: number;
   /** Sufijo que se concatena al final del valor (ej. "+", "%") */
   suffix?: string;
