@@ -119,7 +119,7 @@
   --space-section-y-desktop: 7rem;
   --space-section-x-mobile: 1rem;
   --space-section-x-desktop: 2rem;
-  --header-h: 4rem;
+  --header-h: 3.5rem; /* matches Navbar h-14 (Tailwind h-14 = 3.5rem) */
 
   --container-max: 80rem;
   --container-prose: 65ch;
@@ -205,9 +205,10 @@
     text-decoration: none;
   }
 
+  /* Navbar grows to lg:h-16 at the lg breakpoint; bump --header-h to match. */
   @media (min-width: 1024px) {
     :root {
-      --header-h: 4.5rem;
+      --header-h: 4rem;
     }
   }
 
