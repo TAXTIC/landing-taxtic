@@ -1,9 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { z } from "zod";
 
 import { siteSchema } from "./site.schema";
 
-const validFixture: z.input<typeof siteSchema> = {
+const validFixture = {
   org: { legalName: "Taxtic", tagline: "Consultoría contable y tributaria" },
   address: {
     street: "Carmen #459",
@@ -69,9 +68,16 @@ describe("siteSchema", () => {
   });
 
   it("rejects unknown hours format", () => {
+    const input = {
+      ...validFixture,
+      hours: { ...validFixture.hours, format: "unknown" },
+    };
+    expect(() => siteSchema.parse(input)).toThrow();
+  });
+
+  it("rejects too-short phone tel", () => {
     const bad = structuredClone(validFixture);
-    // @ts-expect-error testing runtime rejection of invalid enum
-    bad.hours.format = "unknown";
-    expect(() => siteSchema.parse(bad)).toThrow();
+    bad.channels.phoneLandline.tel = "+5";
+    expect(() => siteSchema.parse(bad)).toThrow(/at least 7 digits/);
   });
 });
