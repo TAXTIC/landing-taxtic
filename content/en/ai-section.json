@@ -1,0 +1,22 @@
+{
+  "eyebrow": "Tecnología aplicada",
+  "title": "Qué hace la tecnología por tu contabilidad en Taxtic",
+  "intro": "No usamos 'IA' como decoración. Usamos automatización y procesamiento de datos para tareas específicas donde agregan valor medible.",
+  "capabilities": [
+    {
+      "title": "Clasificación automática de documentos",
+      "description": "Extraemos datos de facturas y boletas sin digitarlos a mano, con validación humana para casos ambiguos.",
+      "iconName": "FileSearch"
+    },
+    {
+      "title": "Alertas tempranas de flujo de caja",
+      "description": "Detectamos patrones inusuales en tus ingresos y egresos antes de que se vuelvan un problema.",
+      "iconName": "TrendingUp"
+    },
+    {
+      "title": "Análisis de cumplimiento con el SII",
+      "description": "Cruce automático de información reportada vs. emitida para identificar inconsistencias antes de la fiscalización.",
+      "iconName": "ShieldCheck"
+    }
+  ]
+}
