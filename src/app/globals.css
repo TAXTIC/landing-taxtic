@@ -66,6 +66,29 @@
  * sin tocar código de componentes.
  */
 :root {
+  /*
+   * Aliases semánticos que mapean los primitives de @theme. Permiten que los
+   * componentes consuman tokens cortos (var(--brand-orange)) sin acoplarse a
+   * la convención de prefijo --color-* que Tailwind v4 usa internamente.
+   */
+  --brand-white: var(--color-brand-white);
+  --brand-black: var(--color-brand-black);
+  --brand-orange: var(--color-brand-orange);
+  --brand-orange-hover: var(--color-brand-orange-hover);
+  --brand-orange-active: var(--color-brand-orange-active);
+  --brand-orange-soft: var(--color-brand-orange-soft);
+
+  --gray-50: var(--color-gray-50);
+  --gray-100: var(--color-gray-100);
+  --gray-200: var(--color-gray-200);
+  --gray-300: var(--color-gray-300);
+  --gray-400: var(--color-gray-400);
+  --gray-500: var(--color-gray-500);
+  --gray-600: var(--color-gray-600);
+  --gray-700: var(--color-gray-700);
+  --gray-800: var(--color-gray-800);
+  --gray-900: var(--color-gray-900);
+
   --background: var(--color-brand-white);
   --foreground: var(--color-gray-900);
   --foreground-muted: var(--color-gray-600);
