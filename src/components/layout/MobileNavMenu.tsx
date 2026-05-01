@@ -7,16 +7,20 @@ import { Dialog as DialogPrimitive } from "radix-ui";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { Button } from "@/components/ui/button";
+import type { SiteContent } from "@/content-lib/schemas/site.schema";
 import { Link } from "@/i18n/navigation";
 
 interface MobileNavMenuProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  siteData: SiteContent;
 }
 
-const PORTAL_URL = "https://sitax.taxticapp.com/login";
-
-export function MobileNavMenu({ open, onOpenChange }: MobileNavMenuProps) {
+export function MobileNavMenu({
+  open,
+  onOpenChange,
+  siteData,
+}: MobileNavMenuProps) {
   const tNav = useTranslations("nav");
 
   const items = [
@@ -76,7 +80,7 @@ export function MobileNavMenu({ open, onOpenChange }: MobileNavMenuProps) {
               asChild
             >
               <a
-                href={PORTAL_URL}
+                href={siteData.portal.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleClose}

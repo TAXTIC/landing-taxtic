@@ -8,10 +8,10 @@ import { BrandLogo } from "@/components/brand/BrandLogo";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { MobileNavMenu } from "@/components/layout/MobileNavMenu";
 import { Button } from "@/components/ui/button";
+import type { SiteContent } from "@/content-lib/schemas/site.schema";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-const PORTAL_URL = "https://sitax.taxticapp.com/login";
 const SCROLL_THRESHOLD = 16;
 
 type NavItem = {
@@ -19,7 +19,11 @@ type NavItem = {
   label: string;
 };
 
-export function Navbar() {
+interface NavbarProps {
+  siteData: SiteContent;
+}
+
+export function Navbar({ siteData }: NavbarProps) {
   const tNav = useTranslations("nav");
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -89,7 +93,11 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <LocaleSwitcher tone="light" />
             <Button variant="primary-orange" size="sm" asChild>
-              <a href={PORTAL_URL} target="_blank" rel="noopener noreferrer">
+              <a
+                href={siteData.portal.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {tNav("portal")}
               </a>
             </Button>
@@ -107,7 +115,11 @@ export function Navbar() {
         </div>
       </header>
 
-      <MobileNavMenu open={menuOpen} onOpenChange={setMenuOpen} />
+      <MobileNavMenu
+        open={menuOpen}
+        onOpenChange={setMenuOpen}
+        siteData={siteData}
+      />
     </>
   );
 }
