@@ -3,37 +3,67 @@
     {
       "slug": "asesoria-contable",
       "title": "Asesoría contable",
-      "shortDescription": "Tu contabilidad al día, con resultados claros y sin sorpresas.",
+      "shortDescription": "Llevamos tu contabilidad al día con información clara para tomar decisiones.",
+      "highlights": [
+        "Conciliación bancaria mensual",
+        "Estados financieros oportunos y sin jerga",
+        "Respaldo ante fiscalizaciones del SII"
+      ],
       "iconName": "BookOpen"
     },
     {
       "slug": "asesoria-tributaria",
       "title": "Asesoría tributaria",
-      "shortDescription": "Cumplimiento con el SII (F29, F22, DTE) gestionado por nuestro equipo, con foco en optimizar tiempos y reducir costos.",
+      "shortDescription": "Cumplimiento ante el SII gestionado por nuestro equipo, sin riesgos ni atrasos.",
+      "highlights": [
+        "Declaraciones F29 y F22",
+        "Planificación tributaria anual",
+        "Cumplimiento normativo ante el SII"
+      ],
       "iconName": "FileCheck"
     },
     {
       "slug": "outsourcing",
       "title": "Outsourcing de servicios",
-      "shortDescription": "Externalización completa de procesos contables, tributarios y de remuneraciones — operados por nuestro equipo, reportados al tuyo.",
+      "shortDescription": "Externalizamos tus procesos contables, tributarios y laborales — los operamos nosotros, los reportamos a tu equipo.",
+      "highlights": [
+        "Gestión contable y tributaria completa",
+        "Remuneraciones y administración laboral",
+        "Soporte continuo de nuestro equipo"
+      ],
       "iconName": "Layers"
     },
     {
       "slug": "asesoria-legal",
       "title": "Asesoría legal",
-      "shortDescription": "Soporte legal in-house para temas societarios, contractuales y laborales, integrado con la asesoría contable y tributaria.",
+      "shortDescription": "Soporte legal in-house para temas societarios y contractuales, integrado a tu operación contable y tributaria.",
+      "highlights": [
+        "Constitución y modificación de sociedades",
+        "Contratos y documentos legales",
+        "Asesoría en cumplimiento normativo"
+      ],
       "iconName": "Scale"
     },
     {
       "slug": "asesoria-laboral",
       "title": "Asesoría laboral",
-      "shortDescription": "Gestión de remuneraciones, contratos, finiquitos y cumplimiento laboral — alineado con la Dirección del Trabajo.",
+      "shortDescription": "Gestionamos remuneraciones, contratos y finiquitos alineados a la Dirección del Trabajo.",
+      "highlights": [
+        "Contratos, anexos y finiquitos",
+        "Cálculo y pago de remuneraciones",
+        "Cumplimiento ante la Dirección del Trabajo"
+      ],
       "iconName": "Users"
     },
     {
       "slug": "documentos-electronicos",
       "title": "Documentos electrónicos",
-      "shortDescription": "Facturación electrónica, e-boleta y firma electrónica con integración técnica vía Haulmer (certificado por el SII).",
+      "shortDescription": "Implementamos y operamos tu facturación electrónica con integración a Haulmer (certificado por el SII).",
+      "highlights": [
+        "Emisión de facturas y boletas electrónicas",
+        "Integración con sistema certificado (Haulmer)",
+        "Soporte en operación diaria de DTE"
+      ],
       "iconName": "FileText"
     }
   ]
