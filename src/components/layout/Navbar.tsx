@@ -54,6 +54,7 @@ export function Navbar() {
               surface="light"
               tone="black"
               size="md"
+              sizeMobile="lg"
               preload
             />
           </Link>
