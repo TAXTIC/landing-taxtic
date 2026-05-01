@@ -1,4 +1,3 @@
-// landing-taxtic/src/components/common/StatCard.tsx
 import { cn } from "@/lib/utils";
 
 interface StatCardProps {

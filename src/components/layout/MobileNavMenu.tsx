@@ -1,4 +1,3 @@
-// landing-taxtic/src/components/layout/MobileNavMenu.tsx
 "use client";
 
 import { X } from "lucide-react";

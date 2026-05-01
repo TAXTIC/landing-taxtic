@@ -1,4 +1,3 @@
-// landing-taxtic/src/components/layout/WhatsAppFab.tsx
 "use client";
 
 import { useTranslations } from "next-intl";
