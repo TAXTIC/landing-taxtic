@@ -43,8 +43,8 @@ export function CTASection({ content, button }: CTASectionProps) {
           <Button variant="primary-orange" size="lg" asChild>
             <a
               href={button.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={button.external ? "_blank" : undefined}
+              rel={button.external ? "noopener noreferrer" : undefined}
               onClick={handleClick}
             >
               <MessageCircle size={20} strokeWidth={1.75} aria-hidden="true" />
