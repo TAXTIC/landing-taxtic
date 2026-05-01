@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, type Variants } from "motion/react";
 import Image from "next/image";
 
 import { Section } from "@/components/common/Section";
@@ -15,13 +15,21 @@ interface HeroProps {
   content: HomeContent["hero"];
 }
 
-const ITEM_INITIAL = { opacity: 0, y: 8 };
-const ITEM_ANIMATE = { opacity: 1, y: 0 };
-const ITEM_TRANSITION = (delay: number) => ({
-  duration: 0.4,
-  ease: [0.16, 1, 0.3, 1] as const,
-  delay,
-});
+const containerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08 },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+  },
+};
 
 function parseStatValue(raw: string): { numericValue: number; suffix: string } {
   const match = raw.match(/^(\d+)(.*)$/);
@@ -34,13 +42,14 @@ export function Hero({ content }: HeroProps) {
 
   return (
     <Section variant="light" id="hero">
-      <div className="grid gap-10 lg:grid-cols-12 items-center">
+      <motion.div
+        className="grid gap-10 lg:grid-cols-12 items-center"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
         <div className="lg:col-span-7 flex flex-col gap-6">
-          <motion.div
-            initial={ITEM_INITIAL}
-            animate={ITEM_ANIMATE}
-            transition={ITEM_TRANSITION(0)}
-          >
+          <motion.div variants={itemVariants}>
             <SectionHeader
               eyebrow={content.eyebrow}
               title={content.title}
@@ -50,12 +59,7 @@ export function Hero({ content }: HeroProps) {
             />
           </motion.div>
 
-          <motion.div
-            className="flex flex-wrap gap-3"
-            initial={ITEM_INITIAL}
-            animate={ITEM_ANIMATE}
-            transition={ITEM_TRANSITION(0.08)}
-          >
+          <motion.div className="flex flex-wrap gap-3" variants={itemVariants}>
             <Button variant="primary-orange" size="lg" asChild>
               {content.ctaPrimary.external ? (
                 <a
@@ -94,9 +98,7 @@ export function Hero({ content }: HeroProps) {
           {visibleStats.length > 0 && (
             <motion.div
               className="flex flex-wrap gap-x-8 gap-y-4 pt-4 border-t border-[var(--border)]"
-              initial={ITEM_INITIAL}
-              animate={ITEM_ANIMATE}
-              transition={ITEM_TRANSITION(0.16)}
+              variants={itemVariants}
             >
               {visibleStats.map((stat) => {
                 const parsed = parseStatValue(stat.value);
@@ -113,12 +115,7 @@ export function Hero({ content }: HeroProps) {
           )}
         </div>
 
-        <motion.div
-          className="lg:col-span-5"
-          initial={ITEM_INITIAL}
-          animate={ITEM_ANIMATE}
-          transition={ITEM_TRANSITION(0.24)}
-        >
+        <motion.div className="lg:col-span-5" variants={itemVariants}>
           <div className="relative">
             <div
               className="absolute inset-0 translate-x-3 translate-y-3 bg-[var(--brand-orange-soft)]"
@@ -136,7 +133,7 @@ export function Hero({ content }: HeroProps) {
             />
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </Section>
   );
 }
