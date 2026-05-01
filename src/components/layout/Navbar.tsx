@@ -47,7 +47,7 @@ export function Navbar() {
           scrolled ? "border-[var(--border)]" : "border-transparent",
         )}
       >
-        <div className="mx-auto max-w-[var(--container-max)] px-[var(--space-section-x-mobile)] lg:px-[var(--space-section-x-desktop)] h-14 lg:h-16 flex items-center justify-between">
+        <div className="mx-auto max-w-[var(--container-max)] px-[var(--space-section-x-mobile)] lg:px-[var(--space-section-x-desktop)] h-[72px] md:h-14 lg:h-16 flex items-center justify-between">
           <Link href="/" aria-label="Taxtic">
             <BrandLogo
               variant="auto"
