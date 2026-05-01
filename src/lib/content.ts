@@ -17,6 +17,10 @@ import {
   type ServicesIndex,
   servicesIndexSchema,
 } from "@/content-lib/schemas/services.schema";
+import {
+  type SiteContent,
+  siteSchema,
+} from "@/content-lib/schemas/site.schema";
 
 export type Locale = "es" | "en";
 
@@ -48,4 +52,11 @@ export async function loadAISection(locale: Locale): Promise<AISectionContent> {
 export async function loadProcess(locale: Locale): Promise<ProcessContent> {
   const raw = await readJson<unknown>(`${locale}/process.json`);
   return processSchema.parse(raw);
+}
+
+export async function loadSite(): Promise<SiteContent> {
+  const absolutePath = path.join(CONTENT_ROOT, "site.json");
+  const raw = await readFile(absolutePath, "utf-8");
+  const parsed = JSON.parse(raw) as unknown;
+  return siteSchema.parse(parsed);
 }
