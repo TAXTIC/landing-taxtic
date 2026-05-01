@@ -5,26 +5,15 @@ import { FacebookIcon } from "@/components/icons/FacebookIcon";
 import { InstagramIcon } from "@/components/icons/InstagramIcon";
 import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
 import { Button } from "@/components/ui/button";
+import type { SiteContent } from "@/content-lib/schemas/site.schema";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-// TODO: refactorizar para consumir content/[locale]/contact.json
-// vía src/content-lib/loaders.ts cuando exista el loader de contenido.
-const CONTACT_DATA = {
-  street: "Carmen #459",
-  cityRegion: "Curicó, Región del Maule, Chile",
-  phoneTelHref: "+56752221800",
-  phoneDisplay: "+56 75 2 221800",
-  email: "contacto@taxtic.com",
-  socials: {
-    instagram: "https://www.instagram.com/taxtic.chile/",
-    facebook: "https://www.facebook.com/Taxtic/",
-    linkedin: "https://cl.linkedin.com/company/taxtic-chile",
-  },
-  portalUrl: "https://sitax.taxticapp.com/login",
-} as const;
+interface FooterProps {
+  siteData: SiteContent;
+}
 
-export function Footer() {
+export function Footer({ siteData }: FooterProps) {
   const tNav = useTranslations("nav");
   const tFooter = useTranslations("footer");
   const year = new Date().getFullYear();
@@ -67,22 +56,22 @@ export function Footer() {
           {/* Contacto */}
           <FooterColumn header={tFooter("contactHeader")}>
             <ul className="flex flex-col gap-2 text-sm not-italic">
-              <li>{CONTACT_DATA.street}</li>
-              <li>{CONTACT_DATA.cityRegion}</li>
+              <li>{siteData.address.street}</li>
+              <li>{`${siteData.address.city}, ${siteData.address.region}, ${siteData.address.country}`}</li>
               <li>
                 <a
-                  href={`tel:${CONTACT_DATA.phoneTelHref}`}
+                  href={`tel:${siteData.channels.phoneLandline.tel}`}
                   className="hover:text-[var(--brand-orange)] transition-colors"
                 >
-                  {CONTACT_DATA.phoneDisplay}
+                  {siteData.channels.phoneLandline.display}
                 </a>
               </li>
               <li>
                 <a
-                  href={`mailto:${CONTACT_DATA.email}`}
+                  href={`mailto:${siteData.channels.email.primary}`}
                   className="hover:text-[var(--brand-orange)] transition-colors"
                 >
-                  {CONTACT_DATA.email}
+                  {siteData.channels.email.primary}
                 </a>
               </li>
               <li className="text-[var(--gray-300)] mt-2">
@@ -94,16 +83,13 @@ export function Footer() {
           {/* Síguenos + Portal */}
           <FooterColumn header={tFooter("socialHeader")}>
             <div className="flex gap-4">
-              <SocialLink
-                href={CONTACT_DATA.socials.instagram}
-                label="Instagram"
-              >
+              <SocialLink href={siteData.social.instagram} label="Instagram">
                 <InstagramIcon size={20} />
               </SocialLink>
-              <SocialLink href={CONTACT_DATA.socials.facebook} label="Facebook">
+              <SocialLink href={siteData.social.facebook} label="Facebook">
                 <FacebookIcon size={20} />
               </SocialLink>
-              <SocialLink href={CONTACT_DATA.socials.linkedin} label="LinkedIn">
+              <SocialLink href={siteData.social.linkedin} label="LinkedIn">
                 <LinkedInIcon size={20} />
               </SocialLink>
             </div>
@@ -114,7 +100,7 @@ export function Footer() {
               asChild
             >
               <a
-                href={CONTACT_DATA.portalUrl}
+                href={siteData.portal.url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
