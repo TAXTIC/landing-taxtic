@@ -1,27 +1,27 @@
 {
   "eyebrow": "Cómo trabajamos",
-  "title": "Cuatro pasos del proceso comercial",
-  "subtitle": "[placeholder hasta confirmación de Taxtic]",
+  "title": "Cómo trabajamos contigo",
+  "subtitle": "De la incertidumbre a decisiones claras, en un proceso estructurado y predecible.",
   "steps": [
     {
       "stepNumber": 1,
-      "title": "Descubrimiento",
-      "description": "[placeholder — pendiente confirmación de los 4 pasos reales del proceso comercial]"
+      "title": "Diagnóstico tributario y contable",
+      "description": "Analizamos tu situación actual, identificamos riesgos y oportunidades, y levantamos la información clave para tomar decisiones informadas."
     },
     {
       "stepNumber": 2,
-      "title": "Propuesta",
-      "description": "[placeholder]"
+      "title": "Propuesta clara y plan de acción",
+      "description": "Definimos un plan concreto con alcance, tiempos y entregables. Sabes exactamente qué se hará y cuándo."
     },
     {
       "stepNumber": 3,
-      "title": "Onboarding",
-      "description": "[placeholder]"
+      "title": "Implementación y orden interno",
+      "description": "Ponemos en marcha el servicio, organizamos procesos y dejamos tu información contable y tributaria bajo control."
     },
     {
       "stepNumber": 4,
-      "title": "Operación",
-      "description": "[placeholder]"
+      "title": "Seguimiento y toma de decisiones",
+      "description": "Te entregamos reportes claros y acompañamiento continuo para que tomes decisiones con información actualizada."
     }
   ]
 }
