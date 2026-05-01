@@ -8,11 +8,14 @@ import { Section } from "@/components/common/Section";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { StatInline } from "@/components/sections/StatInline";
 import { Button } from "@/components/ui/button";
+import type { ResolvedCta } from "@/content-lib/schemas/cta.schema";
 import type { HomeContent } from "@/content-lib/schemas/home.schema";
 import { Link } from "@/i18n/navigation";
 
 interface HeroProps {
   content: HomeContent["hero"];
+  ctaPrimary: ResolvedCta;
+  ctaSecondary: ResolvedCta;
 }
 
 const containerVariants: Variants = {
@@ -37,7 +40,7 @@ function parseStatValue(raw: string): { numericValue: number; suffix: string } {
   return { numericValue: Number(match[1]), suffix: match[2] ?? "" };
 }
 
-export function Hero({ content }: HeroProps) {
+export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
   const visibleStats = content.stats.filter((s) => s.verified);
 
   return (
@@ -61,36 +64,34 @@ export function Hero({ content }: HeroProps) {
 
           <motion.div className="flex flex-wrap gap-3" variants={itemVariants}>
             <Button variant="primary-orange" size="lg" asChild>
-              {content.ctaPrimary.external ? (
+              {ctaPrimary.external ? (
                 <a
-                  href={content.ctaPrimary.href}
+                  href={ctaPrimary.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {content.ctaPrimary.label}
+                  {ctaPrimary.label}
                   <ArrowRight size={20} strokeWidth={1.75} />
                 </a>
               ) : (
-                <Link href={content.ctaPrimary.href}>
-                  {content.ctaPrimary.label}
+                <Link href={ctaPrimary.href}>
+                  {ctaPrimary.label}
                   <ArrowRight size={20} strokeWidth={1.75} />
                 </Link>
               )}
             </Button>
 
             <Button variant="outline-dark" size="lg" asChild>
-              {content.ctaSecondary.external ? (
+              {ctaSecondary.external ? (
                 <a
-                  href={content.ctaSecondary.href}
+                  href={ctaSecondary.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {content.ctaSecondary.label}
+                  {ctaSecondary.label}
                 </a>
               ) : (
-                <a href={content.ctaSecondary.href}>
-                  {content.ctaSecondary.label}
-                </a>
+                <a href={ctaSecondary.href}>{ctaSecondary.label}</a>
               )}
             </Button>
           </motion.div>
