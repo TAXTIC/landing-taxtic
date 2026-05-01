@@ -4,29 +4,48 @@
   },
   "nav": {
     "items": {
-      "servicios": "Services",
-      "nosotros": "About",
-      "contacto": "Contact",
-      "recursos": "Resources"
+      "servicios": "Servicios",
+      "nosotros": "Nosotros",
+      "contacto": "Contacto",
+      "recursos": "Recursos"
     },
-    "portal": "Client portal",
-    "menuToggle": "Open menu",
-    "menuClose": "Close menu"
+    "portal": "Portal de clientes",
+    "menuToggle": "Abrir menú",
+    "menuClose": "Cerrar menú"
   },
   "footer": {
-    "tagline": "Integrated tax advisory in Curicó, Chile.",
-    "navHeader": "Navigation",
-    "contactHeader": "Contact",
-    "socialHeader": "Follow us",
-    "rights": "All rights reserved.",
-    "hours": "Mon to Fri · 08:00 – 17:30"
+    "tagline": "Asesoría tributaria integral en Curicó, Chile.",
+    "navHeader": "Navegación",
+    "contactHeader": "Contacto",
+    "socialHeader": "Síguenos",
+    "rights": "Todos los derechos reservados.",
+    "hours": "Lun a Vie · 08:00 – 17:30"
   },
   "fab": {
-    "whatsappLabel": "Contact us on WhatsApp"
+    "whatsappLabel": "Contactar por WhatsApp"
   },
   "locale": {
-    "switchLabel": "Language",
+    "switchLabel": "Idioma",
     "es": "Español",
     "en": "English"
+  },
+  "services": {
+    "indexHero": {
+      "eyebrow": "LO QUE HACEMOS",
+      "title": "Servicios oficiales",
+      "subtitle": "Seis servicios diseñados para que tu empresa cumpla con el SII, ordene sus finanzas y tome decisiones con datos claros."
+    },
+    "slugHero": {
+      "eyebrow": "SERVICIO",
+      "anchorLabel": "Lo que incluye"
+    },
+    "slugCta": {
+      "title": "¿Te interesa este servicio?",
+      "subtitle": "Hablemos por WhatsApp y revisemos tu caso.",
+      "buttonLabel": "Hablemos por WhatsApp"
+    },
+    "breadcrumb": {
+      "back": "Servicios"
+    }
   }
 }
