@@ -1,0 +1,40 @@
+{
+  "services": [
+    {
+      "slug": "asesoria-contable",
+      "title": "Asesoría contable",
+      "shortDescription": "Llevamos tu contabilidad al día y entregamos resultados financieros claros, sin sorpresas en el cierre.",
+      "iconName": "BookOpen"
+    },
+    {
+      "slug": "asesoria-tributaria",
+      "title": "Asesoría tributaria",
+      "shortDescription": "Cumplimiento con el SII (F29, F22, DTE) gestionado por nuestro equipo, con foco en optimizar tiempos y reducir costos.",
+      "iconName": "FileCheck"
+    },
+    {
+      "slug": "outsourcing",
+      "title": "Outsourcing de servicios",
+      "shortDescription": "Externalización completa de procesos contables, tributarios y de remuneraciones — operados por nuestro equipo, reportados al tuyo.",
+      "iconName": "Layers"
+    },
+    {
+      "slug": "asesoria-legal",
+      "title": "Asesoría legal",
+      "shortDescription": "Soporte legal in-house para temas societarios, contractuales y laborales, integrado con la asesoría contable y tributaria.",
+      "iconName": "Scale"
+    },
+    {
+      "slug": "asesoria-laboral",
+      "title": "Asesoría laboral",
+      "shortDescription": "Gestión de remuneraciones, contratos, finiquitos y cumplimiento laboral — alineado con la Dirección del Trabajo.",
+      "iconName": "Users"
+    },
+    {
+      "slug": "documentos-electronicos",
+      "title": "Documentos electrónicos",
+      "shortDescription": "Facturación electrónica, e-boleta y firma electrónica con integración técnica vía Haulmer (certificado por el SII).",
+      "iconName": "FileText"
+    }
+  ]
+}
