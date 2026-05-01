@@ -1,0 +1,35 @@
+{
+  "org": {
+    "legalName": "Taxtic",
+    "tagline": "Consultoría contable y tributaria"
+  },
+  "address": {
+    "street": "Carmen #459",
+    "city": "Curicó",
+    "region": "Región del Maule",
+    "country": "Chile",
+    "countryCode": "CL"
+  },
+  "hours": {
+    "weekdays": { "open": "08:00", "close": "17:30" },
+    "format": "continuous"
+  },
+  "channels": {
+    "phoneLandline": {
+      "tel": "+56752221800",
+      "display": "+56 75 2 221800"
+    },
+    "whatsapp": {
+      "tel": "+56942204624",
+      "display": "+56 9 4220 4624",
+      "url": "https://wa.me/56942204624"
+    },
+    "email": { "primary": "contacto@taxtic.com" }
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/taxtic.chile/",
+    "facebook": "https://www.facebook.com/Taxtic/",
+    "linkedin": "https://cl.linkedin.com/company/taxtic-chile"
+  },
+  "portal": { "url": "https://sitax.taxticapp.com/login" }
+}
