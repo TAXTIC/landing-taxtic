@@ -12,7 +12,7 @@ import type { HomeContent } from "@/content-lib/schemas/home.schema";
 import { Link } from "@/i18n/navigation";
 
 interface AboutTeaserProps {
-  content: HomeContent["aboutTeaser"];
+  content: Omit<HomeContent["aboutTeaser"], "cta">;
   cta: ResolvedCta;
 }
 
