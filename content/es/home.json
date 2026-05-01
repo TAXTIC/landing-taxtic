@@ -4,14 +4,13 @@
     "title": "Mañana a las 10:00 tendrás claridad sobre tu situación tributaria.",
     "subtitle": "Tres escenarios claros, una recomendación y una decisión antes del mediodía. Así trabajamos en Taxtic.",
     "ctaPrimary": {
-      "label": "Hablemos por WhatsApp",
-      "href": "https://wa.me/56942204624",
-      "external": true
+      "kind": "whatsapp",
+      "label": "Hablemos por WhatsApp"
     },
     "ctaSecondary": {
+      "kind": "anchor",
       "label": "Ver servicios",
-      "href": "#servicios",
-      "external": false
+      "href": "#servicios"
     },
     "image": {
       "src": "/images/hero-reunion-cliente.png",
@@ -68,15 +67,17 @@
       }
     ],
     "cta": {
+      "kind": "internal",
       "label": "Conoce más sobre nosotros",
-      "href": "/nosotros",
-      "external": false
+      "href": "/nosotros"
     }
   },
   "cta": {
     "title": "Hablemos sobre tu contabilidad",
     "subtitle": "Cuéntanos en qué podemos ayudarte. Respondemos por WhatsApp en horario hábil.",
-    "buttonLabel": "Hablemos por WhatsApp",
-    "buttonHref": "https://wa.me/56942204624"
+    "button": {
+      "kind": "whatsapp",
+      "label": "Hablemos por WhatsApp"
+    }
   }
 }
