@@ -4,7 +4,7 @@ type Tone = "light" | "dark";
 type Heading = "h1" | "h2" | "h3";
 
 interface SectionHeaderProps {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   subtitle?: string;
   align?: "left" | "center";
@@ -62,7 +62,11 @@ export function SectionHeader({
         className,
       )}
     >
-      <span className="label-upper text-[var(--brand-orange)]">{eyebrow}</span>
+      {eyebrow ? (
+        <span className="label-upper text-[var(--brand-orange)]">
+          {eyebrow}
+        </span>
+      ) : null}
       <Tag
         className={cn(
           "font-bold tracking-tight leading-tight",

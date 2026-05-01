@@ -33,7 +33,6 @@ export function CTASection({ content }: CTASectionProps) {
         variants={fadeUpVariants}
       >
         <SectionHeader
-          eyebrow=""
           title={content.title}
           subtitle={content.subtitle}
           align="center"
