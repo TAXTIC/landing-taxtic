@@ -1,10 +1,6 @@
 import { z } from "zod";
 
-const ctaSchema = z.object({
-  label: z.string().min(1),
-  href: z.string().min(1),
-  external: z.boolean(),
-});
+import { ctaDescriptorSchema } from "./cta.schema";
 
 const heroStatSchema = z.object({
   value: z.string().min(1),
@@ -16,8 +12,8 @@ const heroSchema = z.object({
   eyebrow: z.string().min(1),
   title: z.string().min(10),
   subtitle: z.string().min(20),
-  ctaPrimary: ctaSchema,
-  ctaSecondary: ctaSchema,
+  ctaPrimary: ctaDescriptorSchema,
+  ctaSecondary: ctaDescriptorSchema,
   image: z.object({
     src: z.string().startsWith("/"),
     alt: z.string().min(10),
@@ -50,21 +46,18 @@ const aboutTeaserSchema = z.object({
     text: z.string().min(20),
   }),
   values: z.array(valueSchema).length(5),
-  cta: ctaSchema,
-});
-
-const ctaPreFooterSchema = z.object({
-  title: z.string().min(1),
-  subtitle: z.string().min(1),
-  buttonLabel: z.string().min(1),
-  buttonHref: z.string().min(1),
+  cta: ctaDescriptorSchema,
 });
 
 export const homeSchema = z.object({
   hero: heroSchema,
   servicesTeaser: servicesTeaserSchema,
   aboutTeaser: aboutTeaserSchema,
-  cta: ctaPreFooterSchema,
+  cta: z.object({
+    title: z.string().min(1),
+    subtitle: z.string().min(1),
+    button: ctaDescriptorSchema,
+  }),
 });
 
 export type HomeContent = z.infer<typeof homeSchema>;
