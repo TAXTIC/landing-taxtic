@@ -116,16 +116,22 @@ export function Hero({ content }: HeroProps) {
         </div>
 
         <motion.div className="lg:col-span-5" variants={itemVariants}>
-          <Image
-            src={content.image.src}
-            alt={content.image.alt}
-            width={1200}
-            height={900}
-            sizes="(min-width: 1024px) 41vw, 100vw"
-            quality={85}
-            priority
-            className="w-full h-auto object-cover border-l-[3px] border-l-[var(--brand-orange)]"
-          />
+          <div className="relative">
+            <div
+              className="absolute inset-0 translate-x-3 translate-y-3 bg-[var(--brand-orange-soft)]"
+              aria-hidden="true"
+            />
+            <Image
+              src={content.image.src}
+              alt={content.image.alt}
+              width={1200}
+              height={900}
+              sizes="(min-width: 1024px) 41vw, 100vw"
+              quality={85}
+              priority
+              className="relative w-full h-auto object-cover"
+            />
+          </div>
         </motion.div>
       </motion.div>
     </Section>
