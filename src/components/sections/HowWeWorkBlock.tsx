@@ -21,21 +21,24 @@ export function HowWeWorkBlock({
   if (!principles.length) return null;
 
   return (
-    <div className="mx-auto max-w-[var(--container-prose)] mt-10">
-      <p className="text-lg leading-relaxed text-[var(--gray-700)] mb-10">
+    <div className="mt-10">
+      <p className="max-w-[var(--container-prose)] text-lg leading-relaxed text-[var(--gray-700)] mb-10">
         {lead}
       </p>
-      <ol className="space-y-6 mb-10">
+      <ol className="grid gap-6 grid-cols-1 lg:grid-cols-2 mb-10">
         {principles.map((principle, idx) => (
-          <li key={principle.label} className="flex gap-4">
+          <li
+            key={principle.label}
+            className="flex gap-4 border-l-[3px] border-[var(--brand-orange)] bg-[var(--background)] p-6 lg:p-8"
+          >
             <span
               aria-hidden="true"
-              className="flex-shrink-0 w-8 h-8 bg-[var(--brand-orange)] text-[var(--brand-white)] flex items-center justify-center text-sm font-bold"
+              className="flex-shrink-0 w-10 h-10 bg-[var(--brand-orange)] text-[var(--brand-white)] flex items-center justify-center text-base font-bold"
             >
               {idx + 1}
             </span>
             <div>
-              <h3 className="text-base font-bold text-[var(--gray-900)] mb-1">
+              <h3 className="text-base font-bold text-[var(--gray-900)] mb-2">
                 {principle.label}
               </h3>
               <p className="text-base leading-relaxed text-[var(--gray-700)]">
