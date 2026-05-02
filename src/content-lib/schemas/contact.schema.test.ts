@@ -47,7 +47,8 @@ describe("contactSchema", () => {
 
   it("rejects missing channel label", () => {
     const bad = structuredClone(validContact);
-    delete (bad.channels.labels as Partial<typeof bad.channels.labels>).whatsapp;
+    delete (bad.channels.labels as Partial<typeof bad.channels.labels>)
+      .whatsapp;
     expect(() => contactSchema.parse(bad)).toThrow();
   });
 

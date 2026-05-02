@@ -10,7 +10,9 @@ const validFrontmatter = {
 
 describe("aboutMdxFrontmatterSchema", () => {
   it("parses a valid about frontmatter", () => {
-    expect(() => aboutMdxFrontmatterSchema.parse(validFrontmatter)).not.toThrow();
+    expect(() =>
+      aboutMdxFrontmatterSchema.parse(validFrontmatter),
+    ).not.toThrow();
   });
 
   it("rejects metaTitle shorter than 10 chars", () => {
