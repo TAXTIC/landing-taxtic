@@ -15,13 +15,11 @@ export function PageHero({ eyebrow, title, subtitle, image }: PageHeroProps) {
       {image ? (
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr] items-center">
           <div className="flex flex-col gap-4">
-            <span className="label-upper text-[var(--brand-orange)]">
-              {eyebrow}
-            </span>
-            <h1 className="text-3xl lg:text-4xl font-bold text-[var(--gray-900)] leading-tight">
+            <span className="label-upper text-(--brand-orange)">{eyebrow}</span>
+            <h1 className="text-3xl lg:text-4xl font-bold text-(--gray-900) leading-tight">
               {title}
             </h1>
-            <p className="text-base lg:text-lg leading-relaxed text-[var(--gray-700)]">
+            <p className="text-base lg:text-lg leading-relaxed text-(--gray-700)">
               {subtitle}
             </p>
           </div>
@@ -38,13 +36,11 @@ export function PageHero({ eyebrow, title, subtitle, image }: PageHeroProps) {
         </div>
       ) : (
         <div className="flex flex-col gap-4 max-w-[42rem] mx-auto text-center items-center">
-          <span className="label-upper text-[var(--brand-orange)]">
-            {eyebrow}
-          </span>
-          <h1 className="text-3xl lg:text-4xl font-bold text-[var(--gray-900)] leading-tight">
+          <span className="label-upper text-(--brand-orange)">{eyebrow}</span>
+          <h1 className="text-3xl lg:text-4xl font-bold text-(--gray-900) leading-tight">
             {title}
           </h1>
-          <p className="text-base lg:text-lg leading-relaxed text-[var(--gray-700)]">
+          <p className="text-base lg:text-lg leading-relaxed text-(--gray-700)">
             {subtitle}
           </p>
         </div>

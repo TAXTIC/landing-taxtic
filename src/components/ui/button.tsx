@@ -6,21 +6,21 @@ import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap font-bold rounded-none transition-colors " +
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] " +
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--background) " +
     "disabled:opacity-50 disabled:pointer-events-none",
   {
     variants: {
       variant: {
         "primary-orange":
-          "bg-[var(--brand-orange)] text-[var(--brand-white)] " +
-          "hover:bg-[var(--brand-orange-hover)] active:bg-[var(--brand-orange-active)]",
+          "bg-(--brand-orange) text-(--brand-white) " +
+          "hover:bg-(--brand-orange-hover) active:bg-(--brand-orange-active)",
         "outline-dark":
-          "border border-[var(--border-strong)] text-[var(--foreground)] bg-transparent " +
-          "hover:bg-[var(--surface-muted)] hover:border-[var(--brand-orange)] " +
-          "active:bg-[var(--brand-orange-soft)]",
+          "border border-(--border-strong) text-(--foreground) bg-transparent " +
+          "hover:bg-(--surface-muted) hover:border-(--brand-orange) " +
+          "active:bg-(--brand-orange-soft)",
         "ghost-light":
-          "text-[var(--foreground)] bg-transparent " +
-          "hover:bg-[var(--surface-muted)] active:bg-[var(--surface-muted)]",
+          "text-(--foreground) bg-transparent " +
+          "hover:bg-(--surface-muted) active:bg-(--surface-muted)",
       },
       size: {
         sm: "h-8 px-3 text-xs",

@@ -23,18 +23,18 @@ export function IconCardGrid({ items }: IconCardGridProps) {
         return (
           <div
             key={item.title}
-            className="border-l-[3px] border-[var(--brand-orange)] bg-[var(--background)] p-6 lg:p-8"
+            className="border-l-[3px] border-(--brand-orange) bg-(--background) p-6 lg:p-8"
           >
             <Icon
               size={24}
               strokeWidth={1.75}
-              className="text-[var(--brand-orange)] mb-4"
+              className="text-(--brand-orange) mb-4"
               aria-hidden="true"
             />
-            <h3 className="text-lg font-bold text-[var(--gray-900)] mb-2">
+            <h3 className="text-lg font-bold text-(--gray-900) mb-2">
               {item.title}
             </h3>
-            <p className="text-base leading-relaxed text-[var(--gray-700)]">
+            <p className="text-base leading-relaxed text-(--gray-700)">
               {item.description}
             </p>
           </div>

@@ -47,11 +47,11 @@ export function Navbar({ siteData }: NavbarProps) {
     <>
       <header
         className={cn(
-          "sticky top-0 z-[var(--z-sticky)] bg-[var(--surface)] border-b transition-colors duration-200 ease-out",
-          scrolled ? "border-[var(--border)]" : "border-transparent",
+          "sticky top-0 z-(--z-sticky) bg-(--surface) border-b transition-colors duration-200 ease-out",
+          scrolled ? "border-(--border)" : "border-transparent",
         )}
       >
-        <div className="mx-auto max-w-[var(--container-max)] px-[var(--space-section-x-mobile)] lg:px-[var(--space-section-x-desktop)] h-14 lg:h-16 flex items-center justify-between">
+        <div className="mx-auto max-w-(--container-max) px-(--space-section-x-mobile) lg:px-(--space-section-x-desktop) h-14 lg:h-16 flex items-center justify-between">
           <Link href="/" aria-label="Taxtic">
             <BrandLogo
               variant="principal"
@@ -80,8 +80,8 @@ export function Navbar({ siteData }: NavbarProps) {
                   className={cn(
                     "text-sm transition-colors border-b-2",
                     isActive
-                      ? "font-bold text-[var(--foreground)] border-[var(--brand-orange)]"
-                      : "text-[var(--foreground)] border-transparent hover:text-[var(--brand-orange)]",
+                      ? "font-bold text-(--foreground) border-(--brand-orange)"
+                      : "text-(--foreground) border-transparent hover:text-(--brand-orange)",
                   )}
                 >
                   {item.label}

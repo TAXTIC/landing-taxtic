@@ -61,28 +61,28 @@ export function ServicesGrid({
               className="block h-full"
             >
               <Card
-                className={`h-full ${cardPaddingClass} transition-colors hover:border-[var(--brand-orange)] hover:-translate-y-0.5 transition-transform duration-200 ease-out`}
+                className={`h-full ${cardPaddingClass} transition-colors hover:border-(--brand-orange) hover:-translate-y-0.5 transition-transform duration-200 ease-out`}
               >
                 <Icon
                   size={isExpanded ? 28 : 24}
                   strokeWidth={1.75}
-                  className="text-[var(--brand-orange)] mb-4"
+                  className="text-(--brand-orange) mb-4"
                 />
-                <h3 className="text-lg font-bold text-[var(--gray-900)] mb-2">
+                <h3 className="text-lg font-bold text-(--gray-900) mb-2">
                   {service.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-[var(--gray-700)] mb-4">
+                <p className="text-sm leading-relaxed text-(--gray-700) mb-4">
                   {service.shortDescription}
                 </p>
                 {isExpanded && (
-                  <ul className="space-y-1.5 text-sm text-[var(--gray-700)] mb-4 list-disc pl-5">
+                  <ul className="space-y-1.5 text-sm text-(--gray-700) mb-4 list-disc pl-5">
                     {service.highlights.map((h) => (
                       <li key={h}>{h}</li>
                     ))}
                   </ul>
                 )}
                 {isExpanded && (
-                  <span className="text-sm font-bold text-[var(--brand-orange)]">
+                  <span className="text-sm font-bold text-(--brand-orange)">
                     Ver detalles →
                   </span>
                 )}

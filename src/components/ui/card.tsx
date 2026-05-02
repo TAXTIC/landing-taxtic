@@ -4,13 +4,13 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const cardVariants = cva(
-  "bg-[var(--surface)] border border-[var(--border)] rounded-none p-6 transition-colors",
+  "bg-(--surface) border border-(--border) rounded-none p-6 transition-colors",
   {
     variants: {
       variant: {
         default: "",
-        "with-orange-border": "border-l-[3px] border-l-[var(--brand-orange)]",
-        muted: "bg-[var(--surface-muted)] border-[var(--border)]",
+        "with-orange-border": "border-l-[3px] border-l-(--brand-orange)",
+        muted: "bg-(--surface-muted) border-(--border)",
       },
     },
     defaultVariants: { variant: "default" },
@@ -48,7 +48,7 @@ const CardTitle = React.forwardRef<
   <h3
     ref={ref}
     className={cn(
-      "text-xl font-bold tracking-tight leading-tight text-[var(--foreground)]",
+      "text-xl font-bold tracking-tight leading-tight text-(--foreground)",
       className,
     )}
     {...props}
@@ -63,7 +63,7 @@ const CardDescription = React.forwardRef<
   <p
     ref={ref}
     className={cn(
-      "text-sm text-[var(--foreground-muted)] leading-normal",
+      "text-sm text-(--foreground-muted) leading-normal",
       className,
     )}
     {...props}

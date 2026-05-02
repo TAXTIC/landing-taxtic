@@ -32,7 +32,7 @@ export function LocaleSwitcher({ tone = "light" }: LocaleSwitcherProps) {
   const triggerClass = cn(
     "gap-1",
     tone === "dark"
-      ? "text-[var(--brand-white)] hover:bg-white/10 active:bg-white/10"
+      ? "text-(--brand-white) hover:bg-white/10 active:bg-white/10"
       : undefined,
   );
 

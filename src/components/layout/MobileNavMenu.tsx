@@ -38,7 +38,7 @@ export function MobileNavMenu({
         <DialogPrimitive.Overlay className="hidden" />
         <DialogPrimitive.Content
           className={
-            "fixed inset-0 z-[var(--z-modal)] bg-[var(--surface-inverse)] text-[var(--brand-white)] " +
+            "fixed inset-0 z-(--z-modal) bg-(--surface-inverse) text-(--brand-white) " +
             "flex flex-col p-6 " +
             "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-top-2 data-[state=open]:duration-200 " +
             "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2 data-[state=closed]:duration-150"
@@ -50,7 +50,7 @@ export function MobileNavMenu({
               <Button
                 variant="ghost-light"
                 size="icon"
-                className="text-[var(--brand-white)] hover:bg-white/10"
+                className="text-(--brand-white) hover:bg-white/10"
                 aria-label={tNav("menuClose")}
               >
                 <X size={24} strokeWidth={1.75} />
@@ -64,7 +64,7 @@ export function MobileNavMenu({
                 key={item.href}
                 href={item.href}
                 onClick={handleClose}
-                className="text-2xl font-bold text-[var(--brand-white)] hover:text-[var(--brand-orange)] transition-colors"
+                className="text-2xl font-bold text-(--brand-white) hover:text-(--brand-orange) transition-colors"
               >
                 {item.label}
               </Link>

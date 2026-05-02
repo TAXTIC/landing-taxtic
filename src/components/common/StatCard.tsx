@@ -30,10 +30,10 @@ export function StatCard({
         className,
       )}
     >
-      <span className="font-bold tracking-tight text-3xl lg:text-4xl text-[var(--foreground)]">
+      <span className="font-bold tracking-tight text-3xl lg:text-4xl text-(--foreground)">
         {value}
       </span>
-      <span className="label-upper text-[var(--foreground-muted)] border-t-2 border-[var(--brand-orange)] pt-3">
+      <span className="label-upper text-(--foreground-muted) border-t-2 border-(--brand-orange) pt-3">
         {label}
       </span>
     </div>

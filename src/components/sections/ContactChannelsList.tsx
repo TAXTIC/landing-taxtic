@@ -27,12 +27,10 @@ function ChannelRow({
 }) {
   return (
     <div className="flex items-start gap-4">
-      <div className="flex-shrink-0 mt-1 text-[var(--brand-orange)]">
-        {icon}
-      </div>
+      <div className="flex-shrink-0 mt-1 text-(--brand-orange)">{icon}</div>
       <div className="flex-1">
-        <p className="label-upper text-[var(--gray-700)] mb-1">{label}</p>
-        <div className="text-base text-[var(--gray-900)]">{children}</div>
+        <p className="label-upper text-(--gray-700) mb-1">{label}</p>
+        <div className="text-base text-(--gray-900)">{children}</div>
       </div>
     </div>
   );
@@ -48,7 +46,7 @@ export function ContactChannelsList({
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-[var(--gray-900)] mb-2">
+      <h2 className="text-2xl font-bold text-(--gray-900) mb-2">
         {content.sectionTitle}
       </h2>
 
@@ -72,7 +70,7 @@ export function ContactChannelsList({
       >
         <a
           href={`mailto:${site.channels.email.primary}`}
-          className="text-[var(--brand-orange)] hover:text-[var(--brand-orange-hover)] underline underline-offset-2"
+          className="text-(--brand-orange) hover:text-(--brand-orange-hover) underline underline-offset-2"
         >
           {site.channels.email.primary}
         </a>
@@ -84,7 +82,7 @@ export function ContactChannelsList({
       >
         <a
           href={`tel:${site.channels.phoneLandline.tel}`}
-          className="text-[var(--brand-orange)] hover:text-[var(--brand-orange-hover)] underline underline-offset-2"
+          className="text-(--brand-orange) hover:text-(--brand-orange-hover) underline underline-offset-2"
         >
           {site.channels.phoneLandline.display}
         </a>
@@ -114,14 +112,14 @@ export function ContactChannelsList({
           href={site.portal.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[var(--brand-orange)] hover:text-[var(--brand-orange-hover)] underline underline-offset-2"
+          className="text-(--brand-orange) hover:text-(--brand-orange-hover) underline underline-offset-2"
         >
           Acceder al portal
         </a>
       </ChannelRow>
 
       <div>
-        <p className="label-upper text-[var(--gray-700)] mb-3">
+        <p className="label-upper text-(--gray-700) mb-3">
           {content.labels.social}
         </p>
         <div className="flex gap-4">
@@ -130,7 +128,7 @@ export function ContactChannelsList({
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            className="text-[var(--gray-700)] hover:text-[var(--brand-orange)]"
+            className="text-(--gray-700) hover:text-(--brand-orange)"
           >
             <InstagramIcon size={24} />
           </a>
@@ -139,7 +137,7 @@ export function ContactChannelsList({
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
-            className="text-[var(--gray-700)] hover:text-[var(--brand-orange)]"
+            className="text-(--gray-700) hover:text-(--brand-orange)"
           >
             <FacebookIcon size={24} />
           </a>
@@ -148,7 +146,7 @@ export function ContactChannelsList({
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="text-[var(--gray-700)] hover:text-[var(--brand-orange)]"
+            className="text-(--gray-700) hover:text-(--brand-orange)"
           >
             <LinkedInIcon size={24} />
           </a>
