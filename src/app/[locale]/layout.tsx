@@ -63,7 +63,7 @@ export default async function LocaleLayout({
   const site = await loadSite();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} data-scroll-behavior="smooth">
       <body>
         <NextIntlClientProvider>
           <Navbar siteData={site} />
