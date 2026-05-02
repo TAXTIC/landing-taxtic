@@ -45,7 +45,8 @@
     },
     "slugHero": {
       "eyebrow": "SERVICIO",
-      "anchorLabel": "Lo que incluye"
+      "anchorLabel": "Lo que incluye",
+      "entregablesLabel": "Entregables"
     },
     "slugCta": {
       "title": "¿Te interesa este servicio?",
