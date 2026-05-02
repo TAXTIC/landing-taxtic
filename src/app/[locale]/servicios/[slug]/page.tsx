@@ -3,9 +3,10 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { JSX } from "react";
 
+import { Section } from "@/components/common/Section";
 import { CTASection } from "@/components/sections/CTASection";
+import { ProseWrapper } from "@/components/sections/ProseWrapper";
 import { ServicePageHero } from "@/components/sections/ServicePageHero";
-import { ServicePageWrapper } from "@/components/sections/ServicePageWrapper";
 import { ServiceJsonLd } from "@/components/seo/ServiceJsonLd";
 import { serviceMdxFrontmatterSchema } from "@/content-lib/schemas/service-mdx.schema";
 import {
@@ -60,9 +61,11 @@ export default async function ServiceSlugPage({ params }: Props) {
   return (
     <>
       <ServicePageHero service={service} />
-      <ServicePageWrapper>
-        <Content />
-      </ServicePageWrapper>
+      <Section variant="light">
+        <ProseWrapper>
+          <Content />
+        </ProseWrapper>
+      </Section>
       <CTASection
         content={{
           title: t("slugCta.title"),
