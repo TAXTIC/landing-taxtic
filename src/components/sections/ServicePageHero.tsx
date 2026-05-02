@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 
 import { Section } from "@/components/common/Section";
+import { AnchorHighlights } from "@/components/sections/AnchorHighlights";
 import type { ServiceItem } from "@/content-lib/schemas/services.schema";
 import { Link } from "@/i18n/navigation";
 
@@ -42,16 +43,10 @@ export function ServicePageHero({ service }: ServicePageHeroProps) {
           </p>
         </div>
 
-        <aside className="border-l-[3px] border-[var(--brand-orange)] bg-[var(--brand-orange-soft)] p-6 lg:p-8">
-          <span className="label-upper text-[var(--gray-700)] mb-4 block">
-            {tServices("slugHero.anchorLabel")}
-          </span>
-          <ul className="space-y-2 text-sm lg:text-base text-[var(--gray-900)] list-disc pl-5">
-            {service.highlights.map((h) => (
-              <li key={h}>{h}</li>
-            ))}
-          </ul>
-        </aside>
+        <AnchorHighlights
+          label={tServices("slugHero.anchorLabel")}
+          items={service.highlights}
+        />
       </div>
     </Section>
   );
