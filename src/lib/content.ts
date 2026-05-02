@@ -12,6 +12,10 @@ import {
   aiSectionSchema,
 } from "@/content-lib/schemas/ai-section.schema";
 import {
+  type ContactContent,
+  contactSchema,
+} from "@/content-lib/schemas/contact.schema";
+import {
   type HomeContent,
   homeSchema,
 } from "@/content-lib/schemas/home.schema";
@@ -94,4 +98,9 @@ export async function loadAbout(
     }
     throw error;
   }
+}
+
+export async function loadContact(locale: Locale): Promise<ContactContent> {
+  const raw = await readJson<unknown>(`${locale}/contact.json`);
+  return contactSchema.parse(raw);
 }
