@@ -38,7 +38,7 @@ describe("getAllServiceSlugs", () => {
 });
 
 describe("loadAbout", () => {
-  it.skip("loads about MDX with valid frontmatter for ES (re-enable in Task 7)", async () => {
+  it("loads about MDX with valid frontmatter for ES", async () => {
     const { loadAbout } = await import("./content");
     const { frontmatter, MDXContent } = await loadAbout("es");
     expect(frontmatter.metaTitle.length).toBeGreaterThanOrEqual(10);
@@ -46,7 +46,7 @@ describe("loadAbout", () => {
     expect(typeof MDXContent).toBe("function");
   });
 
-  it.skip("loads about MDX with valid frontmatter for EN (re-enable in Task 7)", async () => {
+  it("loads about MDX with valid frontmatter for EN", async () => {
     const { loadAbout } = await import("./content");
     const { frontmatter } = await loadAbout("en");
     expect(frontmatter.metaTitle.length).toBeGreaterThanOrEqual(10);
