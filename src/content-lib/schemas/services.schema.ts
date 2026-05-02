@@ -7,6 +7,7 @@ const serviceItemSchema = z.object({
   title: z.string().min(1),
   shortDescription: z.string().min(20),
   highlights: z.array(z.string().min(1)).length(3),
+  entregables: z.array(z.string().min(10)).min(3).max(8),
   iconName: z.string().min(1),
 });
 
