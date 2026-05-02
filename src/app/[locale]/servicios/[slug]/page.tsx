@@ -5,6 +5,7 @@ import type { JSX } from "react";
 
 import { Section } from "@/components/common/Section";
 import { CTASection } from "@/components/sections/CTASection";
+import { EntregablesCard } from "@/components/sections/EntregablesCard";
 import { ProseWrapper } from "@/components/sections/ProseWrapper";
 import { ServicePageHero } from "@/components/sections/ServicePageHero";
 import { ServiceJsonLd } from "@/components/seo/ServiceJsonLd";
@@ -60,11 +61,17 @@ export default async function ServiceSlugPage({ params }: Props) {
 
   return (
     <>
-      <ServicePageHero service={service} />
       <Section variant="light">
-        <ProseWrapper>
-          <Content />
-        </ProseWrapper>
+        <ServicePageHero service={service} />
+        <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-16 mt-12 lg:mt-16">
+          <ProseWrapper>
+            <Content />
+          </ProseWrapper>
+          <EntregablesCard
+            title={t("slugHero.entregablesLabel")}
+            items={service.entregables}
+          />
+        </div>
       </Section>
       <CTASection
         content={{

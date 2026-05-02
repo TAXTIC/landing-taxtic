@@ -1,6 +1,5 @@
 import { useTranslations } from "next-intl";
 
-import { Section } from "@/components/common/Section";
 import { AnchorHighlights } from "@/components/sections/AnchorHighlights";
 import type { ServiceItem } from "@/content-lib/schemas/services.schema";
 import { Link } from "@/i18n/navigation";
@@ -13,7 +12,7 @@ export function ServicePageHero({ service }: ServicePageHeroProps) {
   const tServices = useTranslations("services");
 
   return (
-    <Section variant="light">
+    <div>
       <nav aria-label="Breadcrumb" className="mb-8 text-sm text-(--gray-700)">
         <Link
           href={"/servicios" as never}
@@ -43,6 +42,6 @@ export function ServicePageHero({ service }: ServicePageHeroProps) {
           items={service.highlights}
         />
       </div>
-    </Section>
+    </div>
   );
 }
