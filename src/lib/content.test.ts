@@ -38,18 +38,19 @@ describe("getAllServiceSlugs", () => {
 });
 
 describe("loadAbout", () => {
-  it("loads about MDX with valid frontmatter for ES", async () => {
+  it("loads about content with valid metadata and 5 values for ES", async () => {
     const { loadAbout } = await import("./content");
-    const { frontmatter, MDXContent } = await loadAbout("es");
-    expect(frontmatter.metaTitle.length).toBeGreaterThanOrEqual(10);
-    expect(frontmatter.metaDescription.length).toBeGreaterThanOrEqual(50);
-    expect(typeof MDXContent).toBe("function");
+    const about = await loadAbout("es");
+    expect(about.metaTitle.length).toBeGreaterThanOrEqual(10);
+    expect(about.metaDescription.length).toBeGreaterThanOrEqual(50);
+    expect(about.values.length).toBe(5);
   });
 
-  it("loads about MDX with valid frontmatter for EN", async () => {
+  it("loads about content for EN", async () => {
     const { loadAbout } = await import("./content");
-    const { frontmatter } = await loadAbout("en");
-    expect(frontmatter.metaTitle.length).toBeGreaterThanOrEqual(10);
+    const about = await loadAbout("en");
+    expect(about.metaTitle.length).toBeGreaterThanOrEqual(10);
+    expect(about.values.length).toBe(5);
   });
 });
 

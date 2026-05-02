@@ -1,0 +1,40 @@
+{
+  "metaTitle": "Quiénes somos — Taxtic, contabilidad y tributaria en Curicó",
+  "metaDescription": "Conoce a Taxtic: firma de asesoría contable, tributaria, laboral y legal con base en Curicó. Misión, visión y valores institucionales.",
+  "mission": {
+    "label": "Misión",
+    "text": "Entregar un servicio de excelencia en contabilidad, asesoría tributaria y remuneraciones, asegurando la creación de valor para clientes, accionistas y la comunidad, basado en el profesionalismo, integridad y responsabilidad."
+  },
+  "vision": {
+    "label": "Visión",
+    "text": "Ser reconocidos a nivel nacional como una empresa de excelencia en asesoría contable, gestión tributaria y recursos humanos, entregando soluciones prácticas adaptadas a cada cliente."
+  },
+  "valuesLabel": "Valores",
+  "values": [
+    {
+      "title": "Excelencia",
+      "description": "Buscamos el más alto estándar en cada etapa del proceso.",
+      "iconName": "Award"
+    },
+    {
+      "title": "Ética e integridad",
+      "description": "Actuamos con principios morales sólidos, generando confianza.",
+      "iconName": "ShieldCheck"
+    },
+    {
+      "title": "Compromiso",
+      "description": "Construimos relaciones duraderas y colaborativas.",
+      "iconName": "Handshake"
+    },
+    {
+      "title": "Profesionalismo",
+      "description": "Aplicamos todas las competencias y herramientas necesarias para un desempeño óptimo.",
+      "iconName": "Briefcase"
+    },
+    {
+      "title": "Responsabilidad",
+      "description": "Asumimos con seriedad nuestro trabajo, garantizando la más alta calidad de servicio.",
+      "iconName": "BadgeCheck"
+    }
+  ]
+}
