@@ -20,13 +20,13 @@ const titleSizeByLevel: Record<Heading, string> = {
 };
 
 const titleColorByTone: Record<Tone, string> = {
-  light: "text-[var(--foreground)]",
-  dark: "text-[var(--brand-white)]",
+  light: "text-(--foreground)",
+  dark: "text-(--brand-white)",
 };
 
 const subtitleColorByTone: Record<Tone, string> = {
-  light: "text-[var(--foreground-muted)]",
-  dark: "text-[var(--gray-300)]",
+  light: "text-(--foreground-muted)",
+  dark: "text-(--gray-300)",
 };
 
 /**
@@ -63,9 +63,7 @@ export function SectionHeader({
       )}
     >
       {eyebrow ? (
-        <span className="label-upper text-[var(--brand-orange)]">
-          {eyebrow}
-        </span>
+        <span className="label-upper text-(--brand-orange)">{eyebrow}</span>
       ) : null}
       <Tag
         className={cn(

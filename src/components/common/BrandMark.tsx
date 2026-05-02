@@ -19,10 +19,9 @@ const sizeClasses: Record<Size, string> = {
 };
 
 const toneClasses: Record<Tone, string> = {
-  orange: "bg-[var(--brand-orange)] text-[var(--brand-white)]",
-  black: "bg-[var(--brand-black)] text-[var(--brand-white)]",
-  white:
-    "bg-[var(--brand-white)] text-[var(--foreground)] border border-[var(--border)]",
+  orange: "bg-(--brand-orange) text-(--brand-white)",
+  black: "bg-(--brand-black) text-(--brand-white)",
+  white: "bg-(--brand-white) text-(--foreground) border border-(--border)",
 };
 
 /**

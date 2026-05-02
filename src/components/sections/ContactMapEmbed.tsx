@@ -15,7 +15,7 @@ export function ContactMapEmbed({
 }: ContactMapEmbedProps) {
   return (
     <div className="space-y-3">
-      <div className="relative w-full h-[300px] md:h-[400px] lg:h-[450px] border border-[var(--border)]">
+      <div className="relative w-full h-[300px] md:h-[400px] lg:h-[450px] border border-(--border)">
         <iframe
           src={embedUrl}
           title={iframeTitle}
@@ -31,7 +31,7 @@ export function ContactMapEmbed({
         href={externalUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-sm text-[var(--brand-orange)] hover:text-[var(--brand-orange-hover)]"
+        className="inline-flex items-center gap-2 text-sm text-(--brand-orange) hover:text-(--brand-orange-hover)"
       >
         {openInMapsLabel}
         <ExternalLink size={16} strokeWidth={1.75} aria-hidden="true" />

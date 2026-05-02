@@ -14,31 +14,26 @@ export function ServicePageHero({ service }: ServicePageHeroProps) {
 
   return (
     <Section variant="light">
-      <nav
-        aria-label="Breadcrumb"
-        className="mb-8 text-sm text-[var(--gray-700)]"
-      >
+      <nav aria-label="Breadcrumb" className="mb-8 text-sm text-(--gray-700)">
         <Link
           href={"/servicios" as never}
-          className="hover:text-[var(--brand-orange)] transition-colors"
+          className="hover:text-(--brand-orange) transition-colors"
         >
           {tServices("breadcrumb.back")}
         </Link>
-        <span className="mx-2 text-[var(--gray-500)]">/</span>
-        <span className="font-bold text-[var(--gray-900)]">
-          {service.title}
-        </span>
+        <span className="mx-2 text-(--gray-500)">/</span>
+        <span className="font-bold text-(--gray-900)">{service.title}</span>
       </nav>
 
       <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] items-start">
         <div className="flex flex-col gap-4">
-          <span className="label-upper text-[var(--brand-orange)]">
+          <span className="label-upper text-(--brand-orange)">
             {tServices("slugHero.eyebrow")}
           </span>
-          <h1 className="text-3xl lg:text-4xl font-bold text-[var(--gray-900)] leading-tight">
+          <h1 className="text-3xl lg:text-4xl font-bold text-(--gray-900) leading-tight">
             {service.title}
           </h1>
-          <p className="text-base lg:text-lg leading-relaxed text-[var(--gray-700)]">
+          <p className="text-base lg:text-lg leading-relaxed text-(--gray-700)">
             {service.shortDescription}
           </p>
         </div>

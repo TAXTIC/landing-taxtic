@@ -25,12 +25,12 @@ export function WhatsAppFab({ siteData }: WhatsAppFabProps) {
       onClick={handleClick}
       aria-label={tFab("whatsappLabel")}
       className={
-        "fixed bottom-6 right-6 z-[var(--z-fab)] " +
+        "fixed bottom-6 right-6 z-(--z-fab) " +
         "h-14 w-14 inline-flex items-center justify-center rounded-none " +
-        "bg-[var(--brand-orange)] text-[var(--brand-white)] " +
-        "hover:bg-[var(--brand-orange-hover)] active:bg-[var(--brand-orange-active)] " +
+        "bg-(--brand-orange) text-(--brand-white) " +
+        "hover:bg-(--brand-orange-hover) active:bg-(--brand-orange-active) " +
         "transition-colors " +
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--background)"
       }
     >
       <WhatsAppIcon size={28} />
