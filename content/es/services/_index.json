@@ -9,6 +9,14 @@
         "Estados financieros oportunos y sin jerga",
         "Respaldo ante fiscalizaciones del SII"
       ],
+      "entregables": [
+        "Contabilidad mensual conciliada con bancos y registros operativos.",
+        "Estados financieros con reportes ejecutivos en lenguaje claro, no en jerga contable.",
+        "Conciliación bancaria mensual completa.",
+        "Preparación de F22 (declaración anual de renta) y F29 (declaración mensual de IVA y retenciones).",
+        "Respaldo y acompañamiento ante fiscalizaciones del SII.",
+        "Control y registro completo de operaciones del periodo."
+      ],
       "iconName": "BookOpen"
     },
     {
@@ -19,6 +27,14 @@
         "Declaraciones F29 y F22",
         "Planificación tributaria anual",
         "Cumplimiento normativo ante el SII"
+      ],
+      "entregables": [
+        "Declaración mensual F29 (IVA y retenciones de honorarios).",
+        "Declaración anual F22 (renta).",
+        "Planificación tributaria anual con escenarios y recomendación.",
+        "Cumplimiento normativo continuo ante el SII.",
+        "Asesoría en regímenes tributarios y reorganizaciones societarias.",
+        "Respaldo ante fiscalizaciones y requerimientos del SII."
       ],
       "iconName": "FileCheck"
     },
@@ -31,6 +47,14 @@
         "Remuneraciones y administración laboral",
         "Soporte continuo de nuestro equipo"
       ],
+      "entregables": [
+        "Gestión contable y tributaria completa (alcance equivalente a los servicios de Asesoría contable y tributaria).",
+        "Administración laboral: contratos, anexos, finiquitos, cálculo de remuneraciones.",
+        "Reportes ejecutivos mensuales para gerencia.",
+        "Soporte continuo de nuestro equipo asignado a tu empresa.",
+        "Coordinación directa con tu equipo de finanzas o gerencia general.",
+        "Indicadores y alertas tempranas sobre tu operación financiera."
+      ],
       "iconName": "Layers"
     },
     {
@@ -41,6 +65,13 @@
         "Constitución y modificación de sociedades",
         "Contratos y documentos legales",
         "Asesoría en cumplimiento normativo"
+      ],
+      "entregables": [
+        "Constitución y modificación de sociedades (sociedades anónimas, SpA, EIRL, sociedades de responsabilidad limitada).",
+        "Redacción y revisión de contratos comerciales y de servicios.",
+        "Documentos legales recurrentes (poderes, mandatos, modificaciones).",
+        "Asesoría en cumplimiento normativo aplicable a tu giro.",
+        "Representación en gestiones ante el Conservador de Bienes Raíces y otros registros públicos."
       ],
       "iconName": "Scale"
     },
@@ -53,6 +84,14 @@
         "Cálculo y pago de remuneraciones",
         "Cumplimiento ante la Dirección del Trabajo"
       ],
+      "entregables": [
+        "Confección de contratos, anexos y finiquitos.",
+        "Cálculo y pago de remuneraciones mensuales.",
+        "Declaración y pago de cotizaciones previsionales (AFP, salud, AFC, mutual).",
+        "Cumplimiento ante la Dirección del Trabajo en fiscalizaciones y requerimientos.",
+        "Asesoría en relaciones laborales individuales y colectivas.",
+        "Reportes mensuales de costo laboral por centro de costo o área."
+      ],
       "iconName": "Users"
     },
     {
@@ -63,6 +102,14 @@
         "Emisión de facturas y boletas electrónicas",
         "Integración con sistema certificado (Haulmer)",
         "Soporte en operación diaria de DTE"
+      ],
+      "entregables": [
+        "Emisión de facturas y boletas electrónicas (DTE).",
+        "Integración técnica con sistema certificado (Haulmer).",
+        "Habilitación y configuración inicial ante el SII.",
+        "Soporte en operación diaria de DTE.",
+        "Gestión de contingencias y rechazos del SII.",
+        "Asesoría en cambios normativos sobre facturación electrónica."
       ],
       "iconName": "FileText"
     }

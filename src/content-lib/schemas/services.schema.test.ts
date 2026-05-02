@@ -12,6 +12,11 @@ const validService = {
     "Estados financieros oportunos y sin jerga",
     "Respaldo ante fiscalizaciones del SII",
   ],
+  entregables: [
+    "Contabilidad mensual conciliada con bancos.",
+    "Estados financieros con reportes ejecutivos en lenguaje claro.",
+    "Respaldo y acompañamiento ante fiscalizaciones del SII.",
+  ],
   iconName: "BookOpen",
 };
 
@@ -44,5 +49,27 @@ describe("servicesIndexSchema", () => {
   it("rejects index with !== 6 services", () => {
     const bad = { services: validIndex.services.slice(0, 5) };
     expect(() => servicesIndexSchema.parse(bad)).toThrow(/6/);
+  });
+
+  it("rejects services with fewer than 3 entregables", () => {
+    const bad = structuredClone(validIndex);
+    bad.services[0]!.entregables = ["one"];
+    expect(() => servicesIndexSchema.parse(bad)).toThrow();
+  });
+
+  it("rejects services with more than 8 entregables", () => {
+    const bad = structuredClone(validIndex);
+    bad.services[0]!.entregables = Array(9).fill("Suficientemente largo");
+    expect(() => servicesIndexSchema.parse(bad)).toThrow();
+  });
+
+  it("rejects entregables with item shorter than 10 chars", () => {
+    const bad = structuredClone(validIndex);
+    bad.services[0]!.entregables = [
+      "short",
+      "Lo suficientemente largo",
+      "Otro item válido",
+    ];
+    expect(() => servicesIndexSchema.parse(bad)).toThrow();
   });
 });
