@@ -30,41 +30,10 @@
   "aboutTeaser": {
     "eyebrow": "Quiénes somos",
     "title": "La evolución de la contabilidad tradicional",
-    "lead": "Somos la evolución de la contabilidad tradicional hacia un concepto de modernidad, cercanía y profesionalismo. Nuestro propósito es acompañar a cada cliente en sus necesidades, aspiraciones y desafíos, entregando un soporte personalizado y siempre disponible.",
-    "mission": {
-      "label": "Misión",
-      "text": "Entregar un servicio de excelencia en contabilidad, asesoría tributaria y remuneraciones, asegurando la creación de valor para clientes, accionistas y la comunidad, basado en el profesionalismo, integridad y responsabilidad."
-    },
-    "vision": {
-      "label": "Visión",
-      "text": "Ser reconocidos a nivel nacional como una empresa de excelencia en asesoría contable, gestión tributaria y recursos humanos, entregando soluciones prácticas adaptadas a cada cliente."
-    },
-    "values": [
-      {
-        "title": "Excelencia",
-        "description": "El más alto estándar en cada etapa del proceso.",
-        "iconName": "Award"
-      },
-      {
-        "title": "Ética e integridad",
-        "description": "Principios morales sólidos que generan confianza.",
-        "iconName": "ShieldCheck"
-      },
-      {
-        "title": "Compromiso",
-        "description": "Relaciones duraderas y colaborativas.",
-        "iconName": "Handshake"
-      },
-      {
-        "title": "Profesionalismo",
-        "description": "Competencias y herramientas para un desempeño óptimo.",
-        "iconName": "Briefcase"
-      },
-      {
-        "title": "Responsabilidad",
-        "description": "Seriedad y la más alta calidad de servicio.",
-        "iconName": "BadgeCheck"
-      }
+    "lead": "Acompañamos a cada cliente con un equipo multidisciplinario, presencia regional y la disponibilidad real para resolver lo que aparezca, sin derivar a terceros.",
+    "highlights": [
+      "Contable, tributario, laboral y legal en una sola firma.",
+      "Base en Curicó, atención presencial y remota a todo Chile."
     ],
     "cta": {
       "kind": "internal",
