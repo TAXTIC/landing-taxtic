@@ -43,11 +43,7 @@ export default async function ServicesIndexPage({ params }: Props) {
         />
       </div>
       <div className="mt-12 lg:mt-16">
-        <ServicesGrid
-          services={services.services}
-          density="expanded"
-          featured
-        />
+        <ServicesGrid services={services.services} density="expanded" />
       </div>
     </Section>
   );
