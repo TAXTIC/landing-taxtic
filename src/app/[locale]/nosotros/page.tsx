@@ -6,8 +6,8 @@ import { SectionHeader } from "@/components/common/SectionHeader";
 import { CTASection } from "@/components/sections/CTASection";
 import { HowWeWorkBlock } from "@/components/sections/HowWeWorkBlock";
 import { IconCardGrid } from "@/components/sections/IconCardGrid";
+import { MissionVisionValuesBlock } from "@/components/sections/MissionVisionValuesBlock";
 import { PageHero } from "@/components/sections/PageHero";
-import { ProseWrapper } from "@/components/sections/ProseWrapper";
 import { loadAbout, loadSite, type Locale } from "@/lib/content";
 import { resolveCtaHref } from "@/lib/cta";
 
@@ -20,7 +20,7 @@ export default async function NosotrosPage({ params }: Props) {
   setRequestLocale(rawLocale);
   const locale = rawLocale as Locale;
 
-  const [{ MDXContent }, t, tContacto, site] = await Promise.all([
+  const [aboutContent, t, tContacto, site] = await Promise.all([
     loadAbout(locale),
     getTranslations({ locale, namespace: "nosotros" }),
     getTranslations({ locale, namespace: "contacto" }),
@@ -85,9 +85,7 @@ export default async function NosotrosPage({ params }: Props) {
           title={t("missionVision.title")}
           align="center"
         />
-        <ProseWrapper>
-          <MDXContent />
-        </ProseWrapper>
+        <MissionVisionValuesBlock content={aboutContent} />
       </Section>
 
       <Section variant="light">
@@ -122,9 +120,9 @@ export default async function NosotrosPage({ params }: Props) {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
-  const { frontmatter } = await loadAbout(locale);
+  const about = await loadAbout(locale);
   return {
-    title: frontmatter.metaTitle,
-    description: frontmatter.metaDescription,
+    title: about.metaTitle,
+    description: about.metaDescription,
   };
 }
