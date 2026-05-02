@@ -1,0 +1,27 @@
+{
+  "eyebrow": "Cómo trabajamos",
+  "title": "Cómo trabajamos contigo",
+  "subtitle": "De la incertidumbre a decisiones claras, en un proceso estructurado y predecible.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Diagnóstico tributario y contable",
+      "description": "Analizamos tu situación actual, identificamos riesgos y oportunidades, y levantamos la información clave para tomar decisiones informadas."
+    },
+    {
+      "stepNumber": 2,
+      "title": "Propuesta clara y plan de acción",
+      "description": "Definimos un plan concreto con alcance, tiempos y entregables. Sabes exactamente qué se hará y cuándo."
+    },
+    {
+      "stepNumber": 3,
+      "title": "Implementación y orden interno",
+      "description": "Ponemos en marcha el servicio, organizamos procesos y dejamos tu información contable y tributaria bajo control."
+    },
+    {
+      "stepNumber": 4,
+      "title": "Seguimiento y toma de decisiones",
+      "description": "Te entregamos reportes claros y acompañamiento continuo para que tomes decisiones con información actualizada."
+    }
+  ]
+}

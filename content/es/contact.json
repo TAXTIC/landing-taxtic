@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "eyebrow": "Conversemos",
+    "title": "Estamos para resolver tu pregunta",
+    "lead": "Cuéntanos sobre tu empresa y en qué podemos ayudarte. Respondemos por WhatsApp en horario hábil; si prefieres correo o teléfono fijo, también funciona."
+  },
+  "channels": {
+    "sectionTitle": "Cómo contactarnos",
+    "labels": {
+      "address": "Oficina",
+      "hours": "Horario de atención",
+      "email": "Correo",
+      "phoneLandline": "Teléfono fijo",
+      "whatsapp": "WhatsApp",
+      "social": "Redes sociales",
+      "portal": "Portal de clientes"
+    },
+    "hoursDisplay": "Lunes a viernes · 08:00 – 17:30 (jornada continua)"
+  },
+  "map": {
+    "sectionTitle": "Dónde estamos",
+    "iframeTitle": "Mapa de la oficina de Taxtic en Carmen #459, Curicó",
+    "openInMapsLabel": "Abrir en Google Maps"
+  }
+}

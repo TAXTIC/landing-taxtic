@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "eyebrow": "Consultoría contable y tributaria",
+    "title": "Mañana a las 10:00 tendrás claridad sobre tu situación tributaria.",
+    "subtitle": "Tres escenarios claros, una recomendación y una decisión antes del mediodía. Así trabajamos en Taxtic.",
+    "ctaPrimary": {
+      "kind": "whatsapp",
+      "label": "Hablemos por WhatsApp"
+    },
+    "ctaSecondary": {
+      "kind": "anchor",
+      "label": "Ver servicios",
+      "href": "#servicios"
+    },
+    "image": {
+      "src": "/images/hero-reunion-cliente.png",
+      "alt": "Reunión de trabajo entre equipo de Taxtic y cliente revisando informe sobre la mesa"
+    },
+    "stats": [
+      { "value": "10+", "label": "años en Curicó", "verified": true },
+      { "value": "200+", "label": "clientes activos", "verified": true },
+      { "value": "98%", "label": "tasa de retención", "verified": false }
+    ]
+  },
+  "servicesTeaser": {
+    "eyebrow": "Lo que hacemos",
+    "title": "Servicios oficiales",
+    "seeAllLabel": "Ver todos los servicios"
+  },
+  "aboutTeaser": {
+    "eyebrow": "Quiénes somos",
+    "title": "La evolución de la contabilidad tradicional",
+    "lead": "Acompañamos a cada cliente con un equipo multidisciplinario, presencia regional y la disponibilidad real para resolver lo que aparezca, sin derivar a terceros.",
+    "highlights": [
+      "Contable, tributario, laboral y legal en una sola firma.",
+      "Base en Curicó, atención presencial y remota a todo Chile."
+    ],
+    "cta": {
+      "kind": "internal",
+      "label": "Conoce más sobre nosotros",
+      "href": "/nosotros"
+    }
+  },
+  "cta": {
+    "title": "Hablemos sobre tu contabilidad",
+    "subtitle": "Cuéntanos en qué podemos ayudarte. Respondemos por WhatsApp en horario hábil.",
+    "button": {
+      "kind": "whatsapp",
+      "label": "Hablemos por WhatsApp"
+    }
+  }
+}
