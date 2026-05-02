@@ -38,7 +38,10 @@ function ChannelRow({
   );
 }
 
-export function ContactChannelsList({ content, site }: ContactChannelsListProps) {
+export function ContactChannelsList({
+  content,
+  site,
+}: ContactChannelsListProps) {
   function handleWhatsAppClick() {
     track("whatsapp_click", { position: "contacto" });
   }

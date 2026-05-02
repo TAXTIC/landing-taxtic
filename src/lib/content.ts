@@ -76,9 +76,7 @@ export async function getAllServiceSlugs(): Promise<string[]> {
   return services.services.map((s) => s.slug);
 }
 
-export async function loadAbout(
-  locale: Locale,
-): Promise<{
+export async function loadAbout(locale: Locale): Promise<{
   frontmatter: AboutMdxFrontmatter;
   MDXContent: () => JSX.Element;
 }> {
