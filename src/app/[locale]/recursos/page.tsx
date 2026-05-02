@@ -23,15 +23,13 @@ export default async function RecursosPage({ params }: Props) {
   return (
     <Section variant="light" className="min-h-[60vh] flex items-center">
       <div className="max-w-2xl mx-auto text-center">
-        <p className="label-upper text-[var(--brand-orange)] mb-4">
+        <p className="label-upper text-(--brand-orange) mb-4">
           {t("pageHero.eyebrow")}
         </p>
-        <h1 className="text-4xl md:text-5xl font-bold text-[var(--gray-900)] mb-6">
+        <h1 className="text-4xl md:text-5xl font-bold text-(--gray-900) mb-6">
           {t("pageHero.title")}
         </h1>
-        <p className="text-lg text-[var(--gray-700)] mb-10">
-          {t("pageHero.lead")}
-        </p>
+        <p className="text-lg text-(--gray-700) mb-10">{t("pageHero.lead")}</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button variant="primary-orange" asChild>
             <a

@@ -26,13 +26,13 @@ export function Footer({ siteData }: FooterProps) {
   ] as const;
 
   return (
-    <footer className="bg-[var(--surface-inverse)] text-[var(--brand-white)] py-16 lg:py-20">
-      <div className="mx-auto max-w-[var(--container-max)] px-[var(--space-section-x-mobile)] lg:px-[var(--space-section-x-desktop)]">
+    <footer className="bg-(--surface-inverse) text-(--brand-white) py-16 lg:py-20">
+      <div className="mx-auto max-w-(--container-max) px-(--space-section-x-mobile) lg:px-(--space-section-x-desktop)">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <BrandLogo variant="principal" surface="dark" size="md" />
-            <p className="text-sm leading-normal text-[var(--gray-300)]">
+            <p className="text-sm leading-normal text-(--gray-300)">
               {tFooter("tagline")}
             </p>
           </div>
@@ -44,7 +44,7 @@ export function Footer({ siteData }: FooterProps) {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-[var(--brand-white)] hover:text-[var(--brand-orange)] transition-colors"
+                    className="text-sm text-(--brand-white) hover:text-(--brand-orange) transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -61,7 +61,7 @@ export function Footer({ siteData }: FooterProps) {
               <li>
                 <a
                   href={`tel:${siteData.channels.phoneLandline.tel}`}
-                  className="hover:text-[var(--brand-orange)] transition-colors"
+                  className="hover:text-(--brand-orange) transition-colors"
                 >
                   {siteData.channels.phoneLandline.display}
                 </a>
@@ -69,14 +69,12 @@ export function Footer({ siteData }: FooterProps) {
               <li>
                 <a
                   href={`mailto:${siteData.channels.email.primary}`}
-                  className="hover:text-[var(--brand-orange)] transition-colors"
+                  className="hover:text-(--brand-orange) transition-colors"
                 >
                   {siteData.channels.email.primary}
                 </a>
               </li>
-              <li className="text-[var(--gray-300)] mt-2">
-                {tFooter("hours")}
-              </li>
+              <li className="text-(--gray-300) mt-2">{tFooter("hours")}</li>
             </ul>
           </FooterColumn>
 
@@ -110,8 +108,8 @@ export function Footer({ siteData }: FooterProps) {
           </FooterColumn>
         </div>
 
-        <hr className="mt-12 border-[var(--gray-700)]" />
-        <p className="mt-6 text-xs text-[var(--gray-300)]">
+        <hr className="mt-12 border-(--gray-700)" />
+        <p className="mt-6 text-xs text-(--gray-300)">
           © {year} Taxtic. {tFooter("rights")}
         </p>
       </div>
@@ -130,7 +128,7 @@ function FooterColumn({
 }) {
   return (
     <div className={cn("flex flex-col gap-4", className)}>
-      <span className="label-upper text-[var(--gray-400)]">{header}</span>
+      <span className="label-upper text-(--gray-400)">{header}</span>
       {children}
     </div>
   );
@@ -151,7 +149,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="text-[var(--brand-white)] hover:text-[var(--brand-orange)] transition-colors"
+      className="text-(--brand-white) hover:text-(--brand-orange) transition-colors"
     >
       {children}
     </a>

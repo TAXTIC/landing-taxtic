@@ -14,10 +14,10 @@ interface SectionProps {
 }
 
 const variantClasses: Record<SectionVariant, string> = {
-  light: "bg-[var(--background)] text-[var(--foreground)]",
-  dark: "bg-[var(--surface-inverse)] text-[var(--brand-white)]",
-  muted: "bg-[var(--surface-muted)] text-[var(--foreground)]",
-  "orange-soft": "bg-[var(--brand-orange-soft)] text-[var(--foreground)]",
+  light: "bg-(--background) text-(--foreground)",
+  dark: "bg-(--surface-inverse) text-(--brand-white)",
+  muted: "bg-(--surface-muted) text-(--foreground)",
+  "orange-soft": "bg-(--brand-orange-soft) text-(--foreground)",
 };
 
 /**
@@ -44,7 +44,7 @@ export function Section({
   const innerContainer = bleed ? (
     children
   ) : (
-    <div className="mx-auto max-w-[var(--container-max)] px-[var(--space-section-x-mobile)] lg:px-[var(--space-section-x-desktop)]">
+    <div className="mx-auto max-w-(--container-max) px-(--space-section-x-mobile) lg:px-(--space-section-x-desktop)">
       {children}
     </div>
   );
@@ -53,7 +53,7 @@ export function Section({
     <Tag
       id={id}
       className={cn(
-        "py-[var(--space-section-y-mobile)] lg:py-[var(--space-section-y-desktop)]",
+        "py-(--space-section-y-mobile) lg:py-(--space-section-y-desktop)",
         variantClasses[variant],
         className,
       )}

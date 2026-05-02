@@ -53,12 +53,12 @@ export function AISection({ content }: AISectionProps) {
                 <Icon
                   size={24}
                   strokeWidth={1.75}
-                  className="text-[var(--brand-orange)] mb-4"
+                  className="text-(--brand-orange) mb-4"
                 />
-                <h3 className="text-base font-bold text-[var(--gray-900)] mb-2">
+                <h3 className="text-base font-bold text-(--gray-900) mb-2">
                   {capability.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-[var(--gray-700)]">
+                <p className="text-sm leading-relaxed text-(--gray-700)">
                   {capability.description}
                 </p>
               </Card>

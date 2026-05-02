@@ -20,13 +20,11 @@ export function StatInline({
 
   return (
     <div ref={ref}>
-      <div className="text-3xl font-bold text-[var(--gray-900)] leading-none">
+      <div className="text-3xl font-bold text-(--gray-900) leading-none">
         {value}
         {suffix}
       </div>
-      <div className="label-upper text-[var(--foreground-muted)] mt-1">
-        {label}
-      </div>
+      <div className="label-upper text-(--foreground-muted) mt-1">{label}</div>
     </div>
   );
 }

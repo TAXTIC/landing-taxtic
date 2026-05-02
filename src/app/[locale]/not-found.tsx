@@ -19,13 +19,11 @@ export default async function LocalizedNotFound() {
   return (
     <Section variant="light" className="min-h-[60vh] flex items-center">
       <div className="max-w-2xl mx-auto text-center">
-        <p className="label-upper text-[var(--brand-orange)] mb-4">
-          {t("eyebrow")}
-        </p>
-        <h1 className="text-4xl md:text-5xl font-bold text-[var(--gray-900)] mb-6">
+        <p className="label-upper text-(--brand-orange) mb-4">{t("eyebrow")}</p>
+        <h1 className="text-4xl md:text-5xl font-bold text-(--gray-900) mb-6">
           {t("title")}
         </h1>
-        <p className="text-lg text-[var(--gray-700)] mb-10">{t("lead")}</p>
+        <p className="text-lg text-(--gray-700) mb-10">{t("lead")}</p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <Button variant="primary-orange" asChild>
@@ -43,8 +41,8 @@ export default async function LocalizedNotFound() {
         </div>
 
         {suggestions.length >= 2 && (
-          <div className="border-t border-[var(--border)] pt-8">
-            <p className="label-upper text-[var(--gray-700)] mb-4">
+          <div className="border-t border-(--border) pt-8">
+            <p className="label-upper text-(--gray-700) mb-4">
               {t("suggestionsLabel")}
             </p>
             <ul className="flex flex-wrap gap-3 justify-center">
@@ -52,7 +50,7 @@ export default async function LocalizedNotFound() {
                 <li key={s.href}>
                   <Link
                     href={s.href as never}
-                    className="inline-flex items-center gap-2 px-4 py-2 border border-[var(--border)] text-[var(--gray-900)] hover:border-[var(--brand-orange)] hover:text-[var(--brand-orange)] transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 border border-(--border) text-(--gray-900) hover:border-(--brand-orange) hover:text-(--brand-orange) transition-colors"
                   >
                     {s.label}
                     <ChevronRight

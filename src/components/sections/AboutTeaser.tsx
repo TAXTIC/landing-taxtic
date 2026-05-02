@@ -17,13 +17,13 @@ export function AboutTeaser({ content, cta }: AboutTeaserProps) {
 
   return (
     <Section variant="light" id="nosotros">
-      <div className="max-w-[var(--container-prose)] mx-auto">
+      <div className="max-w-(--container-prose) mx-auto">
         <SectionHeader
           eyebrow={content.eyebrow}
           title={content.title}
           align="left"
         />
-        <p className="text-base leading-relaxed text-[var(--foreground-muted)] mt-6">
+        <p className="text-base leading-relaxed text-(--foreground-muted) mt-6">
           {content.lead}
         </p>
         <ul className="space-y-3 mt-8">
@@ -32,10 +32,10 @@ export function AboutTeaser({ content, cta }: AboutTeaserProps) {
               <Check
                 size={20}
                 strokeWidth={1.75}
-                className="text-[var(--brand-orange)] shrink-0 mt-0.5"
+                className="text-(--brand-orange) shrink-0 mt-0.5"
                 aria-hidden="true"
               />
-              <span className="text-[var(--gray-900)]">{h}</span>
+              <span className="text-(--gray-900)">{h}</span>
             </li>
           ))}
         </ul>

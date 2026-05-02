@@ -98,7 +98,7 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
 
           {visibleStats.length > 0 && (
             <motion.div
-              className="flex flex-wrap gap-x-8 gap-y-4 pt-4 border-t border-[var(--border)]"
+              className="flex flex-wrap gap-x-8 gap-y-4 pt-4 border-t border-(--border)"
               variants={itemVariants}
             >
               {visibleStats.map((stat) => {
@@ -119,7 +119,7 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
         <motion.div className="lg:col-span-5" variants={itemVariants}>
           <div className="relative">
             <div
-              className="absolute inset-0 translate-x-3 translate-y-3 bg-[var(--brand-orange-soft)]"
+              className="absolute inset-0 translate-x-3 translate-y-3 bg-(--brand-orange-soft)"
               aria-hidden="true"
             />
             <Image
