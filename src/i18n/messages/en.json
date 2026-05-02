@@ -47,5 +47,111 @@
     "breadcrumb": {
       "back": "Servicios"
     }
+  },
+  "nosotros": {
+    "pageHero": {
+      "eyebrow": "QUIÉNES SOMOS",
+      "title": "La evolución de la contabilidad tradicional",
+      "subtitle": "Somos la evolución de la contabilidad tradicional hacia un concepto de modernidad, cercanía y profesionalismo. Nuestro propósito es acompañar a cada cliente en sus necesidades, aspiraciones y desafíos, con un soporte personalizado y siempre disponible."
+    },
+    "differentiators": {
+      "eyebrow": "POR QUÉ TAXTIC",
+      "title": "Cuatro razones por las que las empresas eligen quedarse",
+      "items": [
+        {
+          "title": "Multidisciplinarios bajo un mismo techo",
+          "description": "Contable, tributario, laboral y legal in-house. Tu interlocutor único, sin reenvíos a terceros ni gestión cruzada de proveedores.",
+          "iconName": "Layers"
+        },
+        {
+          "title": "Atención directa con tu contador asignado",
+          "description": "Tienes un contador y un asesor asignados que conocen tu empresa. No pasas por un call center ni rota tu interlocutor cada vez que llamas.",
+          "iconName": "Headset"
+        },
+        {
+          "title": "Presencia regional, alcance nacional",
+          "description": "Base en Curicó, atendiendo a empresas de la Región del Maule y todo Chile. Conocemos la realidad operativa fuera de Santiago.",
+          "iconName": "MapPin"
+        },
+        {
+          "title": "Tecnología con propósito, no decoración",
+          "description": "Procesos digitalizados, integración con Haulmer (certificada por el SII) y automatización donde agrega valor real.",
+          "iconName": "Cpu"
+        }
+      ]
+    },
+    "howWeWork": {
+      "eyebrow": "CÓMO TRABAJAMOS",
+      "title": "Un acompañamiento ordenado y proactivo",
+      "lead": "Desde la primera reunión sabes qué necesitas resolver, en qué plazos y con qué entregables. Después nuestro equipo opera y tú recibes reportes mensuales con información para decidir.",
+      "principles": [
+        { "label": "Diagnóstico inicial sin costo", "description": "Sabes desde la primera reunión qué necesitas resolver y cómo." },
+        { "label": "Plan documentado con entregables y plazos", "description": "Recibes por escrito qué te entregamos y cuándo." },
+        { "label": "Operación gestionada por nuestro equipo", "description": "Tu equipo se enfoca en su negocio, nosotros llevamos la contabilidad." },
+        { "label": "Reportes mensuales para decidir", "description": "Cada mes recibes la información que tu gerencia necesita, en lenguaje claro." }
+      ],
+      "ctaLabel": "Ver proceso completo",
+      "ctaHref": "/#proceso"
+    },
+    "missionVision": {
+      "eyebrow": "INSTITUCIONAL",
+      "title": "Misión, visión y valores"
+    },
+    "areas": {
+      "eyebrow": "EN QUÉ TE ACOMPAÑAMOS",
+      "title": "Áreas de trabajo",
+      "lead": "Estructuramos nuestro servicio en cuatro frentes según el tipo de necesidad. Cada cliente puede combinar las que le hagan sentido.",
+      "items": [
+        {
+          "title": "Acompañamiento contable y tributario",
+          "description": "Contabilidad mensual, declaraciones F29 y F22, planificación tributaria, cierre anual y respaldo ante el SII.",
+          "iconName": "BookOpen"
+        },
+        {
+          "title": "Gestión laboral y remuneraciones",
+          "description": "Cálculo de remuneraciones, contratos, finiquitos y cumplimiento ante la Dirección del Trabajo.",
+          "iconName": "Users"
+        },
+        {
+          "title": "Asesoría legal in-house",
+          "description": "Constitución y modificación de sociedades, contratos y soporte legal sin derivar a partners externos.",
+          "iconName": "Scale"
+        },
+        {
+          "title": "Documentos electrónicos y operación diaria",
+          "description": "Facturación electrónica integrada con Haulmer, automatización de tareas repetitivas y soporte al equipo del cliente.",
+          "iconName": "FileText"
+        }
+      ]
+    }
+  },
+  "contacto": {
+    "ctaSection": {
+      "title": "Prefieres conversar primero",
+      "subtitle": "Si tienes una pregunta puntual o quieres entender si te podemos ayudar, escríbenos por WhatsApp y te respondemos en horario hábil.",
+      "buttonLabel": "Hablemos por WhatsApp"
+    }
+  },
+  "recursos": {
+    "pageHero": {
+      "eyebrow": "RECURSOS",
+      "title": "Próximamente",
+      "lead": "Estamos preparando guías, casos prácticos y artículos sobre tributación chilena. Mientras tanto, conversemos sobre tu situación específica.",
+      "buttonLabel": "Hablemos por WhatsApp",
+      "secondaryLinkLabel": "Volver al inicio"
+    }
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "Esta página no existe",
+    "lead": "El link que seguiste podría estar roto o la página fue movida.",
+    "primaryCta": "Volver al inicio",
+    "secondaryCta": "Hablemos por WhatsApp",
+    "suggestionsLabel": "Quizás buscabas:",
+    "suggestions": [
+      { "label": "Servicios", "href": "/servicios" },
+      { "label": "Quiénes somos", "href": "/nosotros" },
+      { "label": "Contacto", "href": "/contacto" }
+    ]
   }
 }
