@@ -22,18 +22,18 @@ export default async function ServicesIndexPage({ params }: Props) {
   ]);
 
   return (
-    <>
-      <Section variant="light">
-        <SectionHeader
-          eyebrow={t("indexHero.eyebrow")}
-          title={t("indexHero.title")}
-          subtitle={t("indexHero.subtitle")}
-          align="center"
-          as="h1"
-        />
-      </Section>
-      <ServicesGrid density="expanded" services={services.services} />
-    </>
+    <Section variant="light">
+      <SectionHeader
+        eyebrow={t("indexHero.eyebrow")}
+        title={t("indexHero.title")}
+        subtitle={t("indexHero.subtitle")}
+        align="center"
+        as="h1"
+      />
+      <div className="mt-12">
+        <ServicesGrid services={services.services} density="expanded" />
+      </div>
+    </Section>
   );
 }
 
