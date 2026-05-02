@@ -36,3 +36,19 @@ describe("getAllServiceSlugs", () => {
     expect(slugs[5]).toBe("documentos-electronicos");
   });
 });
+
+describe("loadAbout", () => {
+  it.skip("loads about MDX with valid frontmatter for ES (re-enable in Task 7)", async () => {
+    const { loadAbout } = await import("./content");
+    const { frontmatter, MDXContent } = await loadAbout("es");
+    expect(frontmatter.metaTitle.length).toBeGreaterThanOrEqual(10);
+    expect(frontmatter.metaDescription.length).toBeGreaterThanOrEqual(50);
+    expect(typeof MDXContent).toBe("function");
+  });
+
+  it.skip("loads about MDX with valid frontmatter for EN (re-enable in Task 7)", async () => {
+    const { loadAbout } = await import("./content");
+    const { frontmatter } = await loadAbout("en");
+    expect(frontmatter.metaTitle.length).toBeGreaterThanOrEqual(10);
+  });
+});

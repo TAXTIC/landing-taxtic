@@ -1,6 +1,12 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
+import type { JSX } from "react";
+
+import {
+  type AboutMdxFrontmatter,
+  aboutMdxFrontmatterSchema,
+} from "@/content-lib/schemas/about-mdx.schema";
 import {
   type AISectionContent,
   aiSectionSchema,
@@ -64,4 +70,28 @@ export async function loadSite(): Promise<SiteContent> {
 export async function getAllServiceSlugs(): Promise<string[]> {
   const services = await loadServicesIndex("es");
   return services.services.map((s) => s.slug);
+}
+
+export async function loadAbout(
+  locale: Locale,
+): Promise<{
+  frontmatter: AboutMdxFrontmatter;
+  MDXContent: () => JSX.Element;
+}> {
+  try {
+    const mod = await import(`@content/${locale}/about.mdx`);
+    const frontmatter = aboutMdxFrontmatterSchema.parse(mod.about);
+    return {
+      frontmatter,
+      MDXContent: mod.default as () => JSX.Element,
+    };
+  } catch (error) {
+    if (error instanceof Error && error.message.includes("Cannot find")) {
+      throw new Error(
+        `MDX file missing for about (locale: ${locale}). ` +
+          `Expected at: content/${locale}/about.mdx`,
+      );
+    }
+    throw error;
+  }
 }
