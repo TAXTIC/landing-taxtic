@@ -1,11 +1,15 @@
 import { setRequestLocale } from "next-intl/server";
 
+import { Section } from "@/components/common/Section";
+import { SectionHeader } from "@/components/common/SectionHeader";
 import { AboutTeaser } from "@/components/sections/AboutTeaser";
 import { AISection } from "@/components/sections/AISection";
 import { CTASection } from "@/components/sections/CTASection";
 import { Hero } from "@/components/sections/Hero";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
+import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import {
   loadAISection,
   loadHome,
@@ -46,7 +50,23 @@ export default async function Home({ params }: Props) {
         ctaPrimary={heroCtaPrimary}
         ctaSecondary={heroCtaSecondary}
       />
-      <ServicesGrid teaser={home.servicesTeaser} services={services.services} />
+      <Section variant="muted" id="servicios">
+        <SectionHeader
+          eyebrow={home.servicesTeaser.eyebrow}
+          title={home.servicesTeaser.title}
+          align="center"
+        />
+        <div className="mt-10">
+          <ServicesGrid services={services.services} />
+        </div>
+        <div className="mt-10 flex justify-center">
+          <Button variant="ghost-light" asChild>
+            <Link href={"/servicios" as never}>
+              {home.servicesTeaser.seeAllLabel} →
+            </Link>
+          </Button>
+        </div>
+      </Section>
       <AISection content={aiSection} />
       <ProcessSteps content={process} />
       <AboutTeaser content={home.aboutTeaser} cta={aboutCta} />
