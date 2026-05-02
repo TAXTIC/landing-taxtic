@@ -11,6 +11,11 @@ import { Link } from "@/i18n/navigation";
 interface ServicesGridProps {
   services: ServicesIndex["services"];
   density?: "compact" | "expanded";
+  /**
+   * Cuando es `true` y density="expanded", la primera card spans 2 cols en desktop.
+   * Default: false. Solo aplica en density="expanded".
+   */
+  featured?: boolean;
 }
 
 const gridVariants: Variants = {
@@ -35,6 +40,7 @@ function resolveIcon(name: string): LucideIcon {
 export function ServicesGrid({
   services,
   density = "compact",
+  featured = false,
 }: ServicesGridProps) {
   const isExpanded = density === "expanded";
 
@@ -52,10 +58,15 @@ export function ServicesGrid({
       viewport={{ once: true, amount: 0.2 }}
       variants={gridVariants}
     >
-      {services.map((service) => {
+      {services.map((service, idx) => {
         const Icon = resolveIcon(service.iconName);
+        const isFeatured = isExpanded && featured && idx === 0;
         return (
-          <motion.div key={service.slug} variants={cardVariants}>
+          <motion.div
+            key={service.slug}
+            variants={cardVariants}
+            className={isFeatured ? "lg:col-span-2" : ""}
+          >
             <Link
               href={`/servicios/${service.slug}` as never}
               className="block h-full"
