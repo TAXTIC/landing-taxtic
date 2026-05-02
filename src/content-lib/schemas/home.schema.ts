@@ -27,25 +27,11 @@ const servicesTeaserSchema = z.object({
   seeAllLabel: z.string().min(1),
 });
 
-const valueSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
-  iconName: z.string().min(1),
-});
-
 const aboutTeaserSchema = z.object({
   eyebrow: z.string().min(1),
-  title: z.string().min(1),
+  title: z.string().min(10),
   lead: z.string().min(20),
-  mission: z.object({
-    label: z.string().min(1),
-    text: z.string().min(20),
-  }),
-  vision: z.object({
-    label: z.string().min(1),
-    text: z.string().min(20),
-  }),
-  values: z.array(valueSchema).length(5),
+  highlights: z.array(z.string().min(1)).min(1).max(2),
   cta: ctaDescriptorSchema,
 });
 
