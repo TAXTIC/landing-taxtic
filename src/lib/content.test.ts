@@ -54,7 +54,7 @@ describe("loadAbout", () => {
 });
 
 describe("loadContact", () => {
-  it.skip("loads contact JSON for ES (re-enable in Task 8)", async () => {
+  it("loads contact JSON for ES", async () => {
     const { loadContact } = await import("./content");
     const contact = await loadContact("es");
     expect(contact.hero.title.length).toBeGreaterThanOrEqual(10);
@@ -62,7 +62,7 @@ describe("loadContact", () => {
     expect(contact.map.iframeTitle.length).toBeGreaterThanOrEqual(10);
   });
 
-  it.skip("loads contact JSON for EN (re-enable in Task 8)", async () => {
+  it("loads contact JSON for EN", async () => {
     const { loadContact } = await import("./content");
     const contact = await loadContact("en");
     expect(contact.hero.title.length).toBeGreaterThanOrEqual(10);
