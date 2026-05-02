@@ -24,6 +24,7 @@ export const siteSchema = z.object({
         /^[A-Z]{2}$/,
         "countryCode must be 2 uppercase letters (ISO 3166-1 alpha-2)",
       ),
+    mapEmbedUrl: z.string().url(),
   }),
   hours: z.object({
     weekdays: z.object({

@@ -8,7 +8,8 @@
     "city": "Curicó",
     "region": "Región del Maule",
     "country": "Chile",
-    "countryCode": "CL"
+    "countryCode": "CL",
+    "mapEmbedUrl": "https://www.google.com/maps?q=Carmen+459,+Cur%C3%ADco,+Chile&output=embed&z=16"
   },
   "hours": {
     "weekdays": { "open": "08:00", "close": "17:30" },

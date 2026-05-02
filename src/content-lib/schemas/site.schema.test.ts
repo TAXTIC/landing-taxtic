@@ -10,6 +10,7 @@ const validFixture = {
     region: "Región del Maule",
     country: "Chile",
     countryCode: "CL",
+    mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!example",
   },
   hours: {
     weekdays: { open: "08:00", close: "17:30" },
@@ -79,5 +80,25 @@ describe("siteSchema", () => {
     const bad = structuredClone(validFixture);
     bad.channels.phoneLandline.tel = "+5";
     expect(() => siteSchema.parse(bad)).toThrow(/at least 7 digits/);
+  });
+});
+
+describe("siteSchema.address.mapEmbedUrl", () => {
+  it("rejects site without mapEmbedUrl", () => {
+    const bad = structuredClone(validFixture);
+    delete (bad.address as Partial<typeof bad.address>).mapEmbedUrl;
+    expect(() => siteSchema.parse(bad)).toThrow();
+  });
+
+  it("rejects site with malformed mapEmbedUrl", () => {
+    const bad = structuredClone(validFixture);
+    bad.address.mapEmbedUrl = "not-a-url";
+    expect(() => siteSchema.parse(bad)).toThrow();
+  });
+
+  it("accepts site with valid mapEmbedUrl", () => {
+    const ok = structuredClone(validFixture);
+    ok.address.mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18";
+    expect(() => siteSchema.parse(ok)).not.toThrow();
   });
 });
