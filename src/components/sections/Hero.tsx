@@ -5,7 +5,6 @@ import { motion, type Variants } from "motion/react";
 import Image from "next/image";
 
 import { Section } from "@/components/common/Section";
-import { SectionHeader } from "@/components/common/SectionHeader";
 import { StatInline } from "@/components/sections/StatInline";
 import { Button } from "@/components/ui/button";
 import type { ResolvedCta } from "@/content-lib/schemas/cta.schema";
@@ -52,14 +51,19 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
         variants={containerVariants}
       >
         <div className="lg:col-span-7 flex flex-col gap-6">
-          <motion.div variants={itemVariants}>
-            <SectionHeader
-              eyebrow={content.eyebrow}
-              title={content.title}
-              subtitle={content.subtitle}
-              as="h1"
-              align="left"
-            />
+          <motion.div className="flex flex-col gap-4" variants={itemVariants}>
+            <span className="label-upper text-(--brand-orange)">
+              {content.eyebrow}
+            </span>
+            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold">
+              Partner
+              <br />
+              Estratégico
+              <span className="text-(--brand-orange)">.</span>
+            </h1>
+            <p className="text-lg leading-normal text-(--foreground-muted) max-w-[38rem]">
+              {content.subtitle}
+            </p>
           </motion.div>
 
           <motion.div className="flex flex-wrap gap-3" variants={itemVariants}>
