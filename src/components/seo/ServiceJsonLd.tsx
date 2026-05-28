@@ -7,6 +7,7 @@ interface ServiceJsonLdProps {
 }
 
 export function ServiceJsonLd({ service, site }: ServiceJsonLdProps) {
+  const primaryBranch = site.branches[0]!;
   const json = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -17,14 +18,14 @@ export function ServiceJsonLd({ service, site }: ServiceJsonLdProps) {
       name: site.org.legalName,
       address: {
         "@type": "PostalAddress",
-        streetAddress: site.address.street,
-        addressLocality: site.address.city,
-        addressRegion: site.address.region,
-        addressCountry: site.address.countryCode,
+        streetAddress: primaryBranch.address.street,
+        addressLocality: primaryBranch.address.city,
+        addressRegion: primaryBranch.address.region,
+        addressCountry: primaryBranch.address.countryCode,
       },
     },
     serviceType: service.title,
-    areaServed: { "@type": "Country", name: site.address.country },
+    areaServed: { "@type": "Country", name: primaryBranch.address.country },
   };
 
   return (

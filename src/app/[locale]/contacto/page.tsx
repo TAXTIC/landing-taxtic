@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { Section } from "@/components/common/Section";
+import { BranchesList } from "@/components/sections/BranchesList";
 import { ContactChannelsList } from "@/components/sections/ContactChannelsList";
-import { ContactMapEmbed } from "@/components/sections/ContactMapEmbed";
 import { CTASection } from "@/components/sections/CTASection";
 import { PageHero } from "@/components/sections/PageHero";
 import { loadContact, loadSite, type Locale } from "@/lib/content";
@@ -32,8 +32,6 @@ export default async function ContactoPage({ params }: Props) {
     site,
   );
 
-  const externalMapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${site.address.street}, ${site.address.city}, ${site.address.country}`)}`;
-
   return (
     <>
       <PageHero
@@ -45,11 +43,9 @@ export default async function ContactoPage({ params }: Props) {
       <Section variant="light">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-16">
           <ContactChannelsList content={contactContent.channels} site={site} />
-          <ContactMapEmbed
-            embedUrl={site.address.mapEmbedUrl}
-            iframeTitle={contactContent.map.iframeTitle}
-            openInMapsLabel={contactContent.map.openInMapsLabel}
-            externalUrl={externalMapUrl}
+          <BranchesList
+            branches={site.branches}
+            content={contactContent.branches}
           />
         </div>
       </Section>

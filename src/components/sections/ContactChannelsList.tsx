@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, ExternalLink, Mail } from "lucide-react";
 
 import { FacebookIcon } from "@/components/icons/FacebookIcon";
 import { InstagramIcon } from "@/components/icons/InstagramIcon";
@@ -51,13 +51,6 @@ export function ContactChannelsList({
       </h2>
 
       <ChannelRow
-        icon={<MapPin size={20} strokeWidth={1.75} aria-hidden="true" />}
-        label={content.labels.address}
-      >
-        {site.address.street}, {site.address.city}, {site.address.region}
-      </ChannelRow>
-
-      <ChannelRow
         icon={<Clock size={20} strokeWidth={1.75} aria-hidden="true" />}
         label={content.labels.hours}
       >
@@ -73,18 +66,6 @@ export function ContactChannelsList({
           className="text-(--brand-orange) hover:text-(--brand-orange-hover) underline underline-offset-2"
         >
           {site.channels.email.primary}
-        </a>
-      </ChannelRow>
-
-      <ChannelRow
-        icon={<Phone size={20} strokeWidth={1.75} aria-hidden="true" />}
-        label={content.labels.phoneLandline}
-      >
-        <a
-          href={`tel:${site.channels.phoneLandline.tel}`}
-          className="text-(--brand-orange) hover:text-(--brand-orange-hover) underline underline-offset-2"
-        >
-          {site.channels.phoneLandline.display}
         </a>
       </ChannelRow>
 
