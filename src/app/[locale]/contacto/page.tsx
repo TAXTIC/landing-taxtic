@@ -32,7 +32,8 @@ export default async function ContactoPage({ params }: Props) {
     site,
   );
 
-  const externalMapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${site.address.street}, ${site.address.city}, ${site.address.country}`)}`;
+  const primaryBranch = site.branches[0]!;
+  const externalMapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${primaryBranch.address.street}, ${primaryBranch.address.city}, ${primaryBranch.address.country}`)}`;
 
   return (
     <>
@@ -46,7 +47,7 @@ export default async function ContactoPage({ params }: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-16">
           <ContactChannelsList content={contactContent.channels} site={site} />
           <ContactMapEmbed
-            embedUrl={site.address.mapEmbedUrl}
+            embedUrl={primaryBranch.address.mapEmbedUrl}
             iframeTitle={contactContent.map.iframeTitle}
             openInMapsLabel={contactContent.map.openInMapsLabel}
             externalUrl={externalMapUrl}

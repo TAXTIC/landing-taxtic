@@ -4,20 +4,40 @@ import { siteSchema } from "./site.schema";
 
 const validFixture = {
   org: { legalName: "Taxtic", tagline: "Consultoría contable y tributaria" },
-  address: {
-    street: "Carmen #459",
-    city: "Curicó",
-    region: "Región del Maule",
-    country: "Chile",
-    countryCode: "CL",
-    mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!example",
-  },
+  canonicalUrl: "https://taxtic.com",
+  branches: [
+    {
+      id: "carmen",
+      label: "Sucursal Carmen",
+      address: {
+        street: "Carmen #459",
+        city: "Curicó",
+        region: "Región del Maule",
+        country: "Chile",
+        countryCode: "CL",
+        mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!example",
+      },
+      phoneLandline: { tel: "+56752221800", display: "+56 75 2 221800" },
+    },
+    {
+      id: "avenida-espana",
+      label: "Sucursal Avenida España",
+      address: {
+        street: "Avenida España #784",
+        city: "Curicó",
+        region: "Región del Maule",
+        country: "Chile",
+        countryCode: "CL",
+        mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!other",
+      },
+      phoneLandline: { tel: "+56752405901", display: "+56 75 240 5901" },
+    },
+  ],
   hours: {
     weekdays: { open: "08:00", close: "17:30" },
     format: "continuous",
   },
   channels: {
-    phoneLandline: { tel: "+56752221800", display: "+56 75 2 221800" },
     whatsapp: {
       tel: "+56942204624",
       display: "+56 9 4220 4624",
@@ -40,8 +60,14 @@ describe("siteSchema", () => {
 
   it("rejects malformed phone tel (letters)", () => {
     const bad = structuredClone(validFixture);
-    bad.channels.phoneLandline.tel = "+5675abc";
+    bad.branches[0]!.phoneLandline.tel = "+5675abc";
     expect(() => siteSchema.parse(bad)).toThrow(/digits/);
+  });
+
+  it("rejects too-short phone tel", () => {
+    const bad = structuredClone(validFixture);
+    bad.branches[0]!.phoneLandline.tel = "+5";
+    expect(() => siteSchema.parse(bad)).toThrow(/at least 7 digits/);
   });
 
   it("rejects invalid email", () => {
@@ -52,7 +78,7 @@ describe("siteSchema", () => {
 
   it("rejects countryCode != 2 chars", () => {
     const bad = structuredClone(validFixture);
-    bad.address.countryCode = "CHI";
+    bad.branches[0]!.address.countryCode = "CHI";
     expect(() => siteSchema.parse(bad)).toThrow();
   });
 
@@ -75,30 +101,52 @@ describe("siteSchema", () => {
     };
     expect(() => siteSchema.parse(input)).toThrow();
   });
+});
 
-  it("rejects too-short phone tel", () => {
+describe("siteSchema.branches", () => {
+  it("rejects empty branches array", () => {
     const bad = structuredClone(validFixture);
-    bad.channels.phoneLandline.tel = "+5";
-    expect(() => siteSchema.parse(bad)).toThrow(/at least 7 digits/);
+    bad.branches = [];
+    expect(() => siteSchema.parse(bad)).toThrow();
+  });
+
+  it("rejects branch without id", () => {
+    const bad = structuredClone(validFixture);
+    delete (bad.branches[0]! as Partial<(typeof bad.branches)[number]>).id;
+    expect(() => siteSchema.parse(bad)).toThrow();
+  });
+
+  it("rejects branch without label", () => {
+    const bad = structuredClone(validFixture);
+    delete (bad.branches[0]! as Partial<(typeof bad.branches)[number]>).label;
+    expect(() => siteSchema.parse(bad)).toThrow();
+  });
+
+  it("rejects branch without mapEmbedUrl", () => {
+    const bad = structuredClone(validFixture);
+    delete (
+      bad.branches[0]!.address as Partial<(typeof bad.branches)[0]["address"]>
+    ).mapEmbedUrl;
+    expect(() => siteSchema.parse(bad)).toThrow();
+  });
+
+  it("rejects branch with malformed mapEmbedUrl", () => {
+    const bad = structuredClone(validFixture);
+    bad.branches[0]!.address.mapEmbedUrl = "not-a-url";
+    expect(() => siteSchema.parse(bad)).toThrow();
   });
 });
 
-describe("siteSchema.address.mapEmbedUrl", () => {
-  it("rejects site without mapEmbedUrl", () => {
+describe("siteSchema.canonicalUrl", () => {
+  it("rejects site without canonicalUrl", () => {
     const bad = structuredClone(validFixture);
-    delete (bad.address as Partial<typeof bad.address>).mapEmbedUrl;
+    delete (bad as Partial<typeof bad>).canonicalUrl;
     expect(() => siteSchema.parse(bad)).toThrow();
   });
 
-  it("rejects site with malformed mapEmbedUrl", () => {
+  it("rejects malformed canonicalUrl", () => {
     const bad = structuredClone(validFixture);
-    bad.address.mapEmbedUrl = "not-a-url";
+    bad.canonicalUrl = "not-a-url";
     expect(() => siteSchema.parse(bad)).toThrow();
-  });
-
-  it("accepts site with valid mapEmbedUrl", () => {
-    const ok = structuredClone(validFixture);
-    ok.address.mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18";
-    expect(() => siteSchema.parse(ok)).not.toThrow();
   });
 });
