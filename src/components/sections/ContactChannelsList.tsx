@@ -40,6 +40,8 @@ export function ContactChannelsList({
   content,
   site,
 }: ContactChannelsListProps) {
+  const primaryBranch = site.branches[0]!;
+
   function handleWhatsAppClick() {
     track("whatsapp_click", { position: "contacto" });
   }
@@ -54,7 +56,8 @@ export function ContactChannelsList({
         icon={<MapPin size={20} strokeWidth={1.75} aria-hidden="true" />}
         label={content.labels.address}
       >
-        {site.address.street}, {site.address.city}, {site.address.region}
+        {primaryBranch.address.street}, {primaryBranch.address.city},{" "}
+        {primaryBranch.address.region}
       </ChannelRow>
 
       <ChannelRow
@@ -81,10 +84,10 @@ export function ContactChannelsList({
         label={content.labels.phoneLandline}
       >
         <a
-          href={`tel:${site.channels.phoneLandline.tel}`}
+          href={`tel:${primaryBranch.phoneLandline.tel}`}
           className="text-(--brand-orange) hover:text-(--brand-orange-hover) underline underline-offset-2"
         >
-          {site.channels.phoneLandline.display}
+          {primaryBranch.phoneLandline.display}
         </a>
       </ChannelRow>
 

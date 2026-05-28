@@ -17,6 +17,7 @@ export function Footer({ siteData }: FooterProps) {
   const tNav = useTranslations("nav");
   const tFooter = useTranslations("footer");
   const year = new Date().getFullYear();
+  const primaryBranch = siteData.branches[0]!;
 
   const navItems = [
     { href: "/servicios", label: tNav("items.servicios") },
@@ -56,14 +57,14 @@ export function Footer({ siteData }: FooterProps) {
           {/* Contacto */}
           <FooterColumn header={tFooter("contactHeader")}>
             <ul className="flex flex-col gap-2 text-sm not-italic">
-              <li>{siteData.address.street}</li>
-              <li>{`${siteData.address.city}, ${siteData.address.region}, ${siteData.address.country}`}</li>
+              <li>{primaryBranch.address.street}</li>
+              <li>{`${primaryBranch.address.city}, ${primaryBranch.address.region}, ${primaryBranch.address.country}`}</li>
               <li>
                 <a
-                  href={`tel:${siteData.channels.phoneLandline.tel}`}
+                  href={`tel:${primaryBranch.phoneLandline.tel}`}
                   className="hover:text-(--brand-orange) transition-colors"
                 >
-                  {siteData.channels.phoneLandline.display}
+                  {primaryBranch.phoneLandline.display}
                 </a>
               </li>
               <li>

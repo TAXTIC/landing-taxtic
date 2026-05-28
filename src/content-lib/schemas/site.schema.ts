@@ -8,11 +8,9 @@ const phoneSchema = z.object({
   display: z.string().min(1),
 });
 
-export const siteSchema = z.object({
-  org: z.object({
-    legalName: z.string().min(1),
-    tagline: z.string().min(1),
-  }),
+const branchSchema = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
   address: z.object({
     street: z.string().min(1),
     city: z.string().min(1),
@@ -26,6 +24,16 @@ export const siteSchema = z.object({
       ),
     mapEmbedUrl: z.string().url(),
   }),
+  phoneLandline: phoneSchema,
+});
+
+export const siteSchema = z.object({
+  org: z.object({
+    legalName: z.string().min(1),
+    tagline: z.string().min(1),
+  }),
+  canonicalUrl: z.string().url(),
+  branches: z.array(branchSchema).min(1),
   hours: z.object({
     weekdays: z.object({
       open: z.string().regex(/^\d{2}:\d{2}$/, "open must be HH:MM"),
@@ -34,7 +42,6 @@ export const siteSchema = z.object({
     format: z.enum(["continuous", "split"]),
   }),
   channels: z.object({
-    phoneLandline: phoneSchema,
     whatsapp: phoneSchema.extend({ url: z.string().url() }),
     email: z.object({ primary: z.string().email() }),
   }),
@@ -47,3 +54,4 @@ export const siteSchema = z.object({
 });
 
 export type SiteContent = z.infer<typeof siteSchema>;
+export type Branch = SiteContent["branches"][number];
