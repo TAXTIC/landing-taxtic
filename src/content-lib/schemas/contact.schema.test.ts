@@ -11,19 +11,17 @@ const validContact = {
   channels: {
     sectionTitle: "Cómo contactarnos",
     labels: {
-      address: "Oficina",
       hours: "Horario de atención",
       email: "Correo",
-      phoneLandline: "Teléfono fijo",
       whatsapp: "WhatsApp",
       social: "Redes sociales",
       portal: "Portal de clientes",
     },
     hoursDisplay: "Lunes a viernes · 08:00 – 17:30 (jornada continua)",
   },
-  map: {
-    sectionTitle: "Dónde estamos",
-    iframeTitle: "Mapa de la oficina de Taxtic en Carmen #459, Curicó",
+  branches: {
+    sectionTitle: "Visítanos",
+    iframeTitleTemplate: "Mapa de la {{label}} en {{street}}, {{city}}",
     openInMapsLabel: "Abrir en Google Maps",
   },
 };
@@ -58,9 +56,9 @@ describe("contactSchema", () => {
     expect(() => contactSchema.parse(bad)).toThrow();
   });
 
-  it("rejects map.iframeTitle shorter than 10 chars", () => {
+  it("rejects empty branches.iframeTitleTemplate", () => {
     const bad = structuredClone(validContact);
-    bad.map.iframeTitle = "short";
+    bad.branches.iframeTitleTemplate = "";
     expect(() => contactSchema.parse(bad)).toThrow();
   });
 });

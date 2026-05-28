@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, ExternalLink, Mail } from "lucide-react";
 
 import { FacebookIcon } from "@/components/icons/FacebookIcon";
 import { InstagramIcon } from "@/components/icons/InstagramIcon";
@@ -40,8 +40,6 @@ export function ContactChannelsList({
   content,
   site,
 }: ContactChannelsListProps) {
-  const primaryBranch = site.branches[0]!;
-
   function handleWhatsAppClick() {
     track("whatsapp_click", { position: "contacto" });
   }
@@ -51,14 +49,6 @@ export function ContactChannelsList({
       <h2 className="text-2xl font-bold text-(--gray-900) mb-2">
         {content.sectionTitle}
       </h2>
-
-      <ChannelRow
-        icon={<MapPin size={20} strokeWidth={1.75} aria-hidden="true" />}
-        label={content.labels.address}
-      >
-        {primaryBranch.address.street}, {primaryBranch.address.city},{" "}
-        {primaryBranch.address.region}
-      </ChannelRow>
 
       <ChannelRow
         icon={<Clock size={20} strokeWidth={1.75} aria-hidden="true" />}
@@ -76,18 +66,6 @@ export function ContactChannelsList({
           className="text-(--brand-orange) hover:text-(--brand-orange-hover) underline underline-offset-2"
         >
           {site.channels.email.primary}
-        </a>
-      </ChannelRow>
-
-      <ChannelRow
-        icon={<Phone size={20} strokeWidth={1.75} aria-hidden="true" />}
-        label={content.labels.phoneLandline}
-      >
-        <a
-          href={`tel:${primaryBranch.phoneLandline.tel}`}
-          className="text-(--brand-orange) hover:text-(--brand-orange-hover) underline underline-offset-2"
-        >
-          {primaryBranch.phoneLandline.display}
         </a>
       </ChannelRow>
 
