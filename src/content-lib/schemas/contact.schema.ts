@@ -9,19 +9,17 @@ export const contactSchema = z.object({
   channels: z.object({
     sectionTitle: z.string().min(1),
     labels: z.object({
-      address: z.string().min(1),
       hours: z.string().min(1),
       email: z.string().min(1),
-      phoneLandline: z.string().min(1),
       whatsapp: z.string().min(1),
       social: z.string().min(1),
       portal: z.string().min(1),
     }),
     hoursDisplay: z.string().min(1),
   }),
-  map: z.object({
+  branches: z.object({
     sectionTitle: z.string().min(1),
-    iframeTitle: z.string().min(10),
+    iframeTitleTemplate: z.string().min(1),
     openInMapsLabel: z.string().min(1),
   }),
 });

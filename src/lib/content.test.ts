@@ -71,12 +71,14 @@ describe("loadContact", () => {
     const contact = await loadContact("es");
     expect(contact.hero.title.length).toBeGreaterThanOrEqual(10);
     expect(contact.channels.labels.whatsapp).toBeTruthy();
-    expect(contact.map.iframeTitle.length).toBeGreaterThanOrEqual(10);
+    expect(contact.branches.sectionTitle).toBe("Visítanos");
+    expect(contact.branches.iframeTitleTemplate).toContain("{{label}}");
   });
 
   it("loads contact JSON for EN", async () => {
     const { loadContact } = await import("./content");
     const contact = await loadContact("en");
     expect(contact.hero.title.length).toBeGreaterThanOrEqual(10);
+    expect(contact.branches.sectionTitle).toBe("Visit us");
   });
 });
