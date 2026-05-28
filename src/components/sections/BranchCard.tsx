@@ -33,7 +33,7 @@ export function BranchCard({
   const externalMapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${address.street}, ${address.city}, ${address.country}`)}`;
 
   return (
-    <Card variant="with-orange-border" className="p-6 flex flex-col gap-4">
+    <Card variant="with-orange-border" className="flex flex-col gap-4">
       <h3 className="text-xl font-bold text-(--gray-900)">{label}</h3>
       <p className="text-base text-(--gray-700)">
         {address.street}, {address.city}, {address.region}
