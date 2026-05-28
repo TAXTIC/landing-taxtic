@@ -17,7 +17,6 @@ export function Footer({ siteData }: FooterProps) {
   const tNav = useTranslations("nav");
   const tFooter = useTranslations("footer");
   const year = new Date().getFullYear();
-  const primaryBranch = siteData.branches[0]!;
 
   const navItems = [
     { href: "/servicios", label: tNav("items.servicios") },
@@ -54,28 +53,37 @@ export function Footer({ siteData }: FooterProps) {
             </ul>
           </FooterColumn>
 
-          {/* Contacto */}
-          <FooterColumn header={tFooter("contactHeader")}>
-            <ul className="flex flex-col gap-2 text-sm not-italic">
-              <li>{primaryBranch.address.street}</li>
-              <li>{`${primaryBranch.address.city}, ${primaryBranch.address.region}, ${primaryBranch.address.country}`}</li>
-              <li>
-                <a
-                  href={`tel:${primaryBranch.phoneLandline.tel}`}
-                  className="hover:text-(--brand-orange) transition-colors"
-                >
-                  {primaryBranch.phoneLandline.display}
-                </a>
-              </li>
-              <li>
+          {/* Sucursales */}
+          <FooterColumn header={tFooter("branchesHeader")}>
+            <ul className="flex flex-col gap-4 text-sm not-italic">
+              {siteData.branches.map((branch, index) => (
+                <li key={branch.id} className="flex flex-col gap-1">
+                  {index > 0 ? (
+                    <hr className="border-t border-(--gray-700) mb-3" />
+                  ) : null}
+                  <span className="text-xs uppercase tracking-wide text-(--gray-400)">
+                    {branch.label}
+                  </span>
+                  <span>
+                    {branch.address.street} · {branch.address.city}
+                  </span>
+                  <a
+                    href={`tel:${branch.phoneLandline.tel}`}
+                    className="hover:text-(--brand-orange) transition-colors w-fit"
+                  >
+                    {branch.phoneLandline.display}
+                  </a>
+                </li>
+              ))}
+              <li className="flex flex-col gap-1 pt-3 border-t border-(--gray-700)">
                 <a
                   href={`mailto:${siteData.channels.email.primary}`}
-                  className="hover:text-(--brand-orange) transition-colors"
+                  className="hover:text-(--brand-orange) transition-colors w-fit"
                 >
                   {siteData.channels.email.primary}
                 </a>
+                <span className="text-(--gray-300)">{tFooter("hours")}</span>
               </li>
-              <li className="text-(--gray-300) mt-2">{tFooter("hours")}</li>
             </ul>
           </FooterColumn>
 
