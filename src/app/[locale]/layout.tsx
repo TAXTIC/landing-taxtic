@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { WhatsAppFab } from "@/components/layout/WhatsAppFab";
+import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import { routing } from "@/i18n/routing";
 import { loadSite } from "@/lib/content";
 
@@ -66,6 +67,7 @@ export default async function LocaleLayout({
     <html lang={locale} data-scroll-behavior="smooth">
       <body>
         <NextIntlClientProvider>
+          <OrganizationJsonLd site={site} />
           <Navbar siteData={site} />
           <main className="flex-1">
             <PageTransition>{children}</PageTransition>
