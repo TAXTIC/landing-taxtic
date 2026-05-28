@@ -6,7 +6,6 @@ import { resolveCtaHref } from "./cta";
 
 const fakeSite: Pick<SiteContent, "channels"> = {
   channels: {
-    phoneLandline: { tel: "+56752221800", display: "+56 75 2 221800" },
     whatsapp: {
       tel: "+56942204624",
       display: "+56 9 4220 4624",
