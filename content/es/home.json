@@ -1,26 +1,16 @@
 {
   "hero": {
-    "eyebrow": "Consultoría contable y tributaria",
-    "title": "Partner Estratégico.",
-    "subtitle": "Impulsamos el crecimiento de las empresas con el respaldo de la experiencia tributaria y la potencia de la Inteligencia Artificial.",
-    "ctaPrimary": {
-      "kind": "whatsapp",
-      "label": "Hablemos por WhatsApp"
-    },
+    "lede": "Impulsamos el crecimiento de las empresas con la experiencia tributaria y la potencia de la Inteligencia Artificial.",
+    "ctaPrimary": { "kind": "whatsapp", "label": "Hablemos por WhatsApp" },
     "ctaSecondary": {
       "kind": "anchor",
       "label": "Ver servicios",
       "href": "#servicios"
     },
     "image": {
-      "src": "/images/hero-reunion-cliente.png",
-      "alt": "Reunión de trabajo entre equipo de Taxtic y cliente revisando informe sobre la mesa"
-    },
-    "stats": [
-      { "value": "10+", "label": "años en Curicó", "verified": true },
-      { "value": "200+", "label": "clientes activos", "verified": true },
-      { "value": "98%", "label": "tasa de retención", "verified": false }
-    ]
+      "src": "/images/hero-bg.jpg",
+      "alt": "Ejecutivo revisando información financiera en una tablet"
+    }
   },
   "stats": [
     { "value": "10+", "label": "Años de experiencia", "variant": "count" },
