@@ -11,11 +11,11 @@ interface SectionHeaderProps {
   as?: Heading;
   tone?: Tone;
   /**
-   * Cuadrado naranjo antes del eyebrow — lenguaje visual V2. Default `false`
-   * para no alterar páginas aún no migradas; cada página lo prende al adoptar V2.
+   * Antepone un cuadrado naranjo al eyebrow. Default `false`; cada consumer
+   * lo activa donde quiere el acento.
    */
   eyebrowAccent?: boolean;
-  /** Título en fuente display (Prototype) uppercase — headlines del rediseño V2. */
+  /** Renderiza el título en la fuente display (Prototype) en mayúsculas. */
   display?: boolean;
   className?: string;
 }
