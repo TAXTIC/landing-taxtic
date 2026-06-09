@@ -6,7 +6,7 @@ import { AboutTeaser } from "@/components/sections/AboutTeaser";
 import { CTASection } from "@/components/sections/CTASection";
 import { Hero } from "@/components/sections/Hero";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
-import { ServicesGrid } from "@/components/sections/ServicesGrid";
+import { ServicesShowcase } from "@/components/sections/ServicesShowcase";
 import { StatsStrip } from "@/components/sections/StatsStrip";
 import { TechSection } from "@/components/sections/TechSection";
 import { Button } from "@/components/ui/button";
@@ -39,6 +39,10 @@ export default async function Home({ params }: Props) {
     loadSite(),
   ]);
 
+  const homeServices = home.servicesTeaser.serviceSlugs
+    .map((slug) => services.services.find((s) => s.slug === slug))
+    .filter((s): s is (typeof services.services)[number] => Boolean(s));
+
   const heroCtaPrimary = resolveCtaHref(home.hero.ctaPrimary, site);
   const heroCtaSecondary = resolveCtaHref(home.hero.ctaSecondary, site);
   const aboutCta = resolveCtaHref(home.aboutTeaser.cta, site);
@@ -56,10 +60,15 @@ export default async function Home({ params }: Props) {
         <SectionHeader
           eyebrow={home.servicesTeaser.eyebrow}
           title={home.servicesTeaser.title}
-          align="center"
+          align="left"
+          display
+          eyebrowAccent
         />
         <div className="mt-10">
-          <ServicesGrid services={services.services} />
+          <ServicesShowcase
+            services={homeServices}
+            seeDetailLabel={home.servicesTeaser.seeDetailLabel}
+          />
         </div>
         <div className="mt-10 flex justify-center">
           <Button variant="ghost-light" asChild>
