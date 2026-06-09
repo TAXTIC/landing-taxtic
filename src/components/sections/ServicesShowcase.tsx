@@ -54,7 +54,7 @@ export function ServicesShowcase({
               className="group flex h-full min-h-[20rem] flex-col justify-between border-r border-b border-(--border) bg-(--surface) p-8 transition-colors duration-200 ease-out hover:bg-(--surface-inverse)"
             >
               <div className="flex items-start justify-between">
-                <span className="flex size-[52px] items-center justify-center bg-(--brand-orange)">
+                <span className="flex size-14 items-center justify-center bg-(--brand-orange)">
                   <Icon
                     size={24}
                     strokeWidth={1.75}

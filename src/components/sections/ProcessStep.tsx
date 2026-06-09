@@ -10,7 +10,7 @@ export function ProcessStep({
   description,
 }: ProcessStepProps) {
   return (
-    <div className="relative h-full p-8 transition-[background-color,transform] duration-200 ease-out hover:-translate-y-1.5 hover:bg-(--gray-900)">
+    <div className="relative h-full border-r border-b border-(--hairline-on-dark) p-8 transition-[background-color,transform] duration-200 ease-out hover:-translate-y-1.5 hover:bg-(--gray-900)">
       <span
         className="absolute left-0 top-0 h-2 w-14 bg-(--brand-orange)"
         aria-hidden="true"
