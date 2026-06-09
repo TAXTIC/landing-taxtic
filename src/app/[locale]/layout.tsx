@@ -69,7 +69,9 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <OrganizationJsonLd site={site} />
           <Navbar siteData={site} />
-          <main className="flex-1">
+          {/* El navbar es fixed y no reserva espacio en el flujo; el padding-top
+              evita que el contenido quede bajo la barra flotante. */}
+          <main className="flex-1 pt-20 lg:pt-24">
             <PageTransition>{children}</PageTransition>
           </main>
           <Footer siteData={site} />
