@@ -64,7 +64,7 @@ export function Navbar({ siteData }: NavbarProps) {
               variant="isologo"
               surface="light"
               tone="orange"
-              size="lg"
+              size="md"
               clearSpace="compact"
               preload
             />
