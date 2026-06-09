@@ -10,6 +10,13 @@ interface SectionHeaderProps {
   align?: "left" | "center";
   as?: Heading;
   tone?: Tone;
+  /**
+   * Cuadrado naranjo antes del eyebrow — lenguaje visual V2. Default `false`
+   * para no alterar páginas aún no migradas; cada página lo prende al adoptar V2.
+   */
+  eyebrowAccent?: boolean;
+  /** Título en fuente display (Prototype) uppercase — headlines del rediseño V2. */
+  display?: boolean;
   className?: string;
 }
 
@@ -48,6 +55,8 @@ export function SectionHeader({
   align = "left",
   as: Tag = "h2",
   tone = "light",
+  eyebrowAccent = false,
+  display = false,
   className,
 }: SectionHeaderProps) {
   const isCenter = align === "center";
@@ -63,11 +72,21 @@ export function SectionHeader({
       )}
     >
       {eyebrow ? (
-        <span className="label-upper text-(--brand-orange)">{eyebrow}</span>
+        <span className="label-upper text-(--brand-orange) inline-flex items-center gap-2.5">
+          {eyebrowAccent ? (
+            <span
+              className="inline-block size-2 bg-(--brand-orange)"
+              aria-hidden="true"
+            />
+          ) : null}
+          {eyebrow}
+        </span>
       ) : null}
       <Tag
         className={cn(
-          "font-bold tracking-tight leading-tight",
+          display
+            ? "font-display uppercase tracking-tight leading-tight"
+            : "font-bold tracking-tight leading-tight",
           titleSizeByLevel[Tag],
           titleColorByTone[tone],
         )}
