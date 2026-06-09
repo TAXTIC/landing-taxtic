@@ -17,8 +17,12 @@ const gridVariants: Variants = {
 };
 
 const stepVariants: Variants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 36 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.2, 0.8, 0.2, 1] },
+  },
 };
 
 export function ProcessSteps({ content }: ProcessStepsProps) {
@@ -35,7 +39,7 @@ export function ProcessSteps({ content }: ProcessStepsProps) {
       />
 
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-12 border-l border-t border-(--hairline-on-dark)"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-16 divide-y divide-(--hairline-on-dark) sm:divide-y-0 sm:divide-x"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}

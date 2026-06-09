@@ -19,7 +19,7 @@ function CountStat({ value, label }: { value: string; label: string }) {
 
   return (
     <div ref={ref} className="px-6 py-12 sm:px-10">
-      <div className="font-display text-5xl lg:text-6xl leading-none text-(--brand-white)">
+      <div className="font-display text-6xl leading-none text-(--brand-white)">
         {animated}
         <span className="text-(--brand-orange)">{suffix}</span>
       </div>
@@ -31,7 +31,7 @@ function CountStat({ value, label }: { value: string; label: string }) {
 function AccentStat({ value, label }: { value: string; label: string }) {
   return (
     <div className="px-6 py-12 sm:px-10">
-      <div className="font-display text-5xl lg:text-6xl leading-none text-(--brand-orange)">
+      <div className="font-display text-5xl leading-none text-(--brand-orange)">
         {value}
       </div>
       <div className="label-upper text-(--gray-300) mt-3">{label}</div>
@@ -42,7 +42,7 @@ function AccentStat({ value, label }: { value: string; label: string }) {
 export function StatsStrip({ stats }: StatsStripProps) {
   return (
     <section className="bg-(--surface-inverse)">
-      <div className="mx-auto grid max-w-(--container-max) grid-cols-1 sm:grid-cols-3 divide-y divide-(--gray-800) sm:divide-x sm:divide-y-0">
+      <div className="mx-auto grid max-w-(--container-max) grid-cols-1 divide-y divide-(--hairline-on-dark) px-(--space-section-x-mobile) sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:px-(--space-section-x-desktop)">
         {stats.map((stat) =>
           stat.variant === "accent" ? (
             <AccentStat

@@ -53,7 +53,7 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
       variant="light"
       id="hero"
       bleed
-      className="relative isolate overflow-hidden"
+      className="relative isolate flex min-h-screen items-center overflow-hidden"
     >
       <motion.div
         className="absolute inset-0 -z-10"
@@ -75,9 +75,9 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
         aria-hidden="true"
       />
 
-      <div className="mx-auto max-w-(--container-max) px-(--space-section-x-mobile) lg:px-(--space-section-x-desktop)">
+      <div className="mx-auto w-full max-w-(--container-max) px-(--space-section-x-mobile) lg:px-(--space-section-x-desktop)">
         <motion.div
-          className="flex min-h-[clamp(34rem,88vh,52rem)] max-w-xl flex-col justify-center gap-9 py-16"
+          className="flex max-w-[480px] flex-col gap-14 py-24 lg:ml-[min(18vw,220px)]"
           initial="hidden"
           animate="visible"
           variants={containerVariants}
@@ -94,12 +94,13 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
               surface="light"
               clearSpace="compact"
               size="xl"
+              preload
             />
           </motion.div>
 
           <motion.p
             variants={itemVariants}
-            className="max-w-[28rem] text-lg leading-normal text-(--foreground)"
+            className="max-w-[420px] text-lg font-normal leading-normal text-(--foreground)"
           >
             {content.lede}
           </motion.p>
@@ -119,7 +120,12 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
                 <ArrowRight size={20} strokeWidth={1.75} aria-hidden="true" />
               </a>
             </Button>
-            <Button variant="outline-dark" size="lg" asChild>
+            <Button
+              variant="outline-dark"
+              size="lg"
+              className="border-(--brand-black) hover:border-(--brand-black) hover:bg-(--brand-black) hover:text-(--brand-white)"
+              asChild
+            >
               <a href={ctaSecondary.href}>
                 {ctaSecondary.label}
                 <ArrowDown size={20} strokeWidth={1.75} aria-hidden="true" />

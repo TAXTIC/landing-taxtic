@@ -64,7 +64,7 @@ export default async function Home({ params }: Props) {
           display
           eyebrowAccent
         />
-        <div className="mt-10">
+        <div className="mt-12">
           <ServicesShowcase
             services={homeServices}
             seeDetailLabel={home.servicesTeaser.seeDetailLabel}

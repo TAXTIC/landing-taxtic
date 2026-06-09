@@ -34,10 +34,11 @@ export function TechSection({ content }: TechSectionProps) {
         layout="split"
         display
         eyebrowAccent
+        accentWord="Taxtic"
       />
 
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"
+        className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -52,7 +53,7 @@ export function TechSection({ content }: TechSectionProps) {
             <span className="font-mono text-xs tracking-wide text-(--brand-orange)">
               ▸ {String(i + 1).padStart(2, "0")}
             </span>
-            <h3 className="font-display uppercase text-xl tracking-tight leading-tight mt-4 mb-2.5 text-(--foreground)">
+            <h3 className="font-semibold uppercase text-xl tracking-tight leading-tight mt-4 mb-2.5 text-(--foreground)">
               {area.title}
             </h3>
             <p className="text-sm leading-normal text-(--foreground-muted)">

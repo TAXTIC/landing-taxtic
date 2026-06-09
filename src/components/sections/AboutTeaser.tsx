@@ -9,14 +9,18 @@ interface AboutTeaserProps {
   cta: ResolvedCta;
 }
 
+/** Parte la frase antes de la palabra acentuada y la pinta en naranjo. */
 function renderQuote(quote: string, accentWord: string) {
   const idx = quote.indexOf(accentWord);
   if (idx === -1) return quote;
+  const before = quote.slice(0, idx).trimEnd();
+  const after = quote.slice(idx + accentWord.length);
   return (
     <>
-      {quote.slice(0, idx)}
+      {before}
+      <br />
       <span className="text-(--brand-orange)">{accentWord}</span>
-      {quote.slice(idx + accentWord.length)}
+      {after}
     </>
   );
 }
@@ -24,16 +28,17 @@ function renderQuote(quote: string, accentWord: string) {
 export function AboutTeaser({ content, cta }: AboutTeaserProps) {
   return (
     <Section variant="light" id="nosotros">
+      <span className="label-upper mb-12 inline-flex items-center gap-2.5 text-(--foreground-muted)">
+        <span
+          className="inline-block size-2 bg-(--brand-orange)"
+          aria-hidden="true"
+        />
+        {content.eyebrow}
+      </span>
+
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <div>
-          <span className="label-upper inline-flex items-center gap-2.5 text-(--brand-orange)">
-            <span
-              className="inline-block size-2 bg-(--brand-orange)"
-              aria-hidden="true"
-            />
-            {content.eyebrow}
-          </span>
-          <h2 className="mt-4 font-display uppercase text-4xl leading-tight tracking-tight text-(--foreground)">
+          <h2 className="font-display uppercase text-4xl leading-[1.05] tracking-tight text-(--foreground) lg:text-5xl">
             {renderQuote(content.quote, content.accentWord)}
           </h2>
           <p className="mt-6 text-lg leading-normal text-(--foreground-muted)">
@@ -41,14 +46,21 @@ export function AboutTeaser({ content, cta }: AboutTeaserProps) {
           </p>
           <Link
             href={cta.href as never}
-            className="mt-8 inline-flex items-center gap-2 border-b border-current pb-0.5 text-sm font-bold text-(--foreground) transition-colors hover:text-(--brand-orange)"
+            className="mt-8 inline-flex items-center gap-2 border-b border-current pb-0.5 text-sm font-medium text-(--foreground) transition-colors hover:text-(--brand-orange)"
           >
             {cta.label} →
           </Link>
         </div>
 
         <div className="flex aspect-square items-center justify-center bg-(--brand-orange) p-12">
-          <BrandLogo variant="principal" surface="orange" size="lg" />
+          <div className="w-3/5 [&_img]:h-auto [&_img]:w-full">
+            <BrandLogo
+              variant="principal"
+              surface="orange"
+              clearSpace="compact"
+              size="xl"
+            />
+          </div>
         </div>
       </div>
     </Section>

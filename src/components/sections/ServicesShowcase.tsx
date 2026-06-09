@@ -31,6 +31,13 @@ function resolveIcon(name: string): LucideIcon {
   return icons[name] ?? LucideIcons.Square;
 }
 
+/** Parte el título en dos líneas: primera palabra arriba, el resto abajo. */
+function titleLines(title: string): [string, string] {
+  const space = title.indexOf(" ");
+  if (space === -1) return [title, ""];
+  return [title.slice(0, space), title.slice(space + 1)];
+}
+
 export function ServicesShowcase({
   services,
   seeDetailLabel,
@@ -47,11 +54,12 @@ export function ServicesShowcase({
     >
       {services.map((service, i) => {
         const Icon = resolveIcon(service.iconName);
+        const [titleFirst, titleRest] = titleLines(service.title);
         return (
           <motion.div key={service.slug} variants={cardVariants}>
             <Link
               href={`/servicios/${service.slug}` as never}
-              className="group flex h-full min-h-[20rem] flex-col justify-between border-r border-b border-(--border) bg-(--surface) p-8 transition-colors duration-200 ease-out hover:bg-(--surface-inverse)"
+              className="group flex h-full min-h-[20rem] flex-col justify-between border-r border-b border-(--border) bg-(--surface) px-8 pt-10 pb-14 transition-colors duration-200 ease-out hover:bg-(--surface-inverse)"
             >
               <div className="flex items-start justify-between">
                 <span className="flex size-14 items-center justify-center bg-(--brand-orange)">
@@ -68,13 +76,19 @@ export function ServicesShowcase({
               </div>
               <div className="mt-6 flex-1">
                 <h3 className="font-display text-2xl uppercase leading-none tracking-tight text-(--foreground) group-hover:text-(--brand-white)">
-                  {service.title}
+                  {titleFirst}
+                  {titleRest ? (
+                    <>
+                      <br />
+                      {titleRest}
+                    </>
+                  ) : null}
                 </h3>
                 <p className="mt-3.5 text-sm leading-normal text-(--foreground-muted) group-hover:text-(--gray-300)">
                   {service.shortDescription}
                 </p>
               </div>
-              <span className="label-upper mt-6 inline-flex items-center gap-2 text-(--foreground) group-hover:text-(--brand-orange)">
+              <span className="mt-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.08em] text-(--foreground) group-hover:text-(--brand-orange)">
                 {seeDetailLabel}
                 <span className="transition-transform duration-200 group-hover:translate-x-1">
                   →

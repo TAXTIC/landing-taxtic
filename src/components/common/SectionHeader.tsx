@@ -16,8 +16,11 @@ interface SectionHeaderProps {
    * lo activa donde quiere el acento.
    */
   eyebrowAccent?: boolean;
-  /** Renderiza el título en la fuente display (Prototype) en mayúsculas. */
+  /** Renderiza el título en la fuente display (Prototype), en mayúsculas y al
+   * tamaño grande de los encabezados de sección. */
   display?: boolean;
+  /** Palabra del título que se pinta en naranjo (la primera coincidencia). */
+  accentWord?: string;
   /**
    * `"stacked"` (default) apila eyebrow → título → subtítulo en una columna.
    * `"split"` reparte en dos columnas: eyebrow a la izquierda, título +
@@ -33,6 +36,10 @@ const titleSizeByLevel: Record<Heading, string> = {
   h3: "text-2xl",
 };
 
+// Encabezado display de sección: ~36 → 48 → 64px, casi sin interlineado.
+const displayTitleSize =
+  "text-4xl sm:text-5xl lg:text-display-l leading-[0.98]";
+
 const titleColorByTone: Record<Tone, string> = {
   light: "text-(--foreground)",
   dark: "text-(--brand-white)",
@@ -43,8 +50,27 @@ const subtitleColorByTone: Record<Tone, string> = {
   dark: "text-(--gray-300)",
 };
 
+const eyebrowColorByTone: Record<Tone, string> = {
+  light: "text-(--foreground-muted)",
+  dark: "text-(--gray-300)",
+};
+
+function renderTitle(title: string, accentWord?: string) {
+  if (!accentWord) return title;
+  const idx = title.indexOf(accentWord);
+  if (idx === -1) return title;
+  return (
+    <>
+      {title.slice(0, idx)}
+      <span className="text-(--brand-orange)">{accentWord}</span>
+      {title.slice(idx + accentWord.length)}
+    </>
+  );
+}
+
 /**
- * Header de sección con eyebrow naranjo + título + subtítulo opcional.
+ * Header de sección con eyebrow (cuadrito naranjo + texto gris) + título +
+ * subtítulo opcional.
  *
  * El consumer pasa `tone="dark"` explícitamente cuando este header vive
  * dentro de una sección de superficie oscura, para mantener el componente
@@ -59,6 +85,7 @@ export function SectionHeader({
   tone = "light",
   eyebrowAccent = false,
   display = false,
+  accentWord,
   layout = "stacked",
   className,
 }: SectionHeaderProps) {
@@ -66,7 +93,12 @@ export function SectionHeader({
   const isSplit = layout === "split";
 
   const eyebrowEl = eyebrow ? (
-    <span className="label-upper text-(--brand-orange) inline-flex items-center gap-2.5">
+    <span
+      className={cn(
+        "label-upper inline-flex items-center gap-2.5",
+        eyebrowColorByTone[tone],
+      )}
+    >
       {eyebrowAccent ? (
         <span
           className="inline-block size-2 bg-(--brand-orange)"
@@ -81,13 +113,12 @@ export function SectionHeader({
     <Tag
       className={cn(
         display
-          ? "font-display uppercase tracking-tight leading-tight"
-          : "font-bold tracking-tight leading-tight",
-        isSplit ? "text-4xl lg:text-5xl" : titleSizeByLevel[Tag],
+          ? cn("font-display uppercase tracking-tight", displayTitleSize)
+          : cn("font-bold tracking-tight leading-tight", titleSizeByLevel[Tag]),
         titleColorByTone[tone],
       )}
     >
-      {title}
+      {renderTitle(title, accentWord)}
     </Tag>
   );
 
@@ -96,7 +127,7 @@ export function SectionHeader({
       className={cn(
         "text-lg leading-normal",
         subtitleColorByTone[tone],
-        isCenter ? undefined : "max-w-[38rem]",
+        isCenter ? undefined : "max-w-[34rem]",
       )}
     >
       {subtitle}
@@ -112,7 +143,7 @@ export function SectionHeader({
         )}
       >
         <div>{eyebrowEl}</div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-6">
           {titleEl}
           {subtitleEl}
         </div>
@@ -123,7 +154,7 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        "flex flex-col gap-3",
+        "flex flex-col gap-4",
         isCenter
           ? "items-center text-center mx-auto max-w-[42rem]"
           : "items-start text-left",
