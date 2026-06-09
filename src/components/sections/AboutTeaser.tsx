@@ -1,8 +1,5 @@
-import { Check } from "lucide-react";
-
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { Section } from "@/components/common/Section";
-import { SectionHeader } from "@/components/common/SectionHeader";
-import { Button } from "@/components/ui/button";
 import type { ResolvedCta } from "@/content-lib/schemas/cta.schema";
 import type { HomeContent } from "@/content-lib/schemas/home.schema";
 import { Link } from "@/i18n/navigation";
@@ -12,43 +9,46 @@ interface AboutTeaserProps {
   cta: ResolvedCta;
 }
 
-export function AboutTeaser({ content, cta }: AboutTeaserProps) {
-  if (!content.highlights.length) return null;
+function renderQuote(quote: string, accentWord: string) {
+  const idx = quote.indexOf(accentWord);
+  if (idx === -1) return quote;
+  return (
+    <>
+      {quote.slice(0, idx)}
+      <span className="text-(--brand-orange)">{accentWord}</span>
+      {quote.slice(idx + accentWord.length)}
+    </>
+  );
+}
 
+export function AboutTeaser({ content, cta }: AboutTeaserProps) {
   return (
     <Section variant="light" id="nosotros">
-      <div className="max-w-(--container-prose) mx-auto">
-        <SectionHeader
-          eyebrow={content.eyebrow}
-          title={content.title}
-          align="left"
-        />
-        <p className="text-base leading-relaxed text-(--foreground-muted) mt-6">
-          {content.lead}
-        </p>
-        <ul className="space-y-3 mt-8">
-          {content.highlights.map((h) => (
-            <li key={h} className="flex items-start gap-3">
-              <Check
-                size={20}
-                strokeWidth={1.75}
-                className="text-(--brand-orange) shrink-0 mt-0.5"
-                aria-hidden="true"
-              />
-              <span className="text-(--gray-900)">{h}</span>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-10">
-          <Button variant="outline-dark" asChild>
-            {cta.external ? (
-              <a href={cta.href} target="_blank" rel="noopener noreferrer">
-                {cta.label} →
-              </a>
-            ) : (
-              <Link href={cta.href as never}>{cta.label} →</Link>
-            )}
-          </Button>
+      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <div>
+          <span className="label-upper inline-flex items-center gap-2.5 text-(--brand-orange)">
+            <span
+              className="inline-block size-2 bg-(--brand-orange)"
+              aria-hidden="true"
+            />
+            {content.eyebrow}
+          </span>
+          <h2 className="mt-4 font-display uppercase text-4xl leading-tight tracking-tight text-(--foreground)">
+            {renderQuote(content.quote, content.accentWord)}
+          </h2>
+          <p className="mt-6 text-lg leading-normal text-(--foreground-muted)">
+            {content.body}
+          </p>
+          <Link
+            href={cta.href as never}
+            className="mt-8 inline-flex items-center gap-2 border-b border-current pb-0.5 text-sm font-bold text-(--foreground) transition-colors hover:text-(--brand-orange)"
+          >
+            {cta.label} →
+          </Link>
+        </div>
+
+        <div className="flex aspect-square items-center justify-center bg-(--brand-orange) p-12">
+          <BrandLogo variant="principal" surface="orange" size="lg" />
         </div>
       </div>
     </Section>

@@ -28,9 +28,9 @@ const servicesTeaserSchema = z.object({
 
 const aboutTeaserSchema = z.object({
   eyebrow: z.string().min(1),
-  title: z.string().min(10),
-  lead: z.string().min(20),
-  highlights: z.array(z.string().min(1)).min(1).max(2),
+  quote: z.string().min(1),
+  accentWord: z.string().min(1),
+  body: z.string().min(20),
   cta: ctaDescriptorSchema,
 });
 
