@@ -21,6 +21,9 @@ const buttonVariants = cva(
         "ghost-light":
           "text-(--foreground) bg-transparent " +
           "hover:bg-(--surface-muted) active:bg-(--surface-muted)",
+        "solid-dark":
+          "bg-(--surface-inverse) text-(--brand-white) " +
+          "hover:bg-(--gray-800) active:bg-(--gray-700)",
       },
       size: {
         sm: "h-8 px-3 text-xs",
