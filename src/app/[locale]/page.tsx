@@ -3,19 +3,19 @@ import { setRequestLocale } from "next-intl/server";
 import { Section } from "@/components/common/Section";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { AboutTeaser } from "@/components/sections/AboutTeaser";
-import { AISection } from "@/components/sections/AISection";
 import { CTASection } from "@/components/sections/CTASection";
 import { Hero } from "@/components/sections/Hero";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
+import { TechSection } from "@/components/sections/TechSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import {
-  loadAISection,
   loadHome,
   loadProcess,
   loadServicesIndex,
   loadSite,
+  loadTechSection,
   type Locale,
 } from "@/lib/content";
 import { resolveCtaHref } from "@/lib/cta";
@@ -30,10 +30,10 @@ export default async function Home({ params }: Props) {
 
   const locale = rawLocale as Locale;
 
-  const [home, services, aiSection, process, site] = await Promise.all([
+  const [home, services, techSection, process, site] = await Promise.all([
     loadHome(locale),
     loadServicesIndex(locale),
-    loadAISection(locale),
+    loadTechSection(locale),
     loadProcess(locale),
     loadSite(),
   ]);
@@ -67,7 +67,7 @@ export default async function Home({ params }: Props) {
           </Button>
         </div>
       </Section>
-      <AISection content={aiSection} />
+      <TechSection content={techSection} />
       <ProcessSteps content={process} />
       <AboutTeaser content={home.aboutTeaser} cta={aboutCta} />
       <CTASection content={home.cta} button={ctaButton} />
