@@ -82,3 +82,22 @@ describe("loadContact", () => {
     expect(contact.branches.sectionTitle).toBe("Visit us");
   });
 });
+
+describe("loadTechSection", () => {
+  it("carga la sección de tecnología ES con 3 áreas", async () => {
+    const { loadTechSection } = await import("./content");
+    const tech = await loadTechSection("es");
+    expect(tech.areas).toHaveLength(3);
+    expect(tech.areas.map((a) => a.title)).toEqual([
+      "Tributario",
+      "Contable",
+      "Laboral",
+    ]);
+  });
+
+  it("carga la sección de tecnología EN", async () => {
+    const { loadTechSection } = await import("./content");
+    const tech = await loadTechSection("en");
+    expect(tech.areas).toHaveLength(3);
+  });
+});

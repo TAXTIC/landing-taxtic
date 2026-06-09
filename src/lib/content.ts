@@ -29,6 +29,10 @@ import {
   type SiteContent,
   siteSchema,
 } from "@/content-lib/schemas/site.schema";
+import {
+  type TechSectionContent,
+  techSectionSchema,
+} from "@/content-lib/schemas/tech-section.schema";
 
 export type Locale = "es" | "en";
 
@@ -82,4 +86,11 @@ export async function loadAbout(locale: Locale): Promise<AboutContent> {
 export async function loadContact(locale: Locale): Promise<ContactContent> {
   const raw = await readJson<unknown>(`${locale}/contact.json`);
   return contactSchema.parse(raw);
+}
+
+export async function loadTechSection(
+  locale: Locale,
+): Promise<TechSectionContent> {
+  const raw = await readJson<unknown>(`${locale}/tech-section.json`);
+  return techSectionSchema.parse(raw);
 }
