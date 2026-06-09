@@ -22,9 +22,20 @@
       { "value": "98%", "label": "tasa de retención", "verified": false }
     ]
   },
+  "stats": [
+    { "value": "10+", "label": "Años de experiencia", "variant": "count" },
+    { "value": "500+", "label": "Clientes activos", "variant": "count" },
+    { "value": "IA", "label": "Potenciado por IA", "variant": "accent" }
+  ],
   "servicesTeaser": {
     "eyebrow": "Lo que hacemos",
-    "title": "Servicios oficiales",
+    "title": "Servicios.",
+    "serviceSlugs": [
+      "asesoria-contable",
+      "asesoria-tributaria",
+      "asesoria-laboral"
+    ],
+    "seeDetailLabel": "Ver detalle",
     "seeAllLabel": "Ver todos los servicios"
   },
   "aboutTeaser": {

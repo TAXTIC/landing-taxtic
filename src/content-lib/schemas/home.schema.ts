@@ -21,9 +21,17 @@ const heroSchema = z.object({
   stats: z.array(heroStatSchema).length(3),
 });
 
+const statSchema = z.object({
+  value: z.string().min(1),
+  label: z.string().min(1),
+  variant: z.enum(["count", "accent"]),
+});
+
 const servicesTeaserSchema = z.object({
   eyebrow: z.string().min(1),
   title: z.string().min(1),
+  serviceSlugs: z.array(z.string().min(1)).length(3),
+  seeDetailLabel: z.string().min(1),
   seeAllLabel: z.string().min(1),
 });
 
@@ -37,6 +45,7 @@ const aboutTeaserSchema = z.object({
 
 export const homeSchema = z.object({
   hero: heroSchema,
+  stats: z.array(statSchema).length(3),
   servicesTeaser: servicesTeaserSchema,
   aboutTeaser: aboutTeaserSchema,
   cta: z.object({
