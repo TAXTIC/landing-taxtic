@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 type Variant = "principal" | "secundario" | "isologo";
 type Surface = "light" | "dark" | "orange" | "photo";
 type Tone = "black" | "orange";
-type Size = "sm" | "md" | "lg";
+type Size = "sm" | "md" | "lg" | "xl";
 
 interface BrandLogoProps {
   variant?: Variant;
@@ -25,7 +25,7 @@ interface BrandLogoProps {
   alt?: string;
 }
 
-const sizePx: Record<Size, number> = { sm: 24, md: 40, lg: 56 };
+const sizePx: Record<Size, number> = { sm: 24, md: 40, lg: 56, xl: 112 };
 
 // Aspect ratios derivados de los viewBox reales de cada SVG en public/brand/.
 // Garantizan que el width que pasamos a <Image> coincide con la geometría
