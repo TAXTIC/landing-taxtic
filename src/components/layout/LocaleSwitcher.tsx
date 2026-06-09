@@ -35,11 +35,12 @@ export function LocaleSwitcher({ tone = "light" }: LocaleSwitcherProps) {
   if (enabledLocales.length <= 1) {
     return (
       <span
-        aria-label={tLocale("currentLabel")}
+        role="img"
+        aria-label={`${tLocale("currentLabel")}: ${locale.toUpperCase()}`}
         className={cn(
           "inline-flex items-center font-mono text-xs tracking-wide px-2 py-1 border select-none",
           tone === "dark"
-            ? "text-(--brand-white) border-white/30"
+            ? "text-(--brand-white) border-(--brand-white)/30"
             : "text-(--foreground-muted) border-(--border)",
         )}
       >
