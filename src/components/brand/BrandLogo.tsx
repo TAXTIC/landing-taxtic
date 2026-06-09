@@ -12,6 +12,14 @@ interface BrandLogoProps {
   surface?: Surface;
   tone?: Tone;
   size?: Size;
+  /**
+   * Controls the padding wrapper that enforces the brand-manual clear-space rule.
+   * - `"manual"` (default): 0.5X on standard surfaces, 1.0X on photos — full manual compliance.
+   * - `"compact"`: removes the padding entirely, for contexts like the glass navbar where the
+   *   surrounding chrome already provides visual breathing room and the compact isologo is
+   *   deliberately flush. Intentional, documented deviation from the manual's clear-space.
+   */
+  clearSpace?: "manual" | "compact";
   preload?: boolean;
   className?: string;
   alt?: string;
@@ -62,6 +70,7 @@ export function BrandLogo({
   surface = "light",
   tone = "black",
   size = "md",
+  clearSpace = "manual",
   preload = false,
   className,
   alt = "Taxtic — Asesoría Tributaria Integral",
@@ -79,7 +88,12 @@ export function BrandLogo({
 
   const suffix = resolveSuffix(surface, enforcedTone);
   const height = sizePx[size];
-  const safeAreaPx = surface === "photo" ? height : Math.round(height * 0.5);
+  const safeAreaPx =
+    clearSpace === "compact"
+      ? 0
+      : surface === "photo"
+        ? height
+        : Math.round(height * 0.5);
   const file = fileFor(variant, suffix);
   return (
     <span

@@ -46,7 +46,7 @@ export function Navbar({ siteData }: NavbarProps) {
     <>
       <header
         className={cn(
-          "fixed inset-x-3 top-3 lg:inset-x-4 lg:top-4 z-(--z-sticky)",
+          "fixed inset-x-4 top-4 z-(--z-sticky)",
           "nav-glass border transition-colors duration-200 ease-out",
           scrolled
             ? "bg-(--glass-bg-condensed) border-(--glass-border)"
@@ -57,24 +57,17 @@ export function Navbar({ siteData }: NavbarProps) {
           className={cn(
             "mx-auto max-w-(--container-max) flex items-center justify-between",
             "transition-all duration-200 ease-out",
-            scrolled ? "px-4 py-2 lg:px-5" : "px-4 py-3 lg:px-6",
+            scrolled ? "px-4 py-2" : "px-5 py-3",
           )}
         >
           <Link href="/" aria-label="Taxtic">
             <BrandLogo
-              variant="principal"
-              surface="light"
-              tone="black"
-              size="md"
-              preload
-              className="hidden md:inline-flex"
-            />
-            <BrandLogo
               variant="isologo"
               surface="light"
-              tone="black"
+              tone="orange"
               size="md"
-              className="md:hidden"
+              clearSpace="compact"
+              preload
             />
           </Link>
 
@@ -86,7 +79,7 @@ export function Navbar({ siteData }: NavbarProps) {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "text-sm transition-colors border-b-2",
+                    "text-[13px] transition-colors border-b-2",
                     isActive
                       ? "font-bold text-(--foreground) border-(--brand-orange)"
                       : "text-(--foreground) border-transparent hover:text-(--brand-orange)",
