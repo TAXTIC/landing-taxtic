@@ -151,6 +151,16 @@
   --surface-subtle: var(--color-surface-3);
   --surface-inverse: var(--color-brand-black);
 
+  /* Degradado que cubre la foto del hero: opaco a la izquierda y transparente
+     a la derecha, para mantener legible el texto que va sobre la foto. */
+  --hero-photo-overlay: linear-gradient(
+    to right,
+    oklch(0.991 0.005 95.1 / 0.94) 0%,
+    oklch(0.991 0.005 95.1 / 0.8) 38%,
+    oklch(0.991 0.005 95.1 / 0.3) 66%,
+    transparent 88%
+  );
+
   /* Glass — consumido por nav/cards/fields en Spec 2+ */
   --glass-bg: oklch(1 0 0 / 0.55);
   --glass-bg-condensed: oklch(1 0 0 / 0.78);
