@@ -31,12 +31,10 @@ export function LocaleSwitcher({ tone = "light" }: LocaleSwitcherProps) {
     router.replace(pathname, { locale: next });
   };
 
-  // Un solo idioma habilitado: pastilla estática, no interactiva.
+  // Un solo idioma habilitado: indicador estático, no interactivo.
   if (enabledLocales.length <= 1) {
     return (
       <span
-        role="img"
-        aria-label={`${tLocale("currentLabel")}: ${locale.toUpperCase()}`}
         className={cn(
           "inline-flex items-center font-mono text-xs tracking-wide px-2 py-1 border select-none",
           tone === "dark"
@@ -44,7 +42,10 @@ export function LocaleSwitcher({ tone = "light" }: LocaleSwitcherProps) {
             : "text-(--foreground-muted) border-(--border)",
         )}
       >
-        {locale.toUpperCase()}
+        <span aria-hidden="true">{locale.toUpperCase()}</span>
+        <span className="sr-only">
+          {`${tLocale("currentLabel")}: ${locale.toUpperCase()}`}
+        </span>
       </span>
     );
   }

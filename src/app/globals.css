@@ -167,7 +167,7 @@
   --space-section-y-desktop: 7.5rem;
   --space-section-x-mobile: 1rem;
   --space-section-x-desktop: 2rem;
-  --header-h: 3.5rem; /* matches Navbar h-14 (Tailwind h-14 = 3.5rem) */
+  --header-h: 3.5rem; /* alto aproximado del navbar flotante; alimenta scroll-margin-top de las anclas */
 
   --container-max: 90rem; /* 1440px — wrap de marketing */
   --container-prose: 65ch;
