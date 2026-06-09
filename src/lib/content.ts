@@ -6,10 +6,6 @@ import {
   aboutSchema,
 } from "@/content-lib/schemas/about.schema";
 import {
-  type AISectionContent,
-  aiSectionSchema,
-} from "@/content-lib/schemas/ai-section.schema";
-import {
   type ContactContent,
   contactSchema,
 } from "@/content-lib/schemas/contact.schema";
@@ -54,11 +50,6 @@ export async function loadServicesIndex(
 ): Promise<ServicesIndex> {
   const raw = await readJson<unknown>(`${locale}/services/_index.json`);
   return servicesIndexSchema.parse(raw);
-}
-
-export async function loadAISection(locale: Locale): Promise<AISectionContent> {
-  const raw = await readJson<unknown>(`${locale}/ai-section.json`);
-  return aiSectionSchema.parse(raw);
 }
 
 export async function loadProcess(locale: Locale): Promise<ProcessContent> {
