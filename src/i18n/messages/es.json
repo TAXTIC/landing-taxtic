@@ -25,6 +25,7 @@
   },
   "locale": {
     "switchLabel": "Idioma",
+    "currentLabel": "Idioma actual",
     "es": "Español",
     "en": "English"
   },
