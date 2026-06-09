@@ -92,6 +92,9 @@ export function MobileNavMenu({
           <DialogPrimitive.Title className="sr-only">
             {tNav("menuToggle")}
           </DialogPrimitive.Title>
+          <DialogPrimitive.Description className="sr-only">
+            {tNav("menuDescription")}
+          </DialogPrimitive.Description>
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     </DialogPrimitive.Root>
