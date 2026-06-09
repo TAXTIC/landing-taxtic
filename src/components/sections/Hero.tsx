@@ -1,8 +1,15 @@
 "use client";
 
 import { ArrowDown, ArrowRight } from "lucide-react";
-import { motion, type Variants } from "motion/react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  type Variants,
+} from "motion/react";
 import Image from "next/image";
+import { useRef } from "react";
 
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { Section } from "@/components/common/Section";
@@ -32,6 +39,16 @@ const itemVariants: Variants = {
 };
 
 export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0px", "-80px"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+
   function handleWhatsApp() {
     track("whatsapp_click", { position: "hero" });
   }
@@ -43,15 +60,25 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
       bleed
       className="relative isolate overflow-hidden"
     >
-      <Image
-        src={content.image.src}
-        alt={content.image.alt}
-        fill
-        sizes="100vw"
-        quality={80}
-        priority
-        className="object-cover object-[right_center] -z-10"
+      <div
+        ref={sectionRef}
+        className="absolute inset-0 -z-10"
+        aria-hidden="true"
       />
+      <motion.div
+        className="absolute inset-0 -z-10"
+        style={reduceMotion ? undefined : { y: bgY }}
+      >
+        <Image
+          src={content.image.src}
+          alt={content.image.alt}
+          fill
+          sizes="100vw"
+          quality={80}
+          priority
+          className="object-cover object-[right_center] scale-110"
+        />
+      </motion.div>
       <div
         className="absolute inset-0 -z-10"
         style={{ backgroundImage: "var(--hero-photo-overlay)" }}
@@ -64,6 +91,9 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
+          style={
+            reduceMotion ? undefined : { y: contentY, opacity: contentOpacity }
+          }
         >
           <motion.div
             variants={itemVariants}
