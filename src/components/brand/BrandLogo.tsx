@@ -105,7 +105,7 @@ export function BrandLogo({
         alt={alt}
         width={Math.round(height * variantWidthRatio[variant])}
         height={height}
-        preload={preload}
+        priority={preload}
       />
     </span>
   );
