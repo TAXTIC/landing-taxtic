@@ -77,7 +77,7 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
 
       <div className="mx-auto max-w-(--container-max) px-(--space-section-x-mobile) lg:px-(--space-section-x-desktop)">
         <motion.div
-          className="flex min-h-[clamp(28rem,80vh,44rem)] max-w-xl flex-col justify-center gap-9 py-16"
+          className="flex min-h-[clamp(34rem,88vh,52rem)] max-w-xl flex-col justify-center gap-9 py-16"
           initial="hidden"
           animate="visible"
           variants={containerVariants}

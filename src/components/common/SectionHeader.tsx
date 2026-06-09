@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 
 type Tone = "light" | "dark";
 type Heading = "h1" | "h2" | "h3";
+type Layout = "stacked" | "split";
 
 interface SectionHeaderProps {
   eyebrow?: string;
@@ -17,6 +18,12 @@ interface SectionHeaderProps {
   eyebrowAccent?: boolean;
   /** Renderiza el título en la fuente display (Prototype) en mayúsculas. */
   display?: boolean;
+  /**
+   * `"stacked"` (default) apila eyebrow → título → subtítulo en una columna.
+   * `"split"` reparte en dos columnas: eyebrow a la izquierda, título +
+   * subtítulo a la derecha, alineados al pie. `align` se ignora en `"split"`.
+   */
+  layout?: Layout;
   className?: string;
 }
 
@@ -40,13 +47,8 @@ const subtitleColorByTone: Record<Tone, string> = {
  * Header de sección con eyebrow naranjo + título + subtítulo opcional.
  *
  * El consumer pasa `tone="dark"` explícitamente cuando este header vive
- * dentro de `<Section variant="dark">`, para mantener el componente simple
- * y sin context cross-component.
- *
- * @example
- * <Section variant="dark">
- *   <SectionHeader tone="dark" eyebrow="..." title="..." />
- * </Section>
+ * dentro de una sección de superficie oscura, para mantener el componente
+ * simple y sin context cross-component.
  */
 export function SectionHeader({
   eyebrow,
@@ -57,9 +59,66 @@ export function SectionHeader({
   tone = "light",
   eyebrowAccent = false,
   display = false,
+  layout = "stacked",
   className,
 }: SectionHeaderProps) {
   const isCenter = align === "center";
+  const isSplit = layout === "split";
+
+  const eyebrowEl = eyebrow ? (
+    <span className="label-upper text-(--brand-orange) inline-flex items-center gap-2.5">
+      {eyebrowAccent ? (
+        <span
+          className="inline-block size-2 bg-(--brand-orange)"
+          aria-hidden="true"
+        />
+      ) : null}
+      {eyebrow}
+    </span>
+  ) : null;
+
+  const titleEl = (
+    <Tag
+      className={cn(
+        display
+          ? "font-display uppercase tracking-tight leading-tight"
+          : "font-bold tracking-tight leading-tight",
+        isSplit ? "text-4xl lg:text-5xl" : titleSizeByLevel[Tag],
+        titleColorByTone[tone],
+      )}
+    >
+      {title}
+    </Tag>
+  );
+
+  const subtitleEl = subtitle ? (
+    <p
+      className={cn(
+        "text-lg leading-normal",
+        subtitleColorByTone[tone],
+        isCenter ? undefined : "max-w-[38rem]",
+      )}
+    >
+      {subtitle}
+    </p>
+  ) : null;
+
+  if (isSplit) {
+    return (
+      <div
+        className={cn(
+          "grid gap-6 lg:grid-cols-[1fr_1.4fr] lg:items-end lg:gap-16",
+          className,
+        )}
+      >
+        <div>{eyebrowEl}</div>
+        <div className="flex flex-col gap-4">
+          {titleEl}
+          {subtitleEl}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -71,39 +130,9 @@ export function SectionHeader({
         className,
       )}
     >
-      {eyebrow ? (
-        <span className="label-upper text-(--brand-orange) inline-flex items-center gap-2.5">
-          {eyebrowAccent ? (
-            <span
-              className="inline-block size-2 bg-(--brand-orange)"
-              aria-hidden="true"
-            />
-          ) : null}
-          {eyebrow}
-        </span>
-      ) : null}
-      <Tag
-        className={cn(
-          display
-            ? "font-display uppercase tracking-tight leading-tight"
-            : "font-bold tracking-tight leading-tight",
-          titleSizeByLevel[Tag],
-          titleColorByTone[tone],
-        )}
-      >
-        {title}
-      </Tag>
-      {subtitle ? (
-        <p
-          className={cn(
-            "text-lg leading-normal",
-            subtitleColorByTone[tone],
-            isCenter ? undefined : "max-w-[38rem]",
-          )}
-        >
-          {subtitle}
-        </p>
-      ) : null}
+      {eyebrowEl}
+      {titleEl}
+      {subtitleEl}
     </div>
   );
 }

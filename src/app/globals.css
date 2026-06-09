@@ -180,6 +180,9 @@
   --glass-blur: 18px;
   --glass-border: oklch(1 0 0 / 0.6);
 
+  /* Línea divisoria tenue sobre superficies oscuras (blanco al 12%). */
+  --hairline-on-dark: oklch(1 0 0 / 0.12);
+
   --radius: var(--radius-none);
 
   --border-width-thin: 1px;

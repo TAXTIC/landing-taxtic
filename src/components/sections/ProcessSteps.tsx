@@ -28,14 +28,14 @@ export function ProcessSteps({ content }: ProcessStepsProps) {
         eyebrow={content.eyebrow}
         title={content.title}
         subtitle={content.subtitle}
-        align="left"
+        layout="split"
         tone="dark"
         display
         eyebrowAccent
       />
 
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-12 border-l border-t border-(--hairline-on-dark)"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}

@@ -31,7 +31,7 @@ export function TechSection({ content }: TechSectionProps) {
         eyebrow={content.eyebrow}
         title={content.title}
         subtitle={content.intro}
-        align="left"
+        layout="split"
         display
         eyebrowAccent
       />
@@ -47,7 +47,7 @@ export function TechSection({ content }: TechSectionProps) {
           <motion.article
             key={area.title}
             variants={cardVariants}
-            className="border border-(--border) bg-(--surface) p-8 transition-transform duration-200 ease-out hover:-translate-y-1 hover:bg-(--surface-muted)"
+            className="border border-(--glass-border) bg-(--glass-bg) p-8 backdrop-blur-md transition-transform duration-200 ease-out hover:-translate-y-1"
           >
             <span className="font-mono text-xs tracking-wide text-(--brand-orange)">
               ▸ {String(i + 1).padStart(2, "0")}
