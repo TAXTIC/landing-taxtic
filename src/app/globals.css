@@ -277,4 +277,11 @@
     font-weight: var(--font-weight-bold);
     font-size: var(--text-xs);
   }
+
+  /* Glass surface para el navbar flotante. Combina blur + saturate en una
+     sola declaración backdrop-filter y aplica la sombra elevada del token. */
+  .nav-glass {
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.5);
+    box-shadow: var(--shadow-3);
+  }
 }
