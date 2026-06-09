@@ -9,7 +9,6 @@ import {
   type Variants,
 } from "motion/react";
 import Image from "next/image";
-import { useRef } from "react";
 
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { Section } from "@/components/common/Section";
@@ -39,15 +38,11 @@ const itemVariants: Variants = {
 };
 
 export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0px", "-80px"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const { scrollY } = useScroll();
+  const bgY = useTransform(scrollY, [0, 600], ["0%", "18%"]);
+  const contentY = useTransform(scrollY, [0, 600], [0, -80]);
+  const contentOpacity = useTransform(scrollY, [0, 380], [1, 0]);
 
   function handleWhatsApp() {
     track("whatsapp_click", { position: "hero" });
@@ -60,11 +55,6 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
       bleed
       className="relative isolate overflow-hidden"
     >
-      <div
-        ref={sectionRef}
-        className="absolute inset-0 -z-10"
-        aria-hidden="true"
-      />
       <motion.div
         className="absolute inset-0 -z-10"
         style={reduceMotion ? undefined : { y: bgY }}
@@ -74,7 +64,7 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
           alt={content.image.alt}
           fill
           sizes="100vw"
-          quality={80}
+          quality={85}
           priority
           className="object-cover object-[right_center] scale-110"
         />
@@ -99,7 +89,12 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
             variants={itemVariants}
             className="w-[min(402px,72vw)] [&_img]:h-auto [&_img]:w-full"
           >
-            <BrandLogo variant="principal" surface="photo" size="xl" />
+            <BrandLogo
+              variant="principal"
+              surface="light"
+              clearSpace="compact"
+              size="xl"
+            />
           </motion.div>
 
           <motion.p
