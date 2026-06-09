@@ -12,7 +12,7 @@ import type { SiteContent } from "@/content-lib/schemas/site.schema";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-const SCROLL_THRESHOLD = 16;
+const SCROLL_THRESHOLD = 32;
 
 type NavItem = {
   href: "/servicios" | "/nosotros" | "/contacto";
@@ -46,11 +46,20 @@ export function Navbar({ siteData }: NavbarProps) {
     <>
       <header
         className={cn(
-          "sticky top-0 z-(--z-sticky) bg-(--surface) border-b transition-colors duration-200 ease-out",
-          scrolled ? "border-(--border)" : "border-transparent",
+          "fixed inset-x-3 top-3 lg:inset-x-4 lg:top-4 z-(--z-sticky)",
+          "nav-glass border transition-colors duration-200 ease-out",
+          scrolled
+            ? "bg-(--glass-bg-condensed) border-(--glass-border)"
+            : "bg-(--glass-bg) border-(--glass-border)",
         )}
       >
-        <div className="mx-auto max-w-(--container-max) px-(--space-section-x-mobile) lg:px-(--space-section-x-desktop) h-14 lg:h-16 flex items-center justify-between">
+        <div
+          className={cn(
+            "mx-auto max-w-(--container-max) flex items-center justify-between",
+            "transition-all duration-200 ease-out",
+            scrolled ? "px-4 py-2 lg:px-5" : "px-4 py-3 lg:px-6",
+          )}
+        >
           <Link href="/" aria-label="Taxtic">
             <BrandLogo
               variant="principal"
@@ -91,7 +100,7 @@ export function Navbar({ siteData }: NavbarProps) {
 
           <div className="hidden md:flex items-center gap-3">
             <LocaleSwitcher tone="light" />
-            <Button variant="primary-orange" size="sm" asChild>
+            <Button variant="solid-dark" size="sm" asChild>
               <a
                 href={siteData.portal.url}
                 target="_blank"
