@@ -10,7 +10,8 @@
     },
     "portal": "Portal de clientes",
     "menuToggle": "Abrir menú",
-    "menuClose": "Cerrar menú"
+    "menuClose": "Cerrar menú",
+    "menuDescription": "Enlaces de navegación del sitio y acceso al portal de clientes."
   },
   "footer": {
     "tagline": "Asesoría tributaria integral en Curicó, Chile.",
