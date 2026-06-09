@@ -1,21 +1,50 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Prototype — fuente display de marca, self-hosted. Uso display-only
+   (headlines, section heads, acentos grandes); nunca cuerpo ni texto chico. */
+@font-face {
+  font-family: "Prototype";
+  src: url("/fonts/Prototype.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /*
- * Tokens primitivos del manual de marca + escala tipográfica.
+ * Tokens primitivos del manual de marca V2 + escala tipográfica.
  * Definidos en @theme para que Tailwind v4 los exponga como utilities
- * (bg-brand-orange, text-2xl, font-display, rounded-md, ...) y como CSS
- * variables (var(--color-brand-orange)). Las desviaciones intencionales
- * del manual están registradas en ADR-0005.
+ * (bg-brand-orange, text-display-xl, font-display, ...) y como CSS vars.
+ * Anclados a los hex exactos del manual V2, expresados en oklch.
  */
 @theme {
-  --color-brand-orange: oklch(0.667 0.146 58);
-  --color-brand-orange-hover: oklch(0.613 0.146 58);
-  --color-brand-orange-active: oklch(0.566 0.146 58);
-  --color-brand-orange-soft: oklch(0.95 0.04 58);
+  --color-brand-orange: oklch(
+    0.704 0.172 53.7
+  ); /* #ef7c15 — fills, cuadrados, acentos */
+  --color-brand-orange-button: oklch(
+    0.645 0.165 51.5
+  ); /* #d96a08 — bg botón primario (AA-large) */
+  --color-brand-orange-hover: oklch(
+    0.6 0.155 51.5
+  ); /* hover del botón primario */
+  --color-brand-orange-active: oklch(
+    0.555 0.143 51.5
+  ); /* active del botón primario */
+  --color-brand-orange-text: oklch(
+    0.541 0.132 53.7
+  ); /* #a8550a — naranjo texto/link sobre claro */
+  --color-brand-orange-soft: oklch(
+    0.935 0.038 64.8
+  ); /* #fce5d0 — fondos tintados suaves */
   --color-brand-black: oklch(0 0 0);
   --color-brand-white: oklch(1 0 0);
 
+  /* Superficies cálidas — reemplazan blanco puro */
+  --color-canvas: oklch(0.991 0.005 95.1); /* #fdfcf8 */
+  --color-surface-2: oklch(0.973 0.007 88.6); /* #f8f6f1 */
+  --color-surface-3: oklch(0.946 0.01 87.5); /* #f0ede6 */
+
+  /* Escala de grises neutra (10–90% del manual) */
   --color-gray-50: oklch(0.97 0 0);
   --color-gray-100: oklch(0.93 0 0);
   --color-gray-200: oklch(0.86 0 0);
@@ -28,7 +57,8 @@
   --color-gray-900: oklch(0.12 0 0);
 
   --font-sans: "Helvetica Neue", "Helvetica", "Arial", system-ui, sans-serif;
-  --font-display: "Helvetica Neue", "Helvetica", "Arial", system-ui, sans-serif;
+  --font-display:
+    "Prototype", "Helvetica Neue", "Helvetica", "Arial", system-ui, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   --text-xs: 0.75rem;
@@ -41,12 +71,19 @@
   --text-4xl: 2.5rem;
   --text-5xl: 3.5rem;
   --text-6xl: 4.5rem;
+  --text-display-m: 3rem; /* 48px */
+  --text-display-l: 4rem; /* 64px */
+  --text-display-xl: 5.5rem; /* 88px */
 
   --radius-none: 0;
   --radius-sm: 2px;
   --radius-md: 4px;
+  --radius-lg: 8px;
   --radius-full: 9999px;
 
+  /* Utilities Tailwind shadow-* se mantienen en none para evitar sombras
+     accidentales vía utility. Las sombras intencionales se consumen como
+     var(--shadow-1/2/3) en componentes elevados/interactivos. */
   --shadow-2xs: none;
   --shadow-xs: none;
   --shadow-sm: none;
@@ -55,6 +92,10 @@
   --shadow-xl: none;
   --shadow-2xl: none;
   --shadow-inner: none;
+
+  --shadow-1: 0 1px 2px oklch(0 0 0 / 0.04), 0 1px 1px oklch(0 0 0 / 0.03);
+  --shadow-2: 0 2px 6px oklch(0 0 0 / 0.06), 0 1px 2px oklch(0 0 0 / 0.04);
+  --shadow-3: 0 8px 24px oklch(0 0 0 / 0.08);
   --shadow-popover:
     0 4px 12px oklch(0 0 0 / 0.08), 0 1px 3px oklch(0 0 0 / 0.06);
   --shadow-modal:
@@ -62,21 +103,18 @@
 }
 
 /*
- * Mapeo semántico que consumen componentes y shadcn.
+ * Aliases semánticos que consumen componentes y shadcn.
  * Apuntan a los primitivos de @theme — un swap aquí cambia el sistema
  * sin tocar código de componentes.
  */
 :root {
-  /*
-   * Aliases semánticos que mapean los primitives de @theme. Permiten que los
-   * componentes consuman tokens cortos (var(--brand-orange)) sin acoplarse a
-   * la convención de prefijo --color-* que Tailwind v4 usa internamente.
-   */
   --brand-white: var(--color-brand-white);
   --brand-black: var(--color-brand-black);
   --brand-orange: var(--color-brand-orange);
+  --brand-orange-button: var(--color-brand-orange-button);
   --brand-orange-hover: var(--color-brand-orange-hover);
   --brand-orange-active: var(--color-brand-orange-active);
+  --brand-orange-text: var(--color-brand-orange-text);
   --brand-orange-soft: var(--color-brand-orange-soft);
 
   --gray-50: var(--color-gray-50);
@@ -90,12 +128,15 @@
   --gray-800: var(--color-gray-800);
   --gray-900: var(--color-gray-900);
 
-  --background: var(--color-brand-white);
+  --background: var(--color-canvas);
   --foreground: var(--color-gray-900);
   --foreground-muted: var(--color-gray-600);
   --foreground-subtle: var(--color-gray-400);
 
-  --primary: var(--color-brand-orange);
+  /* El botón/acción primaria usa el naranjo accesible (#d96a08). El naranjo
+     vibrante (#ef7c15) se consume directo como var(--brand-orange) en fills
+     decorativos; el naranjo-texto (#a8550a) como var(--brand-orange-text). */
+  --primary: var(--color-brand-orange-button);
   --primary-foreground: var(--color-brand-white);
   --primary-hover: var(--color-brand-orange-hover);
   --primary-active: var(--color-brand-orange-active);
@@ -105,9 +146,16 @@
   --input: var(--color-gray-200);
   --ring: var(--color-brand-orange);
 
-  --surface: var(--color-brand-white);
-  --surface-muted: var(--color-gray-50);
+  --surface: var(--color-canvas);
+  --surface-muted: var(--color-surface-2);
+  --surface-subtle: var(--color-surface-3);
   --surface-inverse: var(--color-brand-black);
+
+  /* Glass — consumido por nav/cards/fields en Spec 2+ */
+  --glass-bg: oklch(1 0 0 / 0.55);
+  --glass-bg-condensed: oklch(1 0 0 / 0.78);
+  --glass-blur: 18px;
+  --glass-border: oklch(1 0 0 / 0.6);
 
   --radius: var(--radius-none);
 
@@ -116,22 +164,24 @@
   --border-width-thick: 4px;
 
   --space-section-y-mobile: 4rem;
-  --space-section-y-desktop: 7rem;
+  --space-section-y-desktop: 7.5rem;
   --space-section-x-mobile: 1rem;
   --space-section-x-desktop: 2rem;
   --header-h: 3.5rem; /* matches Navbar h-14 (Tailwind h-14 = 3.5rem) */
 
-  --container-max: 80rem;
+  --container-max: 90rem; /* 1440px — wrap de marketing */
   --container-prose: 65ch;
 
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-bold: 700;
-  --font-weight-display: 700;
+  --font-weight-display: 400; /* Prototype trae un solo peso (400) */
 
   --tracking-tight: -0.02em;
   --tracking-normal: 0;
   --tracking-wide: 0.15em;
+  --tracking-caps: 0.08em;
+  --tracking-eyebrow: 0.18em;
   --leading-tight: 1.1;
   --leading-snug: 1.3;
   --leading-normal: 1.55;
@@ -152,6 +202,7 @@
   --foreground-subtle: var(--color-gray-400);
   --surface: var(--color-gray-900);
   --surface-muted: var(--color-gray-800);
+  --surface-subtle: var(--color-gray-800);
   --border: var(--color-gray-700);
   --border-strong: var(--color-gray-600);
 }
@@ -190,11 +241,14 @@
     text-rendering: optimizeLegibility;
   }
 
+  /* Base headings = sans bold. Prototype (display) NO se aplica globalmente:
+     es display-only y se opta vía la utility `font-display` / clases de
+     componente en Spec 2+. Así las páginas actuales no mutan a Prototype. */
   h1,
   h2,
   h3 {
-    font-family: var(--font-display);
-    font-weight: var(--font-weight-display);
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-bold);
     letter-spacing: var(--tracking-tight);
     line-height: var(--leading-tight);
     color: var(--foreground);
@@ -205,7 +259,6 @@
     text-decoration: none;
   }
 
-  /* Navbar grows to lg:h-16 at the lg breakpoint; bump --header-h to match. */
   @media (min-width: 1024px) {
     :root {
       --header-h: 4rem;
