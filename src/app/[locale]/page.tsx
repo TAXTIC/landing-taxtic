@@ -7,6 +7,7 @@ import { CTASection } from "@/components/sections/CTASection";
 import { Hero } from "@/components/sections/Hero";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
+import { StatsStrip } from "@/components/sections/StatsStrip";
 import { TechSection } from "@/components/sections/TechSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
@@ -50,6 +51,7 @@ export default async function Home({ params }: Props) {
         ctaPrimary={heroCtaPrimary}
         ctaSecondary={heroCtaSecondary}
       />
+      <StatsStrip stats={home.stats} />
       <Section variant="muted" id="servicios">
         <SectionHeader
           eyebrow={home.servicesTeaser.eyebrow}
