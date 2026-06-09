@@ -23,12 +23,15 @@ const stepVariants: Variants = {
 
 export function ProcessSteps({ content }: ProcessStepsProps) {
   return (
-    <Section variant="muted" id="proceso">
+    <Section variant="dark" id="proceso">
       <SectionHeader
         eyebrow={content.eyebrow}
         title={content.title}
         subtitle={content.subtitle}
         align="left"
+        tone="dark"
+        display
+        eyebrowAccent
       />
 
       <motion.div
