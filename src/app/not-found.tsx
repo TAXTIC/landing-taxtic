@@ -5,7 +5,7 @@ export default function RootNotFound() {
         style={{
           margin: 0,
           fontFamily: "system-ui, -apple-system, sans-serif",
-          color: "#1a1a1a",
+          color: "var(--foreground)",
         }}
       >
         <main
@@ -32,7 +32,10 @@ export default function RootNotFound() {
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a
               href="/es"
-              style={{ color: "#d57a23", textDecoration: "underline" }}
+              style={{
+                color: "var(--brand-orange-text)",
+                textDecoration: "underline",
+              }}
             >
               Volver al inicio
             </a>
