@@ -4,7 +4,6 @@ import { MessageCircle } from "lucide-react";
 import { motion, type Variants } from "motion/react";
 
 import { Section } from "@/components/common/Section";
-import { SectionHeader } from "@/components/common/SectionHeader";
 import { Button } from "@/components/ui/button";
 import type { ResolvedCta } from "@/content-lib/schemas/cta.schema";
 import type { HomeContent } from "@/content-lib/schemas/home.schema";
@@ -16,8 +15,12 @@ interface CTASectionProps {
 }
 
 const fadeUpVariants: Variants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 36 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.2, 0.8, 0.2, 1] },
+  },
 };
 
 export function CTASection({ content, button }: CTASectionProps) {
@@ -26,20 +29,28 @@ export function CTASection({ content, button }: CTASectionProps) {
   }
 
   return (
-    <Section variant="orange-soft" id="contacto">
+    <Section variant="light" id="contacto">
       <motion.div
-        className="max-w-[600px] mx-auto text-center"
+        className="bg-(--surface-inverse) px-6 py-24 text-center sm:px-20"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeUpVariants}
       >
-        <SectionHeader
-          title={content.title}
-          subtitle={content.subtitle}
-          align="center"
-        />
-        <div className="mt-8">
+        <span className="label-upper inline-flex items-center justify-center gap-2.5 text-(--brand-orange)">
+          <span
+            className="inline-block size-2 bg-(--brand-orange)"
+            aria-hidden="true"
+          />
+          Conversemos
+        </span>
+        <h2 className="mx-auto mt-4 max-w-[18ch] font-display uppercase text-4xl leading-tight tracking-tight text-(--brand-white) lg:text-5xl">
+          {content.title}
+        </h2>
+        <p className="mx-auto mt-6 max-w-[34rem] text-lg leading-normal text-(--gray-300)">
+          {content.subtitle}
+        </p>
+        <div className="mt-9">
           <Button variant="primary-orange" size="lg" asChild>
             <a
               href={button.href}
