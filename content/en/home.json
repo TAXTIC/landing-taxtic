@@ -13,20 +13,20 @@
     }
   },
   "stats": [
-    { "value": "10+", "label": "Years of experience", "variant": "count" },
-    { "value": "500+", "label": "Active clients", "variant": "count" },
-    { "value": "AI", "label": "AI-powered", "variant": "accent" }
+    { "value": "10+", "label": "Años de experiencia", "variant": "count" },
+    { "value": "500+", "label": "Clientes activos", "variant": "count" },
+    { "value": "IA", "label": "Potenciado por IA", "variant": "accent" }
   ],
   "servicesTeaser": {
-    "eyebrow": "What we do",
-    "title": "Services.",
+    "eyebrow": "Lo que hacemos",
+    "title": "Servicios.",
     "serviceSlugs": [
       "asesoria-contable",
       "asesoria-tributaria",
       "asesoria-laboral"
     ],
-    "seeDetailLabel": "See details",
-    "seeAllLabel": "View all services"
+    "seeDetailLabel": "Ver detalle",
+    "seeAllLabel": "Ver todos los servicios"
   },
   "aboutTeaser": {
     "eyebrow": "Quiénes somos",

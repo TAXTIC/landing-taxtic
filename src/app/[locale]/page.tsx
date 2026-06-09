@@ -56,7 +56,7 @@ export default async function Home({ params }: Props) {
         ctaSecondary={heroCtaSecondary}
       />
       <StatsStrip stats={home.stats} />
-      <Section variant="muted" id="servicios">
+      <Section variant="light" id="servicios">
         <SectionHeader
           eyebrow={home.servicesTeaser.eyebrow}
           title={home.servicesTeaser.title}
