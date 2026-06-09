@@ -30,12 +30,9 @@
   },
   "aboutTeaser": {
     "eyebrow": "Quiénes somos",
-    "title": "La evolución de la contabilidad tradicional",
-    "lead": "Acompañamos a cada cliente con un equipo multidisciplinario, presencia regional y la disponibilidad real para resolver lo que aparezca, sin derivar a terceros.",
-    "highlights": [
-      "Contable, tributario, laboral y legal en una sola firma.",
-      "Base en Curicó, atención presencial y remota a todo Chile."
-    ],
+    "quote": "Tu partner estratégico.",
+    "accentWord": "estratégico.",
+    "body": "Acompañamos a cada cliente con un equipo multidisciplinario y disponibilidad real para resolver lo que aparezca, sin derivar a terceros.",
     "cta": {
       "kind": "internal",
       "label": "Conoce más sobre nosotros",
