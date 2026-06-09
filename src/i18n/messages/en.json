@@ -6,8 +6,7 @@
     "items": {
       "servicios": "Servicios",
       "nosotros": "Nosotros",
-      "contacto": "Contacto",
-      "recursos": "Recursos"
+      "contacto": "Contacto"
     },
     "portal": "Portal de clientes",
     "menuToggle": "Abrir menú",
@@ -151,15 +150,6 @@
       "title": "Prefieres conversar primero",
       "subtitle": "Si tienes una pregunta puntual o quieres entender si te podemos ayudar, escríbenos por WhatsApp y te respondemos en horario hábil.",
       "buttonLabel": "Hablemos por WhatsApp"
-    }
-  },
-  "recursos": {
-    "pageHero": {
-      "eyebrow": "RECURSOS",
-      "title": "Próximamente",
-      "lead": "Estamos preparando guías, casos prácticos y artículos sobre tributación chilena. Mientras tanto, conversemos sobre tu situación específica.",
-      "buttonLabel": "Hablemos por WhatsApp",
-      "secondaryLinkLabel": "Volver al inicio"
     }
   },
   "notFound": {

@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 const SCROLL_THRESHOLD = 16;
 
 type NavItem = {
-  href: "/servicios" | "/nosotros" | "/contacto" | "/recursos";
+  href: "/servicios" | "/nosotros" | "/contacto";
   label: string;
 };
 
@@ -40,7 +40,6 @@ export function Navbar({ siteData }: NavbarProps) {
     { href: "/servicios", label: tNav("items.servicios") },
     { href: "/nosotros", label: tNav("items.nosotros") },
     { href: "/contacto", label: tNav("items.contacto") },
-    { href: "/recursos", label: tNav("items.recursos") },
   ];
 
   return (

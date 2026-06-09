@@ -22,7 +22,6 @@ export function Footer({ siteData }: FooterProps) {
     { href: "/servicios", label: tNav("items.servicios") },
     { href: "/nosotros", label: tNav("items.nosotros") },
     { href: "/contacto", label: tNav("items.contacto") },
-    { href: "/recursos", label: tNav("items.recursos") },
   ] as const;
 
   return (

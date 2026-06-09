@@ -11,7 +11,6 @@ describe("sitemap", () => {
     expect(urls).toContain("https://taxtic.com/es/nosotros");
     expect(urls).toContain("https://taxtic.com/es/contacto");
     expect(urls).toContain("https://taxtic.com/es/servicios");
-    expect(urls).toContain("https://taxtic.com/es/recursos");
   });
 
   it("incluye 6 rutas de servicios con slug del index", async () => {
