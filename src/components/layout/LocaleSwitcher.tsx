@@ -36,7 +36,7 @@ export function LocaleSwitcher({ tone = "light" }: LocaleSwitcherProps) {
     return (
       <span
         className={cn(
-          "inline-flex items-center font-mono text-xs tracking-wide px-2 py-1 border select-none",
+          "inline-flex items-center font-mono text-[11px] tracking-[0.1em] px-2 py-1.5 border select-none",
           tone === "dark"
             ? "text-(--brand-white) border-(--brand-white)/30"
             : "text-(--foreground-muted) border-(--border)",
