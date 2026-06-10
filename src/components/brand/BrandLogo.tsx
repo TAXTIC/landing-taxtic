@@ -97,7 +97,7 @@ export function BrandLogo({
         ? height
         : Math.round(height * 0.5);
   const file = isColor
-    ? "/brand/taxtic-imagotipo-principal.svg"
+    ? "/brand/imagotipo-principal.svg"
     : fileFor(
         variant,
         resolveSuffix(
