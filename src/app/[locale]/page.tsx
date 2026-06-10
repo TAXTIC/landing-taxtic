@@ -9,8 +9,6 @@ import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ServicesShowcase } from "@/components/sections/ServicesShowcase";
 import { StatsStrip } from "@/components/sections/StatsStrip";
 import { TechSection } from "@/components/sections/TechSection";
-import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n/navigation";
 import {
   loadHome,
   loadProcess,
@@ -69,13 +67,6 @@ export default async function Home({ params }: Props) {
             services={homeServices}
             seeDetailLabel={home.servicesTeaser.seeDetailLabel}
           />
-        </div>
-        <div className="mt-10 flex justify-center">
-          <Button variant="ghost-light" asChild>
-            <Link href={"/servicios" as never}>
-              {home.servicesTeaser.seeAllLabel} →
-            </Link>
-          </Button>
         </div>
       </Section>
       <TechSection content={techSection} />
