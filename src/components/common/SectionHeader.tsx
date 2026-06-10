@@ -113,7 +113,10 @@ export function SectionHeader({
     <Tag
       className={cn(
         display
-          ? cn("font-display uppercase tracking-tight", displayTitleSize)
+          ? cn(
+              "font-display font-normal uppercase tracking-tight",
+              displayTitleSize,
+            )
           : cn("font-bold tracking-tight leading-tight", titleSizeByLevel[Tag]),
         titleColorByTone[tone],
       )}

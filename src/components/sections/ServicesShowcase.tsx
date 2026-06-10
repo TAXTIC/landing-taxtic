@@ -75,7 +75,7 @@ export function ServicesShowcase({
                 </span>
               </div>
               <div className="mt-6 flex-1">
-                <h3 className="font-display text-2xl uppercase leading-none tracking-tight text-(--foreground) group-hover:text-(--brand-white)">
+                <h3 className="font-display font-normal text-[22px] uppercase leading-none tracking-tight text-(--foreground) group-hover:text-(--brand-white)">
                   {titleFirst}
                   {titleRest ? (
                     <>

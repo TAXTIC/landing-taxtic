@@ -38,7 +38,7 @@ export function AboutTeaser({ content, cta }: AboutTeaserProps) {
 
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <div>
-          <h2 className="font-display uppercase text-4xl leading-[1.05] tracking-tight text-(--foreground) lg:text-5xl">
+          <h2 className="font-display font-normal uppercase text-4xl leading-[1.05] tracking-tight text-(--foreground) lg:text-5xl">
             {renderQuote(content.quote, content.accentWord)}
           </h2>
           <p className="mt-6 text-lg leading-normal text-(--foreground-muted)">
