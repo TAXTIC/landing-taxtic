@@ -183,6 +183,9 @@
   /* Línea divisoria tenue sobre superficies oscuras (blanco al 12%). */
   --hairline-on-dark: oklch(1 0 0 / 0.12);
 
+  /* Fondo de hover sutil sobre superficies oscuras (blanco al 6%). */
+  --hover-on-dark: oklch(1 0 0 / 0.06);
+
   --radius: var(--radius-none);
 
   --border-width-thin: 1px;

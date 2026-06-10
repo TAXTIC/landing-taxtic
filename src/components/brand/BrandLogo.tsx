@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 type Variant = "principal" | "secundario" | "isologo";
 type Surface = "light" | "dark" | "orange" | "photo";
-type Tone = "black" | "orange";
+type Tone = "black" | "orange" | "color";
 type Size = "sm" | "md" | "lg" | "xl";
 
 interface BrandLogoProps {
@@ -86,7 +86,9 @@ export function BrandLogo({
     );
   }
 
-  const suffix = resolveSuffix(surface, enforcedTone);
+  // El imagotipo a todo color (cuadrado naranjo + texto negro) es la versión
+  // institucional principal; las demás variantes son monocromáticas.
+  const isColor = enforcedTone === "color" && variant === "principal";
   const height = sizePx[size];
   const safeAreaPx =
     clearSpace === "compact"
@@ -94,7 +96,15 @@ export function BrandLogo({
       : surface === "photo"
         ? height
         : Math.round(height * 0.5);
-  const file = fileFor(variant, suffix);
+  const file = isColor
+    ? "/brand/taxtic-imagotipo-principal.svg"
+    : fileFor(
+        variant,
+        resolveSuffix(
+          surface,
+          enforcedTone === "color" ? "black" : enforcedTone,
+        ),
+      );
   return (
     <span
       className={cn("inline-flex items-center", className)}

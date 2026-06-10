@@ -19,7 +19,7 @@ function CountStat({ value, label }: { value: string; label: string }) {
 
   return (
     <div ref={ref} className="px-6 py-12 sm:px-10">
-      <div className="font-display text-6xl leading-none text-(--brand-white)">
+      <div className="font-display text-display-l leading-none text-(--brand-white)">
         {animated}
         <span className="text-(--brand-orange)">{suffix}</span>
       </div>
@@ -31,7 +31,7 @@ function CountStat({ value, label }: { value: string; label: string }) {
 function AccentStat({ value, label }: { value: string; label: string }) {
   return (
     <div className="px-6 py-12 sm:px-10">
-      <div className="font-display text-5xl leading-none text-(--brand-orange)">
+      <div className="font-display text-display-l leading-none text-(--brand-white)">
         {value}
       </div>
       <div className="label-upper text-(--gray-300) mt-3">{label}</div>

@@ -38,7 +38,7 @@ export function CTASection({ content, button }: CTASectionProps) {
         variants={fadeUpVariants}
       >
         <span className="label-upper text-(--brand-orange)">Conversemos</span>
-        <h2 className="mx-auto mt-4 max-w-[18ch] font-display uppercase text-4xl leading-[0.98] tracking-tight text-(--brand-white) sm:text-5xl lg:text-display-l">
+        <h2 className="mx-auto mt-4 max-w-[18ch] font-display font-normal uppercase text-4xl leading-[0.98] tracking-tight text-(--brand-white) sm:text-5xl lg:text-display-l">
           {content.title}
         </h2>
         <p className="mx-auto mt-6 max-w-[34rem] text-lg leading-normal text-(--gray-300)">
