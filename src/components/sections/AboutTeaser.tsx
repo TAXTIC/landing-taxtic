@@ -3,6 +3,7 @@ import { Section } from "@/components/common/Section";
 import type { ResolvedCta } from "@/content-lib/schemas/cta.schema";
 import type { HomeContent } from "@/content-lib/schemas/home.schema";
 import { Link } from "@/i18n/navigation";
+import { splitOnWord } from "@/lib/text";
 
 interface AboutTeaserProps {
   content: Omit<HomeContent["aboutTeaser"], "cta">;
@@ -11,16 +12,14 @@ interface AboutTeaserProps {
 
 /** Parte la frase antes de la palabra acentuada y la pinta en naranjo. */
 function renderQuote(quote: string, accentWord: string) {
-  const idx = quote.indexOf(accentWord);
-  if (idx === -1) return quote;
-  const before = quote.slice(0, idx).trimEnd();
-  const after = quote.slice(idx + accentWord.length);
+  const parts = splitOnWord(quote, accentWord);
+  if (!parts) return quote;
   return (
     <>
-      {before}
+      {parts.before.trimEnd()}
       <br />
       <span className="text-(--brand-orange)">{accentWord}</span>
-      {after}
+      {parts.after}
     </>
   );
 }

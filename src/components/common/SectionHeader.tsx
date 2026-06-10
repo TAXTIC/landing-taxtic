@@ -1,3 +1,4 @@
+import { splitOnWord } from "@/lib/text";
 import { cn } from "@/lib/utils";
 
 type Tone = "light" | "dark";
@@ -57,13 +58,13 @@ const eyebrowColorByTone: Record<Tone, string> = {
 
 function renderTitle(title: string, accentWord?: string) {
   if (!accentWord) return title;
-  const idx = title.indexOf(accentWord);
-  if (idx === -1) return title;
+  const parts = splitOnWord(title, accentWord);
+  if (!parts) return title;
   return (
     <>
-      {title.slice(0, idx)}
+      {parts.before}
       <span className="text-(--brand-orange)">{accentWord}</span>
-      {title.slice(idx + accentWord.length)}
+      {parts.after}
     </>
   );
 }
