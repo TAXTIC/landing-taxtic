@@ -6,6 +6,7 @@ import { motion, type Variants } from "motion/react";
 
 import type { ServicesIndex } from "@/content-lib/schemas/services.schema";
 import { Link } from "@/i18n/navigation";
+import { splitFirstWord } from "@/lib/text";
 
 interface ServicesShowcaseProps {
   services: ServicesIndex["services"];
@@ -31,13 +32,6 @@ function resolveIcon(name: string): LucideIcon {
   return icons[name] ?? LucideIcons.Square;
 }
 
-/** Parte el título en dos líneas: primera palabra arriba, el resto abajo. */
-function titleLines(title: string): [string, string] {
-  const space = title.indexOf(" ");
-  if (space === -1) return [title, ""];
-  return [title.slice(0, space), title.slice(space + 1)];
-}
-
 export function ServicesShowcase({
   services,
   seeDetailLabel,
@@ -54,7 +48,7 @@ export function ServicesShowcase({
     >
       {services.map((service, i) => {
         const Icon = resolveIcon(service.iconName);
-        const [titleFirst, titleRest] = titleLines(service.title);
+        const [titleFirst, titleRest] = splitFirstWord(service.title);
         return (
           <motion.div key={service.slug} variants={cardVariants}>
             <Link
