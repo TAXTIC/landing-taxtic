@@ -59,7 +59,7 @@ export function Navbar({ siteData }: NavbarProps) {
             scrolled ? "py-2 pl-4 pr-3" : "py-3 pl-5 pr-4",
           )}
         >
-          <Link href="/" aria-label="Taxtic">
+          <Link href="/" aria-label="Taxtic" className="inline-flex">
             <BrandLogo
               variant="isologo"
               surface="light"
