@@ -113,6 +113,11 @@
     0 4px 12px oklch(0 0 0 / 0.08), 0 1px 3px oklch(0 0 0 / 0.06);
   --shadow-modal:
     0 20px 40px oklch(0 0 0 / 0.12), 0 4px 12px oklch(0 0 0 / 0.08);
+
+  /* Sombra del navbar flotante: hairline superior + difusa amplia y elevada
+     (spread negativo) para el look glass del header. */
+  --shadow-nav:
+    0 1px 0 oklch(0 0 0 / 0.04), 0 12px 40px -16px oklch(0 0 0 / 0.12);
 }
 
 /*
@@ -310,7 +315,7 @@
   /* Glass surface para el navbar flotante. Combina blur + saturate en una
      sola declaración backdrop-filter y aplica la sombra elevada del token. */
   .nav-glass {
-    backdrop-filter: blur(var(--glass-blur)) saturate(1.5);
-    box-shadow: var(--shadow-3);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    box-shadow: var(--shadow-nav);
   }
 }
