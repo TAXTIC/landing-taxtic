@@ -23,7 +23,6 @@ const servicesTeaserSchema = z.object({
   title: z.string().min(1),
   serviceSlugs: z.array(z.string().min(1)).length(3),
   seeDetailLabel: z.string().min(1),
-  seeAllLabel: z.string().min(1),
 });
 
 const aboutTeaserSchema = z.object({

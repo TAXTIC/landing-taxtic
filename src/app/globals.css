@@ -202,6 +202,7 @@
   --space-section-x-mobile: 1rem;
   --space-section-x-desktop: 3.5rem;
   --header-h: 3.5rem; /* alto aproximado del navbar flotante; alimenta scroll-margin-top de las anclas */
+  --nav-space: 5rem; /* espacio que el layout reserva arriba para el navbar fijo; el hero full-bleed lo cancela con margen negativo */
 
   --container-max: 90rem; /* 1440px — wrap de marketing */
   --container-prose: 65ch;
@@ -296,6 +297,7 @@
   @media (min-width: 1024px) {
     :root {
       --header-h: 4rem;
+      --nav-space: 6rem;
     }
   }
 
