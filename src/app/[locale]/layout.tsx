@@ -71,7 +71,7 @@ export default async function LocaleLayout({
           <Navbar siteData={site} />
           {/* El navbar es fixed y no reserva espacio en el flujo; el padding-top
               evita que el contenido quede bajo la barra flotante. */}
-          <main className="flex-1 pt-20 lg:pt-24">
+          <main className="flex-1 pt-(--nav-space)">
             <PageTransition>{children}</PageTransition>
           </main>
           <Footer siteData={site} />

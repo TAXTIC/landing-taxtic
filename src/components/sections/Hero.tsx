@@ -53,7 +53,7 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
       variant="light"
       id="hero"
       bleed
-      className="relative isolate -mt-20 flex min-h-screen items-center overflow-hidden lg:-mt-24"
+      className="relative isolate -mt-(--nav-space) flex min-h-screen items-center overflow-hidden"
     >
       <motion.div
         className="absolute inset-0 -z-10"

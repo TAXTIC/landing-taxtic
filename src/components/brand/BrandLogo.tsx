@@ -40,8 +40,9 @@ const variantWidthRatio: Record<Variant, number> = {
 function resolveSuffix(
   surface: Surface,
   tone: Tone,
-): "negro" | "naranjo" | "blanco" {
+): "negro" | "naranjo" | "blanco" | "color" {
   if (surface === "light") {
+    if (tone === "color") return "color";
     return tone === "orange" ? "naranjo" : "negro";
   }
   return "blanco";
@@ -49,7 +50,7 @@ function resolveSuffix(
 
 function fileFor(
   variant: Variant,
-  suffix: "negro" | "naranjo" | "blanco",
+  suffix: "negro" | "naranjo" | "blanco" | "color",
 ): string {
   const prefix = variant === "isologo" ? "isologo" : `imagotipo-${variant}`;
   return `/brand/${prefix}-${suffix}.svg`;
@@ -86,9 +87,12 @@ export function BrandLogo({
     );
   }
 
-  // El imagotipo a todo color (cuadrado naranjo + texto negro) es la versión
-  // institucional principal; las demás variantes son monocromáticas.
-  const isColor = enforcedTone === "color" && variant === "principal";
+  // El tono "color" (cuadrado naranjo + texto negro) solo existe para el
+  // imagotipo principal; otras variantes caen a su versión monocromática.
+  const effectiveTone: Tone =
+    enforcedTone === "color" && variant !== "principal"
+      ? "black"
+      : enforcedTone;
   const height = sizePx[size];
   const safeAreaPx =
     clearSpace === "compact"
@@ -96,15 +100,7 @@ export function BrandLogo({
       : surface === "photo"
         ? height
         : Math.round(height * 0.5);
-  const file = isColor
-    ? "/brand/imagotipo-principal.svg"
-    : fileFor(
-        variant,
-        resolveSuffix(
-          surface,
-          enforcedTone === "color" ? "black" : enforcedTone,
-        ),
-      );
+  const file = fileFor(variant, resolveSuffix(surface, effectiveTone));
   return (
     <span
       className={cn("inline-flex items-center", className)}
