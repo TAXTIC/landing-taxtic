@@ -27,28 +27,40 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/asesoria-legal",
-        destination: "/es/servicios/asesoria-legal",
-        permanent: true,
-      },
-      {
         source: "/asesoria-laboral",
         destination: "/es/servicios/asesoria-laboral",
         permanent: true,
       },
       {
-        source: "/outsourcing",
-        destination: "/es/servicios/outsourcing",
-        permanent: true,
-      },
-      {
-        source: "/documentos-electronicos",
-        destination: "/es/servicios/documentos-electronicos",
-        permanent: true,
-      },
-      {
         source: "/accounting-advice",
         destination: "/es/servicios/asesoria-contable",
+        permanent: true,
+      },
+      // Servicios retirados (6 → 3): legacy raíz + ruta interna → índice.
+      {
+        source: "/asesoria-legal",
+        destination: "/es/servicios",
+        permanent: true,
+      },
+      { source: "/outsourcing", destination: "/es/servicios", permanent: true },
+      {
+        source: "/documentos-electronicos",
+        destination: "/es/servicios",
+        permanent: true,
+      },
+      {
+        source: "/es/servicios/asesoria-legal",
+        destination: "/es/servicios",
+        permanent: true,
+      },
+      {
+        source: "/es/servicios/outsourcing",
+        destination: "/es/servicios",
+        permanent: true,
+      },
+      {
+        source: "/es/servicios/documentos-electronicos",
+        destination: "/es/servicios",
         permanent: true,
       },
     ];
