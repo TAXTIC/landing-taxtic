@@ -45,6 +45,7 @@ export default async function ServicesIndexPage({ params }: Props) {
             services={services.services}
             seeDetailLabel={t("cards.seeDetailLabel")}
             showHighlights
+            headingLevel="h2"
           />
         </div>
       </Section>
