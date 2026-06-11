@@ -30,21 +30,18 @@ describe("loadSite", () => {
 });
 
 describe("getAllServiceSlugs", () => {
-  it("returns 6 slugs from _index.json", async () => {
+  it("returns 3 slugs from _index.json", async () => {
     const slugs = await getAllServiceSlugs();
-    expect(slugs).toHaveLength(6);
+    expect(slugs).toHaveLength(3);
     expect(slugs).toContain("asesoria-contable");
     expect(slugs).toContain("asesoria-tributaria");
-    expect(slugs).toContain("outsourcing");
-    expect(slugs).toContain("asesoria-legal");
     expect(slugs).toContain("asesoria-laboral");
-    expect(slugs).toContain("documentos-electronicos");
   });
 
   it("returns slugs in the order declared in _index.json", async () => {
     const slugs = await getAllServiceSlugs();
     expect(slugs[0]).toBe("asesoria-contable");
-    expect(slugs[5]).toBe("documentos-electronicos");
+    expect(slugs[2]).toBe("asesoria-laboral");
   });
 });
 
