@@ -11,6 +11,7 @@ import { splitFirstWord } from "@/lib/text";
 interface ServicesShowcaseProps {
   services: ServicesIndex["services"];
   seeDetailLabel: string;
+  showHighlights?: boolean;
 }
 
 const gridVariants: Variants = {
@@ -35,6 +36,7 @@ function resolveIcon(name: string): LucideIcon {
 export function ServicesShowcase({
   services,
   seeDetailLabel,
+  showHighlights = false,
 }: ServicesShowcaseProps) {
   const total = services.length;
 
@@ -81,6 +83,22 @@ export function ServicesShowcase({
                 <p className="mt-3.5 text-sm leading-normal text-(--foreground-muted) group-hover:text-(--gray-300)">
                   {service.shortDescription}
                 </p>
+                {showHighlights ? (
+                  <ul className="mt-5 border-t border-(--border) group-hover:border-(--gray-700)">
+                    {service.highlights.map((h) => (
+                      <li
+                        key={h}
+                        className="relative border-b border-(--border) py-3 pl-5 text-[13px] leading-snug text-(--foreground-muted) group-hover:border-(--gray-700) group-hover:text-(--gray-300)"
+                      >
+                        <span
+                          className="absolute left-0 top-[15px] size-2 bg-(--brand-orange)"
+                          aria-hidden="true"
+                        />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </div>
               <span className="mt-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.08em] text-(--foreground) group-hover:text-(--brand-orange)">
                 {seeDetailLabel}
