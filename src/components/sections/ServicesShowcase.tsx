@@ -12,6 +12,12 @@ interface ServicesShowcaseProps {
   services: ServicesIndex["services"];
   seeDetailLabel: string;
   showHighlights?: boolean;
+  /**
+   * Nivel del encabezado de cada card. El consumer lo fija según la jerarquía
+   * de la página: `h3` cuando la grilla vive bajo un encabezado de sección
+   * `h2`, `h2` cuando cuelga directo del `h1` de la página.
+   */
+  headingLevel?: "h2" | "h3";
 }
 
 const gridVariants: Variants = {
@@ -37,6 +43,7 @@ export function ServicesShowcase({
   services,
   seeDetailLabel,
   showHighlights = false,
+  headingLevel: Heading = "h3",
 }: ServicesShowcaseProps) {
   const total = services.length;
 
@@ -71,7 +78,7 @@ export function ServicesShowcase({
                 </span>
               </div>
               <div className="mt-6 flex-1">
-                <h3 className="font-display font-normal text-[22px] uppercase leading-none tracking-tight text-(--foreground) group-hover:text-(--brand-white)">
+                <Heading className="font-display font-normal text-[22px] uppercase leading-none tracking-tight text-(--foreground) group-hover:text-(--brand-white)">
                   {titleFirst}
                   {titleRest ? (
                     <>
@@ -79,7 +86,7 @@ export function ServicesShowcase({
                       {titleRest}
                     </>
                   ) : null}
-                </h3>
+                </Heading>
                 <p className="mt-3.5 text-sm leading-normal text-(--foreground-muted) group-hover:text-(--gray-300)">
                   {service.shortDescription}
                 </p>
