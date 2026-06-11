@@ -32,17 +32,18 @@
   },
   "services": {
     "indexHero": {
-      "eyebrow": "LO QUE HACEMOS",
-      "title": "Servicios oficiales",
-      "subtitle": "Seis servicios diseñados para que tu empresa cumpla con el SII, ordene sus finanzas y tome decisiones con datos claros.",
-      "anchorHighlights": {
-        "label": "POR QUÉ TAXTIC",
-        "items": [
-          "Equipo multidisciplinario in-house — contable, tributario, laboral y legal.",
-          "Atención directa con tu contador asignado, sin call centers.",
-          "Base en Curicó, presencia regional con alcance nacional."
-        ]
-      }
+      "eyebrow": "Lo que hacemos",
+      "title": "Nuestros servicios.",
+      "accentWord": "servicios.",
+      "subtitle": "Tres servicios diseñados para que tu empresa cumpla con el SII, ordene sus finanzas y gestione su equipo con claridad."
+    },
+    "cards": {
+      "seeDetailLabel": "Ver detalles"
+    },
+    "cta": {
+      "title": "Listo para el siguiente paso.",
+      "subtitle": "Cuéntanos en qué podemos ayudarte. Respondemos por WhatsApp en horario hábil.",
+      "buttonLabel": "Hablemos por WhatsApp"
     },
     "slugHero": {
       "eyebrow": "SERVICIO",
