@@ -45,16 +45,6 @@
       "subtitle": "Cuéntanos en qué podemos ayudarte. Respondemos por WhatsApp en horario hábil.",
       "buttonLabel": "Hablemos por WhatsApp"
     },
-    "slugHero": {
-      "eyebrow": "SERVICIO",
-      "anchorLabel": "Lo que incluye",
-      "entregablesLabel": "Entregables"
-    },
-    "slugCta": {
-      "title": "¿Te interesa este servicio?",
-      "subtitle": "Hablemos por WhatsApp y revisemos tu caso.",
-      "buttonLabel": "Hablemos por WhatsApp"
-    },
     "breadcrumb": {
       "back": "Todos los servicios"
     },
