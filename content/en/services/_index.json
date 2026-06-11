@@ -39,43 +39,6 @@
       "iconName": "FileCheck"
     },
     {
-      "slug": "outsourcing",
-      "title": "Outsourcing de servicios",
-      "shortDescription": "Externalizamos tus procesos contables, tributarios y laborales — los operamos nosotros, los reportamos a tu equipo.",
-      "highlights": [
-        "Gestión contable y tributaria completa",
-        "Remuneraciones y administración laboral",
-        "Soporte continuo de nuestro equipo"
-      ],
-      "entregables": [
-        "Gestión contable y tributaria completa (alcance equivalente a los servicios de Asesoría contable y tributaria).",
-        "Administración laboral: contratos, anexos, finiquitos, cálculo de remuneraciones.",
-        "Reportes ejecutivos mensuales para gerencia.",
-        "Soporte continuo de nuestro equipo asignado a tu empresa.",
-        "Coordinación directa con tu equipo de finanzas o gerencia general.",
-        "Indicadores y alertas tempranas sobre tu operación financiera."
-      ],
-      "iconName": "Layers"
-    },
-    {
-      "slug": "asesoria-legal",
-      "title": "Asesoría legal",
-      "shortDescription": "Soporte legal in-house para temas societarios y contractuales, integrado a tu operación contable y tributaria.",
-      "highlights": [
-        "Constitución y modificación de sociedades",
-        "Contratos y documentos legales",
-        "Asesoría en cumplimiento normativo"
-      ],
-      "entregables": [
-        "Constitución y modificación de sociedades (sociedades anónimas, SpA, EIRL, sociedades de responsabilidad limitada).",
-        "Redacción y revisión de contratos comerciales y de servicios.",
-        "Documentos legales recurrentes (poderes, mandatos, modificaciones).",
-        "Asesoría en cumplimiento normativo aplicable a tu giro.",
-        "Representación en gestiones ante el Conservador de Bienes Raíces y otros registros públicos."
-      ],
-      "iconName": "Scale"
-    },
-    {
       "slug": "asesoria-laboral",
       "title": "Asesoría laboral",
       "shortDescription": "Asesoría laboral integral orientada al cumplimiento normativo y a la gestión eficiente de las relaciones laborales dentro de tu empresa.",
@@ -93,25 +56,6 @@
         "Reportes mensuales de costo laboral por centro de costo o área."
       ],
       "iconName": "Users"
-    },
-    {
-      "slug": "documentos-electronicos",
-      "title": "Documentos electrónicos",
-      "shortDescription": "Implementamos y operamos tu facturación electrónica con integración a Haulmer (certificado por el SII).",
-      "highlights": [
-        "Emisión de facturas y boletas electrónicas",
-        "Integración con sistema certificado (Haulmer)",
-        "Soporte en operación diaria de DTE"
-      ],
-      "entregables": [
-        "Emisión de facturas y boletas electrónicas (DTE).",
-        "Integración técnica con sistema certificado (Haulmer).",
-        "Habilitación y configuración inicial ante el SII.",
-        "Soporte en operación diaria de DTE.",
-        "Gestión de contingencias y rechazos del SII.",
-        "Asesoría en cambios normativos sobre facturación electrónica."
-      ],
-      "iconName": "FileText"
     }
   ]
 }

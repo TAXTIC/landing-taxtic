@@ -17,16 +17,13 @@ const validService = {
     "Estados financieros con reportes ejecutivos en lenguaje claro.",
     "Respaldo y acompañamiento ante fiscalizaciones del SII.",
   ],
-  iconName: "BookOpen",
+  iconName: "FileText",
 };
 
 const validIndex = {
-  services: Array(6)
+  services: Array(3)
     .fill(validService)
-    .map((s, i) => ({
-      ...s,
-      slug: `slug-${i}`,
-    })),
+    .map((s, i) => ({ ...s, slug: `slug-${i}` })),
 };
 
 describe("servicesIndexSchema", () => {
@@ -46,9 +43,9 @@ describe("servicesIndexSchema", () => {
     expect(() => servicesIndexSchema.parse(bad)).toThrow();
   });
 
-  it("rejects index with !== 6 services", () => {
-    const bad = { services: validIndex.services.slice(0, 5) };
-    expect(() => servicesIndexSchema.parse(bad)).toThrow(/6/);
+  it("rejects index with !== 3 services", () => {
+    const bad = { services: validIndex.services.slice(0, 2) };
+    expect(() => servicesIndexSchema.parse(bad)).toThrow(/3/);
   });
 
   it("rejects services with fewer than 3 entregables", () => {

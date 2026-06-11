@@ -13,13 +13,13 @@ describe("sitemap", () => {
     expect(urls).toContain("https://taxtic.com/es/servicios");
   });
 
-  it("incluye 6 rutas de servicios con slug del index", async () => {
+  it("incluye 3 rutas de servicios con slug del index", async () => {
     const entries = await sitemap();
     const serviceUrls = entries
       .map((e) => e.url)
       .filter((url) => url.includes("/servicios/"));
 
-    expect(serviceUrls).toHaveLength(6);
+    expect(serviceUrls).toHaveLength(3);
     serviceUrls.forEach((url) => {
       expect(url).toMatch(
         /^https:\/\/taxtic\.com\/es\/servicios\/[a-z][a-z0-9-]*$/,

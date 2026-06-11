@@ -12,7 +12,7 @@ const serviceItemSchema = z.object({
 });
 
 export const servicesIndexSchema = z.object({
-  services: z.array(serviceItemSchema).length(6),
+  services: z.array(serviceItemSchema).length(3),
 });
 
 export type ServicesIndex = z.infer<typeof servicesIndexSchema>;
