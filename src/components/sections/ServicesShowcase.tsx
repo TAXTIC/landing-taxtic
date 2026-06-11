@@ -102,7 +102,10 @@ export function ServicesShowcase({
               </div>
               <span className="mt-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.08em] text-(--foreground) group-hover:text-(--brand-orange)">
                 {seeDetailLabel}
-                <span className="transition-transform duration-200 group-hover:translate-x-1">
+                <span
+                  aria-hidden="true"
+                  className="transition-transform duration-200 group-hover:translate-x-1"
+                >
                   →
                 </span>
               </span>

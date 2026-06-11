@@ -23,7 +23,7 @@ export function ServiceCatalogNav({
 }: ServiceCatalogNavProps) {
   return (
     <aside className="flex flex-col gap-8">
-      <div>
+      <nav aria-label={eyebrow}>
         <span className="label-upper text-(--foreground-muted)">{eyebrow}</span>
         <ol className="mt-4 flex flex-col">
           {services.map((s, i) => {
@@ -35,7 +35,10 @@ export function ServiceCatalogNav({
                 className="border-b border-(--border) py-3 text-sm last:border-b-0"
               >
                 {isCurrent ? (
-                  <span className="font-medium text-(--brand-orange)">
+                  <span
+                    aria-current="page"
+                    className="font-medium text-(--brand-orange)"
+                  >
                     {n} · {s.title}
                   </span>
                 ) : (
@@ -50,7 +53,7 @@ export function ServiceCatalogNav({
             );
           })}
         </ol>
-      </div>
+      </nav>
 
       <div className="bg-(--brand-orange) p-6 text-(--brand-white)">
         <span className="label-upper text-(--brand-white)/85">
