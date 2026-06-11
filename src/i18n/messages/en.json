@@ -56,8 +56,15 @@
       "buttonLabel": "Hablemos por WhatsApp"
     },
     "breadcrumb": {
-      "back": "Servicios"
-    }
+      "back": "Todos los servicios"
+    },
+    "catalogNav": {
+      "eyebrow": "Catálogo de servicios",
+      "whatsappHeading": "¿Conversamos?",
+      "whatsappBody": "Respondemos por WhatsApp en horario hábil.",
+      "whatsappButton": "Hablemos"
+    },
+    "nextService": "Siguiente servicio"
   },
   "nosotros": {
     "pageHero": {
