@@ -108,6 +108,7 @@ export function LocationTeaser({
         <div
           ref={ref}
           className="relative aspect-[3/4] w-full overflow-hidden bg-(--surface-inverse)"
+          style={{ position: "relative" }}
         >
           <motion.div
             className="absolute inset-x-0 -inset-y-[6%]"

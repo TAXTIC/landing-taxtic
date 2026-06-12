@@ -44,6 +44,7 @@ export default async function NosotrosPage({ params }: Props) {
         <SectionHeader
           as="h1"
           display
+          eyebrowAccent
           eyebrow={t("hero.eyebrow")}
           title={t("hero.title")}
           accentWord={t("hero.accentWord")}

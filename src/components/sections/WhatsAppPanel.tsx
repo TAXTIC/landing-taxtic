@@ -26,7 +26,7 @@ export function WhatsAppPanel({
   return (
     <div className="relative flex flex-col justify-center overflow-hidden bg-(--surface-inverse) p-10 lg:p-12">
       <span
-        className="absolute right-0 top-0 size-16 bg-(--brand-orange)"
+        className="absolute right-0 top-0 size-12 bg-(--brand-orange)"
         aria-hidden="true"
       />
       <span className="label-upper text-(--brand-orange)">
