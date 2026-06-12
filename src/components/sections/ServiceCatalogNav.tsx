@@ -73,7 +73,7 @@ export function ServiceCatalogNav({
           href={whatsapp.href}
           target={whatsapp.external ? "_blank" : undefined}
           rel={whatsapp.external ? "noopener noreferrer" : undefined}
-          className="group/wa mt-4 inline-flex items-center gap-2 bg-(--brand-black) px-3 py-2 text-[11px] font-medium uppercase tracking-[0.04em] text-(--brand-white) transition-opacity hover:opacity-90"
+          className="group/wa mt-4 inline-flex items-center gap-2 bg-(--brand-black) px-3 py-2 text-xs font-medium uppercase tracking-[0.04em] text-(--brand-white) transition-opacity hover:opacity-90"
         >
           {whatsapp.label}
           <span

@@ -72,19 +72,21 @@ export default async function ServiceSlugPage({ params }: Props) {
           <ServiceDetailHero service={service} />
         </Reveal>
         <div className="mt-16 grid gap-10 lg:mt-24 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
-          <Reveal className="lg:sticky lg:top-30 lg:self-start">
-            <ServiceCatalogNav
-              services={services.services.map((s) => ({
-                slug: s.slug,
-                title: s.title,
-              }))}
-              currentSlug={slug}
-              eyebrow={t("catalogNav.eyebrow")}
-              whatsappHeading={t("catalogNav.whatsappHeading")}
-              whatsappBody={t("catalogNav.whatsappBody")}
-              whatsapp={whatsapp}
-            />
-          </Reveal>
+          <div className="lg:sticky lg:top-30 lg:self-start">
+            <Reveal>
+              <ServiceCatalogNav
+                services={services.services.map((s) => ({
+                  slug: s.slug,
+                  title: s.title,
+                }))}
+                currentSlug={slug}
+                eyebrow={t("catalogNav.eyebrow")}
+                whatsappHeading={t("catalogNav.whatsappHeading")}
+                whatsappBody={t("catalogNav.whatsappBody")}
+                whatsapp={whatsapp}
+              />
+            </Reveal>
+          </div>
           <Reveal>
             <ProseWrapper>
               <Content />
