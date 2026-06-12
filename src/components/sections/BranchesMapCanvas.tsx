@@ -4,7 +4,7 @@ import "leaflet/dist/leaflet.css";
 
 import L from "leaflet";
 import { useEffect } from "react";
-import { MapContainer, Marker, TileLayer, Tooltip, useMap } from "react-leaflet";
+import { MapContainer, Marker, TileLayer, Tooltip, useMap, ZoomControl } from "react-leaflet";
 
 import type { Branch } from "@/content-lib/schemas/site.schema";
 
@@ -47,6 +47,7 @@ export default function BranchesMapCanvas({
       center={initialCenter}
       zoom={15}
       scrollWheelZoom={false}
+      zoomControl={false}
       className="absolute inset-0 size-full"
       attributionControl
     >
@@ -66,6 +67,7 @@ export default function BranchesMapCanvas({
           </Tooltip>
         </Marker>
       ))}
+      <ZoomControl position="bottomright" />
       <FitToBranches branches={branches} />
     </MapContainer>
   );
