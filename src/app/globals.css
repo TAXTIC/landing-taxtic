@@ -321,3 +321,24 @@
     box-shadow: var(--shadow-nav);
   }
 }
+
+/* Leaflet tooltip de marca para el mapa de sucursales.
+   Cuadrado, naranjo, tipografía mono uppercase — espejo del badge del mapa.
+   Usa clases globales de Leaflet (.leaflet-tooltip), por eso vive aquí fuera
+   de @layer y no en un componente. */
+.leaflet-tooltip.tx-map-label {
+  background: var(--brand-orange);
+  color: var(--brand-white);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 4px 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.leaflet-tooltip.tx-map-label::before {
+  display: none; /* quita la flecha del tooltip */
+}

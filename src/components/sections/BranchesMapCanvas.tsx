@@ -4,7 +4,7 @@ import "leaflet/dist/leaflet.css";
 
 import L from "leaflet";
 import { useEffect } from "react";
-import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
+import { MapContainer, Marker, TileLayer, Tooltip, useMap } from "react-leaflet";
 
 import type { Branch } from "@/content-lib/schemas/site.schema";
 
@@ -60,7 +60,11 @@ export default function BranchesMapCanvas({
           position={[b.address.lat, b.address.lng]}
           icon={orangeSquareIcon}
           title={b.label}
-        />
+        >
+          <Tooltip permanent direction="top" offset={[0, -12]} className="tx-map-label">
+            {b.label}
+          </Tooltip>
+        </Marker>
       ))}
       <FitToBranches branches={branches} />
     </MapContainer>

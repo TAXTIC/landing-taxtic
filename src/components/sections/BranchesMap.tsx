@@ -33,7 +33,7 @@ export function BranchesMap({ content, branches }: BranchesMapProps) {
           eyebrowAccent
           className="mb-10"
         />
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-(--gray-900) sm:aspect-[21/9]">
+        <div className="relative isolate aspect-[16/10] w-full overflow-hidden bg-(--gray-900) sm:aspect-[21/9]">
           <BranchesMapCanvas branches={branches} />
           <span className="absolute left-5 top-5 z-[500] bg-(--brand-orange) px-3 py-2 font-mono text-[11px] uppercase tracking-[0.07em] text-(--brand-white)">
             ● {content.badge}
