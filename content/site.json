@@ -14,7 +14,9 @@
         "region": "Región del Maule",
         "country": "Chile",
         "countryCode": "CL",
-        "mapEmbedUrl": "https://www.google.com/maps?q=Carmen+459,+Cur%C3%ADco,+Chile&output=embed&z=16"
+        "mapEmbedUrl": "https://www.google.com/maps?q=Carmen+459,+Cur%C3%ADco,+Chile&output=embed&z=16",
+        "lat": -34.9853,
+        "lng": -71.2398
       },
       "phoneLandline": {
         "tel": "+56752221800",
@@ -30,7 +32,9 @@
         "region": "Región del Maule",
         "country": "Chile",
         "countryCode": "CL",
-        "mapEmbedUrl": "https://www.google.com/maps?q=Avenida+Espa%C3%B1a+784,+Cur%C3%ADco,+Chile&output=embed&z=16"
+        "mapEmbedUrl": "https://www.google.com/maps?q=Avenida+Espa%C3%B1a+784,+Cur%C3%ADco,+Chile&output=embed&z=16",
+        "lat": -34.9836,
+        "lng": -71.2361
       },
       "phoneLandline": {
         "tel": "+56752405901",

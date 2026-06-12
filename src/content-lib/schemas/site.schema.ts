@@ -23,6 +23,8 @@ const branchSchema = z.object({
         "countryCode must be 2 uppercase letters (ISO 3166-1 alpha-2)",
       ),
     mapEmbedUrl: z.string().url(),
+    lat: z.number().min(-90).max(90),
+    lng: z.number().min(-180).max(180),
   }),
   phoneLandline: phoneSchema,
 });
