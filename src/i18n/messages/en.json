@@ -59,26 +59,26 @@
   "nosotros": {
     "hero": {
       "eyebrow": "Quiénes somos",
-      "title": "Nuestra historia",
-      "accentWord": "historia",
+      "title": "Nuestra historia.",
+      "accentWord": "historia.",
       "subtitle": "Acompañamos a cada cliente con un equipo multidisciplinario y disponibilidad real para resolver lo que aparezca, sin derivar a terceros."
     },
     "manifesto": {
       "eyebrow": "Manifiesto",
-      "quote": "Tu partner estratégico",
-      "accentWord": "estratégico",
+      "quote": "Tu partner estratégico.",
+      "accentWord": "estratégico.",
       "body": "Somos la evolución de la contabilidad tradicional hacia un servicio cercano, tecnológico y profesional. Acompañamos a cada cliente en sus desafíos con soporte personalizado y siempre disponible.",
       "logoAlt": "Taxtic"
     },
     "values": {
       "eyebrow": "Seis principios",
-      "title": "Nuestros valores",
-      "accentWord": "valores"
+      "title": "Nuestros valores.",
+      "accentWord": "valores."
     },
     "disciplines": {
       "eyebrow": "Multidisciplinario",
-      "title": "Tres disciplinas. Un mismo equipo",
-      "accentWord": "Un mismo equipo",
+      "title": "Tres disciplinas. Un mismo equipo.",
+      "accentWord": "Un mismo equipo.",
       "items": [
         {
           "areaLabel": "▸ Área contable",
@@ -99,7 +99,7 @@
     },
     "location": {
       "eyebrow": "Ubicación",
-      "quote": "Visítanos",
+      "quote": "Visítanos.",
       "ctaLabel": "Cómo llegar",
       "imageAlt": "Profesional de Taxtic con tablet en oficina"
     }

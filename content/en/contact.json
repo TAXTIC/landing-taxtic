@@ -1,8 +1,8 @@
 {
   "hero": {
     "eyebrow": "Conversemos",
-    "title": "Contacto directo",
-    "accentWord": "directo",
+    "title": "Contacto directo.",
+    "accentWord": "directo.",
     "lead": "Cuéntanos en qué podemos ayudarte. Respondemos por WhatsApp en horario hábil y agendamos una primera conversación dentro de 24 horas."
   },
   "dataColumn": {
@@ -19,8 +19,8 @@
   },
   "map": {
     "eyebrow": "Cómo llegar",
-    "title": "Visítanos en Curicó",
-    "accentWord": "Curicó",
+    "title": "Nuestras oficinas en Curicó.",
+    "accentWord": "Curicó.",
     "badge": "Taxtic · Curicó"
   }
 }
