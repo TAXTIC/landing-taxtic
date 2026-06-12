@@ -88,7 +88,7 @@ export default async function ServiceSlugPage({ params }: Props) {
             </Reveal>
           </div>
           <div>
-            <Reveal>
+            <Reveal mode="scroll">
               <ProseWrapper>
                 <Content />
               </ProseWrapper>

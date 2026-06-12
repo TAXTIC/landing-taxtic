@@ -7,18 +7,15 @@ import type { ReactNode } from "react";
  * Animación de entrada: el contenido sube 36px y aparece (opacity + translateY,
  * 700ms, ease-out).
  *
- * - `mode="mount"` (default): anima al montar. Es lo correcto para contenido
- *   **above-the-fold**, que ya está en pantalla al navegar — coordina con la
- *   navegación sin segundas fases.
+ * - `mode="mount"` (default): anima al montar. Para contenido above-the-fold,
+ *   que ya está en pantalla al navegar — entrada inmediata y coordinada.
  * - `mode="scroll"`: anima cuando el elemento entra al viewport (`whileInView`).
- *   Para contenido **below-the-fold** que revela al hacer scroll, replicando el
- *   reveal-on-scroll del diseño. No usar en contenido above-the-fold: dispara
- *   igual que mount pero de forma asíncrona (el IntersectionObserver corre un
- *   tick después), lo que se nota como una entrada desacoplada.
+ *   Para contenido below-the-fold que revela al hacer scroll.
  *
  * `className` se pasa al `motion.div` (p. ej. cuando el contenedor también es
  * sticky). El doble montaje de página en navegación que antes duplicaba estas
- * entradas se resolvió a nivel transición (ver ADR-0023), no acá.
+ * entradas se resolvió a nivel de transición — un `template.tsx` remonta el
+ * árbol al cambiar de ruta — no en este componente.
  */
 const revealVariants: Variants = {
   hidden: { opacity: 0, y: 36 },
@@ -36,25 +33,14 @@ interface RevealProps {
 }
 
 export function Reveal({ children, className, mode = "mount" }: RevealProps) {
-  if (mode === "scroll") {
-    return (
-      <motion.div
-        className={className}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={revealVariants}
-      >
-        {children}
-      </motion.div>
-    );
-  }
-
+  const isScroll = mode === "scroll";
   return (
     <motion.div
       className={className}
       initial="hidden"
-      animate="visible"
+      animate={isScroll ? undefined : "visible"}
+      whileInView={isScroll ? "visible" : undefined}
+      viewport={isScroll ? { once: true, amount: 0.3 } : undefined}
       variants={revealVariants}
     >
       {children}
