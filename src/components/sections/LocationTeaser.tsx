@@ -42,7 +42,10 @@ export function LocationTeaser({
     const update = () => {
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
-      const prog = Math.min(1, Math.max(0, (vh - rect.top) / (vh + rect.height)));
+      const prog = Math.min(
+        1,
+        Math.max(0, (vh - rect.top) / (vh + rect.height)),
+      );
       img.style.transform = `translateY(${(prog - 0.5) * 60}px)`;
       ticking = false;
     };
@@ -121,9 +124,12 @@ export function LocationTeaser({
           ref={containerRef}
           className="relative aspect-[3/4] w-full overflow-hidden bg-(--surface-inverse)"
         >
-          <div ref={imageRef} className="absolute inset-x-0 -inset-y-[15%] will-change-transform">
+          <div
+            ref={imageRef}
+            className="absolute inset-x-0 -inset-y-[15%] will-change-transform"
+          >
             <Image
-              src="/images/businesswoman.jpg"
+              src="/images/businesswoman.webp"
               alt={imageAlt}
               fill
               className="object-cover"
