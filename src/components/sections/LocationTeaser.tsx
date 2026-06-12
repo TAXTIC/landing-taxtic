@@ -132,6 +132,7 @@ export function LocationTeaser({
               src="/images/businesswoman.webp"
               alt={imageAlt}
               fill
+              quality={85}
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
