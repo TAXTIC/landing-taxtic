@@ -1,13 +1,8 @@
 "use client";
 
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "motion/react";
+import { useReducedMotion } from "motion/react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { Section } from "@/components/common/Section";
 import type { Branch, SiteContent } from "@/content-lib/schemas/site.schema";
@@ -32,13 +27,32 @@ export function LocationTeaser({
   email,
   hoursDisplay,
 }: LocationTeaserProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    const img = imageRef.current;
+    if (reduce || !el || !img) return;
+    let ticking = false;
+    const update = () => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const prog = Math.min(1, Math.max(0, (vh - rect.top) / (vh + rect.height)));
+      img.style.transform = `translateY(${(prog - 0.5) * 60}px)`;
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [reduce]);
 
   return (
     <Section variant="light">
@@ -93,27 +107,18 @@ export function LocationTeaser({
           </ul>
           <Link
             href={"/contacto" as never}
-            className="group inline-flex w-fit items-center gap-2 text-sm font-medium uppercase tracking-[0.08em] text-(--foreground) hover:text-(--brand-orange)"
+            className="inline-flex w-fit items-center gap-2 border-b border-current pb-0.5 text-[13px] font-medium tracking-[0.02em] text-(--foreground) transition-[gap,color] duration-200 hover:gap-3.5 hover:text-(--brand-orange)"
           >
             {ctaLabel}
-            <span
-              aria-hidden="true"
-              className="transition-transform duration-200 group-hover:translate-x-1"
-            >
-              →
-            </span>
+            <span aria-hidden="true">→</span>
           </Link>
         </div>
 
         <div
-          ref={ref}
+          ref={containerRef}
           className="relative aspect-[3/4] w-full overflow-hidden bg-(--surface-inverse)"
-          style={{ position: "relative" }}
         >
-          <motion.div
-            className="absolute inset-x-0 -inset-y-[6%]"
-            style={reduce ? undefined : { y }}
-          >
+          <div ref={imageRef} className="absolute inset-x-0 -inset-y-[15%] will-change-transform">
             <Image
               src="/images/businesswoman.jpg"
               alt={imageAlt}
@@ -121,7 +126,7 @@ export function LocationTeaser({
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-          </motion.div>
+          </div>
         </div>
       </div>
     </Section>
