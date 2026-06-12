@@ -4,10 +4,13 @@ import { motion, type Variants } from "motion/react";
 import type { ReactNode } from "react";
 
 /**
- * Envoltorio de entrada reveal-on-scroll: el contenido sube 36px y aparece
- * cuando entra al viewport. Replica el patrón `.reveal` del diseño aprobado
- * (opacity + translateY, 700ms, ease-out, una sola vez). `className` se pasa
- * al `motion.div` para casos donde el elemento revelado también es sticky.
+ * Animación de entrada: el contenido sube 36px y aparece (opacity + translateY,
+ * 700ms, ease-out). Anima **on-mount** para coordinarse con el fade de
+ * `PageTransition` en navegación cliente; usar `whileInView` aquí produce una
+ * segunda fase asíncrona (el IntersectionObserver dispara después del fade de
+ * ruta) que se percibe como doble animación en contenido above-the-fold.
+ * `className` se pasa al `motion.div` para casos donde el contenedor revelado
+ * también es sticky.
  */
 const revealVariants: Variants = {
   hidden: { opacity: 0, y: 36 },
@@ -28,8 +31,7 @@ export function Reveal({ children, className }: RevealProps) {
     <motion.div
       className={className}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.15, margin: "0px 0px -8% 0px" }}
+      animate="visible"
       variants={revealVariants}
     >
       {children}
