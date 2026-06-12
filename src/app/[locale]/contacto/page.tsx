@@ -34,6 +34,7 @@ export default async function ContactoPage({ params }: Props) {
         <SectionHeader
           as="h1"
           display
+          eyebrowAccent
           eyebrow={contact.hero.eyebrow}
           title={contact.hero.title}
           accentWord={contact.hero.accentWord}
@@ -42,7 +43,7 @@ export default async function ContactoPage({ params }: Props) {
       </Section>
 
       <Section variant="light">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1.4fr] lg:gap-12">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
           <ContactDataColumn
             content={contact.dataColumn}
             branches={site.branches}
