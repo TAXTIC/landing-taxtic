@@ -34,7 +34,10 @@ export function LocationTeaser({
   useEffect(() => {
     const el = containerRef.current;
     const img = imageRef.current;
-    if (reduce || !el || !img) return;
+    if (reduce || !el || !img) {
+      if (img) img.style.transform = "";
+      return;
+    }
     let ticking = false;
     const update = () => {
       const rect = el.getBoundingClientRect();

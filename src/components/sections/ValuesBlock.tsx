@@ -63,7 +63,7 @@ export function ValuesBlock({
               key={value.title}
               variants={cardVariants}
               whileHover={{ y: -6, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-              className="group relative border-r border-b border-(--gray-700) px-8 pt-14 pb-10 transition-colors duration-300 hover:bg-white/[0.06]"
+              className="relative border-r border-b border-(--gray-700) px-8 pt-14 pb-10 transition-colors duration-300 hover:bg-white/[0.06]"
             >
               <span
                 className="absolute left-0 top-0 h-2 w-14 bg-(--brand-orange)"
