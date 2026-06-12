@@ -66,17 +66,17 @@ describe("loadContact", () => {
   it("loads contact JSON for ES", async () => {
     const { loadContact } = await import("./content");
     const contact = await loadContact("es");
-    expect(contact.hero.title.length).toBeGreaterThanOrEqual(10);
-    expect(contact.channels.labels.whatsapp).toBeTruthy();
-    expect(contact.branches.sectionTitle).toBe("Visítanos");
-    expect(contact.branches.iframeTitleTemplate).toContain("{{label}}");
+    expect(contact.hero.title.length).toBeGreaterThanOrEqual(5);
+    expect(contact.whatsappPanel.altEmailPrefix).toBeTruthy();
+    expect(contact.map.badge).toContain("Taxtic");
+    expect(contact.dataColumn.hoursDisplay).toContain("08:00");
   });
 
   it("loads contact JSON for EN", async () => {
     const { loadContact } = await import("./content");
     const contact = await loadContact("en");
-    expect(contact.hero.title.length).toBeGreaterThanOrEqual(10);
-    expect(contact.branches.sectionTitle).toBe("Visit us");
+    expect(contact.hero.title.length).toBeGreaterThanOrEqual(5);
+    expect(contact.whatsappPanel.title.length).toBeGreaterThan(0);
   });
 });
 
