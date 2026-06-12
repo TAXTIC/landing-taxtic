@@ -45,7 +45,12 @@ export function ManifestoBlock({
           </div>
 
           <div className="flex aspect-square items-center justify-center bg-(--surface-inverse) p-12">
-            <BrandLogo variant="principal" surface="dark" size="lg" alt={logoAlt} />
+            <BrandLogo
+              variant="principal"
+              surface="dark"
+              size="lg"
+              alt={logoAlt}
+            />
           </div>
         </div>
       </Reveal>

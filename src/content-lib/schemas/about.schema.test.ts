@@ -7,11 +7,26 @@ const validAbout = {
   metaDescription:
     "Conoce a Taxtic: firma de asesoría contable, tributaria y laboral con base en Curicó. Manifiesto, valores y equipo multidisciplinario.",
   values: [
-    { title: "Responsabilidad", description: "Respondemos en el tiempo y la forma prevista." },
-    { title: "Excelencia", description: "Buscamos el más alto estándar en cada etapa." },
-    { title: "Profesionalismo", description: "Aplicamos todas las competencias necesarias." },
-    { title: "Confianza", description: "Generamos una relación sólida y permanente." },
-    { title: "Integridad", description: "Cumplimos nuestros principios con ética." },
+    {
+      title: "Responsabilidad",
+      description: "Respondemos en el tiempo y la forma prevista.",
+    },
+    {
+      title: "Excelencia",
+      description: "Buscamos el más alto estándar en cada etapa.",
+    },
+    {
+      title: "Profesionalismo",
+      description: "Aplicamos todas las competencias necesarias.",
+    },
+    {
+      title: "Confianza",
+      description: "Generamos una relación sólida y permanente.",
+    },
+    {
+      title: "Integridad",
+      description: "Cumplimos nuestros principios con ética.",
+    },
     { title: "Compromiso", description: "Asumimos con seriedad cada entrega." },
   ],
 };
@@ -29,7 +44,10 @@ describe("aboutSchema", () => {
   it("rechaza un valor sin description", () => {
     const broken = {
       ...validAbout,
-      values: [{ title: "X", description: "corta" }, ...validAbout.values.slice(1)],
+      values: [
+        { title: "X", description: "corta" },
+        ...validAbout.values.slice(1),
+      ],
     };
     expect(() => aboutSchema.parse(broken)).toThrow();
   });
