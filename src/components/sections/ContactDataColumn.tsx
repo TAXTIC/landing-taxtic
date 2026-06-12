@@ -7,7 +7,13 @@ interface ContactDataColumnProps {
   email: SiteContent["channels"]["email"];
 }
 
-function Row({ label, children }: { label: string; children: React.ReactNode }) {
+function Row({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="border-b border-(--border) py-4">
       <div className="mb-1.5 font-mono text-[11px] uppercase tracking-[0.1em] text-(--foreground-subtle)">
@@ -28,7 +34,10 @@ export function ContactDataColumn({
   return (
     <div>
       <span className="label-upper inline-flex items-center gap-2.5 text-(--foreground-muted)">
-        <span className="inline-block size-2 bg-(--brand-orange)" aria-hidden="true" />
+        <span
+          className="inline-block size-2 bg-(--brand-orange)"
+          aria-hidden="true"
+        />
         {content.eyebrow}
       </span>
       <div className="mt-6">

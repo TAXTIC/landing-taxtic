@@ -29,7 +29,9 @@ export function WhatsAppPanel({
         className="absolute right-0 top-0 size-16 bg-(--brand-orange)"
         aria-hidden="true"
       />
-      <span className="label-upper text-(--brand-orange)">{content.eyebrow}</span>
+      <span className="label-upper text-(--brand-orange)">
+        {content.eyebrow}
+      </span>
       <h2 className="mt-4 font-display text-3xl font-normal uppercase leading-none tracking-tight text-(--brand-white) sm:text-4xl">
         {content.title}
       </h2>
