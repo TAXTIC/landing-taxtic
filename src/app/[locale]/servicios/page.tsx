@@ -35,6 +35,7 @@ export default async function ServicesIndexPage({ params }: Props) {
         <SectionHeader
           as="h1"
           display
+          eyebrowAccent
           eyebrow={t("indexHero.eyebrow")}
           title={t("indexHero.title")}
           accentWord={t("indexHero.accentWord")}
