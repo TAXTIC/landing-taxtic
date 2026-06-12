@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import siteJson from "../../../content/site.json";
 import { siteSchema } from "./site.schema";
 
 const validFixture = {
@@ -16,6 +17,8 @@ const validFixture = {
         country: "Chile",
         countryCode: "CL",
         mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!example",
+        lat: -34.9853,
+        lng: -71.2398,
       },
       phoneLandline: { tel: "+56752221800", display: "+56 75 2 221800" },
     },
@@ -29,6 +32,8 @@ const validFixture = {
         country: "Chile",
         countryCode: "CL",
         mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!other",
+        lat: -34.9836,
+        lng: -71.2361,
       },
       phoneLandline: { tel: "+56752405901", display: "+56 75 240 5901" },
     },
@@ -148,5 +153,15 @@ describe("siteSchema.canonicalUrl", () => {
     const bad = structuredClone(validFixture);
     bad.canonicalUrl = "not-a-url";
     expect(() => siteSchema.parse(bad)).toThrow();
+  });
+});
+
+describe("siteSchema — content/site.json real data", () => {
+  it("exige lat/lng numéricos en cada sede", () => {
+    const site = siteSchema.parse(siteJson);
+    for (const branch of site.branches) {
+      expect(typeof branch.address.lat).toBe("number");
+      expect(typeof branch.address.lng).toBe("number");
+    }
   });
 });
