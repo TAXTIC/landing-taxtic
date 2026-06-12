@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { JSX } from "react";
 
+import { Reveal } from "@/components/common/Reveal";
 import { Section } from "@/components/common/Section";
 import { CTASection } from "@/components/sections/CTASection";
 import { ProseWrapper } from "@/components/sections/ProseWrapper";
@@ -67,36 +68,46 @@ export default async function ServiceSlugPage({ params }: Props) {
   return (
     <>
       <Section variant="light">
-        <ServiceDetailHero service={service} />
-        <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-[1fr_2fr] lg:gap-16">
-          <ServiceCatalogNav
-            services={services.services.map((s) => ({
-              slug: s.slug,
-              title: s.title,
-            }))}
-            currentSlug={slug}
-            eyebrow={t("catalogNav.eyebrow")}
-            whatsappHeading={t("catalogNav.whatsappHeading")}
-            whatsappBody={t("catalogNav.whatsappBody")}
-            whatsapp={whatsapp}
-          />
-          <div>
+        <Reveal>
+          <ServiceDetailHero service={service} />
+        </Reveal>
+        <div className="mt-16 grid gap-10 lg:mt-24 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
+          <Reveal className="lg:sticky lg:top-30 lg:self-start">
+            <ServiceCatalogNav
+              services={services.services.map((s) => ({
+                slug: s.slug,
+                title: s.title,
+              }))}
+              currentSlug={slug}
+              eyebrow={t("catalogNav.eyebrow")}
+              whatsappHeading={t("catalogNav.whatsappHeading")}
+              whatsappBody={t("catalogNav.whatsappBody")}
+              whatsapp={whatsapp}
+            />
+          </Reveal>
+          <Reveal>
             <ProseWrapper>
               <Content />
             </ProseWrapper>
-            <div className="mt-16 border-t border-(--border) pt-10">
-              <span className="label-upper text-(--foreground-muted)">
+            <div className="mt-20 border-t border-(--border) pt-14">
+              <span className="label-upper inline-flex items-center gap-2.5 text-(--foreground-muted)">
+                <span
+                  className="inline-block size-2 bg-(--brand-orange)"
+                  aria-hidden="true"
+                />
                 {t("nextService")}
               </span>
-              <Link
-                href={`/servicios/${nextService.slug}` as never}
-                className="mt-3 inline-flex items-center gap-2 font-display text-2xl uppercase text-(--brand-orange) transition-opacity hover:opacity-80"
-              >
-                {nextService.title}
-                <span aria-hidden="true">→</span>
-              </Link>
+              <h3 className="mt-3 font-display text-[36px] font-normal uppercase leading-none tracking-[-0.01em]">
+                <Link
+                  href={`/servicios/${nextService.slug}` as never}
+                  className="inline-flex items-center gap-2 border-b border-current text-(--brand-orange) transition-opacity hover:opacity-80"
+                >
+                  {nextService.title}
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </h3>
             </div>
-          </div>
+          </Reveal>
         </div>
       </Section>
       <CTASection
