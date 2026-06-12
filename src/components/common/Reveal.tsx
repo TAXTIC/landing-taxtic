@@ -5,12 +5,20 @@ import type { ReactNode } from "react";
 
 /**
  * Animación de entrada: el contenido sube 36px y aparece (opacity + translateY,
- * 700ms, ease-out). Anima **on-mount** para coordinarse con el fade de
- * `PageTransition` en navegación cliente; usar `whileInView` aquí produce una
- * segunda fase asíncrona (el IntersectionObserver dispara después del fade de
- * ruta) que se percibe como doble animación en contenido above-the-fold.
- * `className` se pasa al `motion.div` para casos donde el contenedor revelado
- * también es sticky.
+ * 700ms, ease-out).
+ *
+ * - `mode="mount"` (default): anima al montar. Es lo correcto para contenido
+ *   **above-the-fold**, que ya está en pantalla al navegar — coordina con la
+ *   navegación sin segundas fases.
+ * - `mode="scroll"`: anima cuando el elemento entra al viewport (`whileInView`).
+ *   Para contenido **below-the-fold** que revela al hacer scroll, replicando el
+ *   reveal-on-scroll del diseño. No usar en contenido above-the-fold: dispara
+ *   igual que mount pero de forma asíncrona (el IntersectionObserver corre un
+ *   tick después), lo que se nota como una entrada desacoplada.
+ *
+ * `className` se pasa al `motion.div` (p. ej. cuando el contenedor también es
+ * sticky). El doble montaje de página en navegación que antes duplicaba estas
+ * entradas se resolvió a nivel transición (ver ADR-0023), no acá.
  */
 const revealVariants: Variants = {
   hidden: { opacity: 0, y: 36 },
@@ -24,9 +32,24 @@ const revealVariants: Variants = {
 interface RevealProps {
   children: ReactNode;
   className?: string;
+  mode?: "mount" | "scroll";
 }
 
-export function Reveal({ children, className }: RevealProps) {
+export function Reveal({ children, className, mode = "mount" }: RevealProps) {
+  if (mode === "scroll") {
+    return (
+      <motion.div
+        className={className}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={revealVariants}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
       className={className}

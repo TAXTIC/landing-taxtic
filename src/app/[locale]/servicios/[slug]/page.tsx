@@ -87,29 +87,33 @@ export default async function ServiceSlugPage({ params }: Props) {
               />
             </Reveal>
           </div>
-          <Reveal>
-            <ProseWrapper>
-              <Content />
-            </ProseWrapper>
-            <div className="mt-20 border-t border-(--border) pt-14">
-              <span className="label-upper inline-flex items-center gap-2.5 text-(--foreground-muted)">
-                <span
-                  className="inline-block size-2 bg-(--brand-orange)"
-                  aria-hidden="true"
-                />
-                {t("nextService")}
-              </span>
-              <h3 className="mt-3 font-display text-[36px] font-normal uppercase leading-none tracking-[-0.01em]">
-                <Link
-                  href={`/servicios/${nextService.slug}` as never}
-                  className="inline-flex items-center gap-2 border-b border-current text-(--brand-orange) transition-opacity hover:opacity-80"
-                >
-                  {nextService.title}
-                  <span aria-hidden="true">→</span>
-                </Link>
-              </h3>
-            </div>
-          </Reveal>
+          <div>
+            <Reveal>
+              <ProseWrapper>
+                <Content />
+              </ProseWrapper>
+            </Reveal>
+            <Reveal mode="scroll">
+              <div className="mt-20 border-t border-(--border) pt-14">
+                <span className="label-upper inline-flex items-center gap-2.5 text-(--foreground-muted)">
+                  <span
+                    className="inline-block size-2 bg-(--brand-orange)"
+                    aria-hidden="true"
+                  />
+                  {t("nextService")}
+                </span>
+                <h3 className="mt-3 font-display text-[36px] font-normal uppercase leading-none tracking-[-0.01em]">
+                  <Link
+                    href={`/servicios/${nextService.slug}` as never}
+                    className="inline-flex items-center gap-2 border-b border-current text-(--brand-orange) transition-opacity hover:opacity-80"
+                  >
+                    {nextService.title}
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </h3>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </Section>
       <CTASection
