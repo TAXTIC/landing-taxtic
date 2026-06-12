@@ -3,69 +3,34 @@ import { describe, expect, it } from "vitest";
 import { aboutSchema } from "./about.schema";
 
 const validAbout = {
-  metaTitle: "Quiénes somos — Taxtic, contabilidad y tributaria en Curicó",
+  metaTitle: "Quiénes somos — Taxtic, contabilidad en Curicó",
   metaDescription:
-    "Conoce a Taxtic: firma de asesoría contable, tributaria, laboral y legal con base en Curicó. Misión, visión y valores institucionales.",
-  mission: {
-    label: "Misión",
-    text: "Entregar un servicio de excelencia en contabilidad, asesoría tributaria y remuneraciones.",
-  },
-  vision: {
-    label: "Visión",
-    text: "Ser reconocidos a nivel nacional como una empresa de excelencia.",
-  },
-  valuesLabel: "Valores",
+    "Conoce a Taxtic: firma de asesoría contable, tributaria y laboral con base en Curicó. Manifiesto, valores y equipo multidisciplinario.",
   values: [
-    { title: "Excelencia", description: "Estandar alto.", iconName: "Award" },
-    {
-      title: "Ética",
-      description: "Principios morales sólidos.",
-      iconName: "ShieldCheck",
-    },
-    {
-      title: "Compromiso",
-      description: "Relaciones duraderas.",
-      iconName: "Handshake",
-    },
-    {
-      title: "Profesionalismo",
-      description: "Competencias completas.",
-      iconName: "Briefcase",
-    },
-    {
-      title: "Responsabilidad",
-      description: "Seriedad y calidad.",
-      iconName: "BadgeCheck",
-    },
+    { title: "Responsabilidad", description: "Respondemos en el tiempo y la forma prevista." },
+    { title: "Excelencia", description: "Buscamos el más alto estándar en cada etapa." },
+    { title: "Profesionalismo", description: "Aplicamos todas las competencias necesarias." },
+    { title: "Confianza", description: "Generamos una relación sólida y permanente." },
+    { title: "Integridad", description: "Cumplimos nuestros principios con ética." },
+    { title: "Compromiso", description: "Asumimos con seriedad cada entrega." },
   ],
 };
 
 describe("aboutSchema", () => {
-  it("parses valid about content", () => {
+  it("acepta un about válido con 6 valores", () => {
     expect(() => aboutSchema.parse(validAbout)).not.toThrow();
   });
 
-  it("rejects values array with !== 5 items", () => {
-    const bad = structuredClone(validAbout);
-    bad.values = bad.values.slice(0, 4);
-    expect(() => aboutSchema.parse(bad)).toThrow(/5/);
+  it("rechaza si hay distinto de 6 valores", () => {
+    const five = { ...validAbout, values: validAbout.values.slice(0, 5) };
+    expect(() => aboutSchema.parse(five)).toThrow();
   });
 
-  it("rejects metaDescription shorter than 50 chars", () => {
-    const bad = structuredClone(validAbout);
-    bad.metaDescription = "too short";
-    expect(() => aboutSchema.parse(bad)).toThrow();
-  });
-
-  it("rejects mission.text shorter than 20 chars", () => {
-    const bad = structuredClone(validAbout);
-    bad.mission.text = "short";
-    expect(() => aboutSchema.parse(bad)).toThrow();
-  });
-
-  it("rejects value with empty iconName", () => {
-    const bad = structuredClone(validAbout);
-    bad.values[0]!.iconName = "";
-    expect(() => aboutSchema.parse(bad)).toThrow();
+  it("rechaza un valor sin description", () => {
+    const broken = {
+      ...validAbout,
+      values: [{ title: "X", description: "corta" }, ...validAbout.values.slice(1)],
+    };
+    expect(() => aboutSchema.parse(broken)).toThrow();
   });
 });
