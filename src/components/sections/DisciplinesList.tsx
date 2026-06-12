@@ -61,7 +61,10 @@ export function DisciplinesList({
             <motion.article
               key={item.title}
               variants={cardVariants}
-              whileHover={{ y: -5, transition: { duration: 0.28, ease: [0.16, 1, 0.3, 1] } }}
+              whileHover={{
+                y: -5,
+                transition: { duration: 0.28, ease: [0.16, 1, 0.3, 1] },
+              }}
               className="flex flex-col gap-3 border border-(--glass-border) bg-(--glass-bg) p-8 transition-[background-color,box-shadow] duration-300 hover:bg-(--surface-muted) hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.10)]"
               style={{ backdropFilter: "blur(var(--glass-blur))" }}
             >

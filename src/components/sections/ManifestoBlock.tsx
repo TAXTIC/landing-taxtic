@@ -26,7 +26,10 @@ export function ManifestoBlock({
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="flex flex-col gap-6">
             <span className="label-upper inline-flex items-center gap-2.5 text-(--foreground-muted)">
-              <span className="inline-block size-2 bg-(--brand-orange)" aria-hidden="true" />
+              <span
+                className="inline-block size-2 bg-(--brand-orange)"
+                aria-hidden="true"
+              />
               {eyebrow}
             </span>
             <h2 className="font-display font-normal uppercase tracking-tight text-3xl leading-[1.05] sm:text-4xl lg:text-5xl text-(--foreground)">

@@ -62,7 +62,10 @@ export function ValuesBlock({
             <motion.div
               key={value.title}
               variants={cardVariants}
-              whileHover={{ y: -6, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+              whileHover={{
+                y: -6,
+                transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
+              }}
               className="relative border-r border-b border-(--gray-700) px-8 pt-14 pb-10 transition-colors duration-300 hover:bg-white/[0.06]"
             >
               <span
