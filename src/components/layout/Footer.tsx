@@ -117,7 +117,7 @@ export function Footer({ siteData }: FooterProps) {
         </div>
 
         <hr className="mt-12 border-(--gray-700)" />
-        <p className="mt-6 text-xs text-(--gray-300)">
+        <p className="mt-6 font-mono text-xs uppercase tracking-[0.06em] text-(--gray-400)">
           © {year} Taxtic. {tFooter("rights")}
         </p>
       </div>
