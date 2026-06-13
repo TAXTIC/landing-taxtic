@@ -23,6 +23,11 @@ interface HeroProps {
   ctaSecondary: ResolvedCta;
 }
 
+// LQIP de hero-bg.webp: blur instantáneo mientras carga la imagen optimizada.
+// Regenerar si cambia la imagen del hero.
+const HERO_BLUR_DATA_URL =
+  "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAACwAwCdASoUAAoAPu1iqk2ppaQiMAgBMB2JZQDKABSnhx/0+fCuAAD+4k+W22JkFSlBRfOFHa5bCFaxR2OTm17HKUd3VpxwFQGx2ydhhz3EP3mS7T99E2KrQcEUcEh8RwTQhotNzacJnfKIpMgdAAAA";
+
 const containerVariants: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.18, delayChildren: 0.1 } },
@@ -66,6 +71,8 @@ export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
           sizes="100vw"
           quality={85}
           priority
+          placeholder="blur"
+          blurDataURL={HERO_BLUR_DATA_URL}
           className="object-cover object-[right_center] scale-110"
         />
       </motion.div>
