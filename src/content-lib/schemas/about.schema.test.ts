@@ -2,6 +2,21 @@ import { describe, expect, it } from "vitest";
 
 import { aboutSchema } from "./about.schema";
 
+const validHistory = {
+  lede: "Una década construyendo soluciones tributarias.",
+  milestones: [
+    {
+      year: "2015",
+      title: "Nuestros orígenes",
+      paragraphs: [
+        "TAXTIC nace en 2015 en Curicó, fundada por dos profesionales con trayectoria previa en el Servicio de Impuestos Internos.",
+      ],
+    },
+  ],
+  closing:
+    "El camino recorrido desde 2015 transformó aquel proyecto inicial de dos personas en una consultora con presencia en la zona centro.",
+};
+
 const validAbout = {
   metaTitle: "Quiénes somos — Taxtic, contabilidad en Curicó",
   metaDescription:
@@ -29,10 +44,11 @@ const validAbout = {
     },
     { title: "Compromiso", description: "Asumimos con seriedad cada entrega." },
   ],
+  history: validHistory,
 };
 
 describe("aboutSchema", () => {
-  it("acepta un about válido con 6 valores", () => {
+  it("acepta un about válido con 6 valores e historia", () => {
     expect(() => aboutSchema.parse(validAbout)).not.toThrow();
   });
 
@@ -41,7 +57,7 @@ describe("aboutSchema", () => {
     expect(() => aboutSchema.parse(five)).toThrow();
   });
 
-  it("rechaza un valor sin description", () => {
+  it("rechaza un valor con description demasiado corta", () => {
     const broken = {
       ...validAbout,
       values: [
@@ -50,5 +66,29 @@ describe("aboutSchema", () => {
       ],
     };
     expect(() => aboutSchema.parse(broken)).toThrow();
+  });
+
+  it("rechaza un about sin historia", () => {
+    const { history: _history, ...withoutHistory } = validAbout;
+    expect(() => aboutSchema.parse(withoutHistory)).toThrow();
+  });
+
+  it("rechaza una historia sin hitos", () => {
+    const empty = {
+      ...validAbout,
+      history: { ...validHistory, milestones: [] },
+    };
+    expect(() => aboutSchema.parse(empty)).toThrow();
+  });
+
+  it("rechaza un hito sin párrafos", () => {
+    const noParagraphs = {
+      ...validAbout,
+      history: {
+        ...validHistory,
+        milestones: [{ year: "2015", title: "Orígenes", paragraphs: [] }],
+      },
+    };
+    expect(() => aboutSchema.parse(noParagraphs)).toThrow();
   });
 });
