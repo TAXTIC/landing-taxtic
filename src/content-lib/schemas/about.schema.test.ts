@@ -69,7 +69,7 @@ describe("aboutSchema", () => {
   });
 
   it("rechaza un about sin historia", () => {
-    const { history: _history, ...withoutHistory } = validAbout;
+    const withoutHistory = { ...validAbout, history: undefined };
     expect(() => aboutSchema.parse(withoutHistory)).toThrow();
   });
 
