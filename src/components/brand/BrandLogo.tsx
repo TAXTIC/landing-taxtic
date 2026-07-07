@@ -11,7 +11,12 @@ interface BrandLogoProps {
   variant?: Variant;
   surface?: Surface;
   tone?: Tone;
-  size?: Size;
+  /**
+   * Token de escala (`sm`–`xl`) o altura exacta en px, para superficies cuyo
+   * diseño fija dimensiones precisas (p. ej. el logo de 180px de ancho del
+   * footer). El valor numérico es escape-hatch consciente — preferir tokens.
+   */
+  size?: Size | number;
   /**
    * Controls the padding wrapper that enforces the brand-manual clear-space rule.
    * - `"manual"` (default): 0.5X on standard surfaces, 1.0X on photos — full manual compliance.
@@ -93,7 +98,7 @@ export function BrandLogo({
     enforcedTone === "color" && variant !== "principal"
       ? "black"
       : enforcedTone;
-  const height = sizePx[size];
+  const height = typeof size === "number" ? size : sizePx[size];
   const safeAreaPx =
     clearSpace === "compact"
       ? 0
