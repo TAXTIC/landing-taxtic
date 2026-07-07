@@ -8,6 +8,7 @@ import {
   type Discipline,
   DisciplinesList,
 } from "@/components/sections/DisciplinesList";
+import { HistoryTimeline } from "@/components/sections/HistoryTimeline";
 import { LocationTeaser } from "@/components/sections/LocationTeaser";
 import { ManifestoBlock } from "@/components/sections/ManifestoBlock";
 import { ValuesBlock } from "@/components/sections/ValuesBlock";
@@ -59,6 +60,8 @@ export default async function NosotrosPage({ params }: Props) {
         body={t("manifesto.body")}
         logoAlt={t("manifesto.logoAlt")}
       />
+
+      <HistoryTimeline eyebrow={t("history.eyebrow")} history={about.history} />
 
       <ValuesBlock
         eyebrow={t("values.eyebrow")}
