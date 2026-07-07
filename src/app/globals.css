@@ -294,6 +294,11 @@
     text-decoration: none;
   }
 
+  ::selection {
+    background: var(--brand-orange);
+    color: var(--brand-white);
+  }
+
   @media (min-width: 1024px) {
     :root {
       --header-h: 4rem;
