@@ -1,15 +1,21 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import { motion, type Variants } from "motion/react";
+import { ArrowDown, ArrowRight } from "lucide-react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  type Variants,
+} from "motion/react";
 import Image from "next/image";
 
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { Section } from "@/components/common/Section";
-import { StatInline } from "@/components/sections/StatInline";
 import { Button } from "@/components/ui/button";
 import type { ResolvedCta } from "@/content-lib/schemas/cta.schema";
 import type { HomeContent } from "@/content-lib/schemas/home.schema";
-import { Link } from "@/i18n/navigation";
+import { track } from "@/lib/analytics";
 
 interface HeroProps {
   content: Omit<HomeContent["hero"], "ctaPrimary" | "ctaSecondary">;
@@ -17,128 +23,125 @@ interface HeroProps {
   ctaSecondary: ResolvedCta;
 }
 
+// LQIP de hero-bg.webp: blur instantáneo mientras carga la imagen optimizada.
+// Regenerar si cambia la imagen del hero.
+const HERO_BLUR_DATA_URL =
+  "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAACwAwCdASoUAAoAPu1iqk2ppaQiMAgBMB2JZQDKABSnhx/0+fCuAAD+4k+W22JkFSlBRfOFHa5bCFaxR2OTm17HKUd3VpxwFQGx2ydhhz3EP3mS7T99E2KrQcEUcEh8RwTQhotNzacJnfKIpMgdAAAA";
+
 const containerVariants: Variants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.08 },
-  },
+  visible: { transition: { staggerChildren: 0.18, delayChildren: 0.1 } },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 8 },
+  hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
-function parseStatValue(raw: string): { numericValue: number; suffix: string } {
-  const match = raw.match(/^(\d+)(.*)$/);
-  if (!match) return { numericValue: 0, suffix: raw };
-  return { numericValue: Number(match[1]), suffix: match[2] ?? "" };
-}
-
 export function Hero({ content, ctaPrimary, ctaSecondary }: HeroProps) {
-  const visibleStats = content.stats.filter((s) => s.verified);
+  const reduceMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+  const bgY = useTransform(scrollY, [0, 600], ["0%", "18%"]);
+  const contentY = useTransform(scrollY, [0, 600], [0, -80]);
+  const contentOpacity = useTransform(scrollY, [0, 380], [1, 0]);
+
+  function handleWhatsApp() {
+    track("whatsapp_click", { position: "hero" });
+  }
 
   return (
-    <Section variant="light" id="hero">
+    <Section
+      variant="light"
+      id="hero"
+      bleed
+      className="relative isolate -mt-(--nav-space) flex min-h-screen items-center overflow-hidden"
+    >
       <motion.div
-        className="grid gap-10 lg:grid-cols-12 items-center"
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
+        className="absolute inset-0 -z-10"
+        style={reduceMotion ? undefined : { y: bgY }}
       >
-        <div className="lg:col-span-7 flex flex-col gap-6">
-          <motion.div className="flex flex-col gap-4" variants={itemVariants}>
-            <span className="label-upper text-(--brand-orange)">
-              {content.eyebrow}
-            </span>
-            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold">
-              Partner
-              <br />
-              Estratégico
-              <span className="text-(--brand-orange)">.</span>
-            </h1>
-            <p className="text-lg leading-normal text-(--foreground-muted) max-w-[38rem]">
-              {content.subtitle}
-            </p>
-          </motion.div>
-
-          <motion.div className="flex flex-wrap gap-3" variants={itemVariants}>
-            <Button variant="primary-orange" size="lg" asChild>
-              {ctaPrimary.external ? (
-                <a
-                  href={ctaPrimary.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {ctaPrimary.label}
-                  <ArrowRight size={20} strokeWidth={1.75} />
-                </a>
-              ) : (
-                <Link href={ctaPrimary.href}>
-                  {ctaPrimary.label}
-                  <ArrowRight size={20} strokeWidth={1.75} />
-                </Link>
-              )}
-            </Button>
-
-            <Button variant="outline-dark" size="lg" asChild>
-              {ctaSecondary.external ? (
-                <a
-                  href={ctaSecondary.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {ctaSecondary.label}
-                </a>
-              ) : (
-                <a href={ctaSecondary.href}>{ctaSecondary.label}</a>
-              )}
-            </Button>
-          </motion.div>
-
-          {visibleStats.length > 0 && (
-            <motion.div
-              className="flex flex-wrap gap-x-8 gap-y-4 pt-4 border-t border-(--border)"
-              variants={itemVariants}
-            >
-              {visibleStats.map((stat) => {
-                const parsed = parseStatValue(stat.value);
-                return (
-                  <StatInline
-                    key={stat.label}
-                    numericValue={parsed.numericValue}
-                    suffix={parsed.suffix}
-                    label={stat.label}
-                  />
-                );
-              })}
-            </motion.div>
-          )}
-        </div>
-
-        <motion.div className="lg:col-span-5" variants={itemVariants}>
-          <div className="relative">
-            <div
-              className="absolute inset-0 translate-x-3 translate-y-3 bg-(--brand-orange-soft)"
-              aria-hidden="true"
-            />
-            <Image
-              src={content.image.src}
-              alt={content.image.alt}
-              width={1200}
-              height={900}
-              sizes="(min-width: 1024px) 41vw, 100vw"
-              quality={85}
-              priority
-              className="relative w-full h-auto object-cover"
-            />
-          </div>
-        </motion.div>
+        <Image
+          src={content.image.src}
+          alt={content.image.alt}
+          fill
+          sizes="100vw"
+          quality={85}
+          priority
+          placeholder="blur"
+          blurDataURL={HERO_BLUR_DATA_URL}
+          className="object-cover object-[right_center] scale-110"
+        />
       </motion.div>
+      <div
+        className="absolute inset-0 -z-10"
+        style={{ backgroundImage: "var(--hero-photo-overlay)" }}
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto w-full max-w-(--container-max) px-(--space-section-x-mobile) lg:px-(--space-section-x-desktop)">
+        <motion.div
+          className="flex max-w-[480px] flex-col gap-14 py-24 lg:ml-[min(18vw,220px)]"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          style={
+            reduceMotion ? undefined : { y: contentY, opacity: contentOpacity }
+          }
+        >
+          <motion.div
+            variants={itemVariants}
+            className="w-[min(402px,72vw)] [&_img]:h-auto [&_img]:w-full"
+          >
+            <BrandLogo
+              variant="principal"
+              surface="light"
+              tone="color"
+              clearSpace="compact"
+              size="xl"
+              preload
+            />
+          </motion.div>
+
+          <motion.p
+            variants={itemVariants}
+            className="max-w-[420px] text-lg font-normal leading-normal text-(--foreground)"
+          >
+            {content.lede}
+          </motion.p>
+
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col gap-3.5 sm:flex-row"
+          >
+            <Button variant="primary-orange" size="lg" asChild>
+              <a
+                href={ctaPrimary.href}
+                target={ctaPrimary.external ? "_blank" : undefined}
+                rel={ctaPrimary.external ? "noopener noreferrer" : undefined}
+                onClick={handleWhatsApp}
+              >
+                {ctaPrimary.label}
+                <ArrowRight size={20} strokeWidth={1.75} aria-hidden="true" />
+              </a>
+            </Button>
+            <Button
+              variant="outline-dark"
+              size="lg"
+              className="border-(--brand-black) hover:border-(--brand-black) hover:bg-(--brand-black) hover:text-(--brand-white)"
+              asChild
+            >
+              <a href={ctaSecondary.href}>
+                {ctaSecondary.label}
+                <ArrowDown size={20} strokeWidth={1.75} aria-hidden="true" />
+              </a>
+            </Button>
+          </motion.div>
+        </motion.div>
+      </div>
     </Section>
   );
 }

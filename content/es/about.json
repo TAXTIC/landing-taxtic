@@ -1,40 +1,51 @@
 {
   "metaTitle": "Quiénes somos — Taxtic, contabilidad y tributaria en Curicó",
-  "metaDescription": "Conoce a Taxtic: firma de asesoría contable, tributaria, laboral y legal con base en Curicó. Misión, visión y valores institucionales.",
-  "mission": {
-    "label": "Misión",
-    "text": "Entregar un servicio de excelencia en contabilidad, asesoría tributaria y remuneraciones, asegurando la creación de valor para clientes, accionistas y la comunidad, basado en el profesionalismo, integridad y responsabilidad."
-  },
-  "vision": {
-    "label": "Visión",
-    "text": "Ser reconocidos a nivel nacional como una empresa de excelencia en asesoría contable, gestión tributaria y recursos humanos, entregando soluciones prácticas adaptadas a cada cliente."
-  },
-  "valuesLabel": "Valores",
+  "metaDescription": "Conoce a Taxtic: asesoría contable, tributaria y laboral en Curicó. Nuestra historia desde 2015, manifiesto, valores y equipo multidisciplinario.",
   "values": [
     {
+      "title": "Responsabilidad",
+      "description": "Respondemos a los requerimientos de nuestros clientes en el tiempo y la forma prevista. Sin excusas, sin demoras."
+    },
+    {
       "title": "Excelencia",
-      "description": "Buscamos el más alto estándar en cada etapa del proceso.",
-      "iconName": "Award"
-    },
-    {
-      "title": "Ética e integridad",
-      "description": "Actuamos con principios morales sólidos, generando confianza.",
-      "iconName": "ShieldCheck"
-    },
-    {
-      "title": "Compromiso",
-      "description": "Construimos relaciones duraderas y colaborativas.",
-      "iconName": "Handshake"
+      "description": "Buscamos el más alto estándar en cada etapa del proceso, gestionando oportunamente los requerimientos con sello profesional."
     },
     {
       "title": "Profesionalismo",
-      "description": "Aplicamos todas las competencias y herramientas necesarias para un desempeño óptimo.",
-      "iconName": "Briefcase"
+      "description": "Aplicamos todas las competencias y herramientas necesarias para el óptimo desempeño de nuestra labor."
     },
     {
-      "title": "Responsabilidad",
-      "description": "Asumimos con seriedad nuestro trabajo, garantizando la más alta calidad de servicio.",
-      "iconName": "BadgeCheck"
+      "title": "Confianza",
+      "description": "Generamos una relación sólida, permanente y colaborativa, velando por el cumplimiento de los compromisos adquiridos."
+    },
+    {
+      "title": "Integridad",
+      "description": "Nos enfocamos en el cumplimiento de nuestros principios y valores con una ética destinada a generar confianza permanente con nuestros clientes."
+    },
+    {
+      "title": "Compromiso",
+      "description": "Asumimos con seriedad nuestro trabajo a fin de brindar la más alta calidad de servicio en cada entrega."
     }
-  ]
+  ],
+  "history": {
+    "lede": "Una década construyendo soluciones tributarias.",
+    "milestones": [
+      {
+        "year": "2015",
+        "title": "Nuestros orígenes",
+        "paragraphs": [
+          "TAXTIC nace en 2015 en Curicó, fundada por Ricardo Lorca y José Almonacid, dos profesionales con una trayectoria previa en el Servicio de Impuestos Internos. Su experiencia les permitió conocer de primera mano las dificultades que enfrentaban los contribuyentes ante un sistema tributario complejo y cambiante. Así surgió nuestra motivación fundacional: ofrecer un servicio con soporte técnico riguroso y cercano."
+        ]
+      },
+      {
+        "year": "2016—",
+        "title": "Crecimiento y consolidación",
+        "paragraphs": [
+          "Los primeros años estuvieron marcados por la conformación de un equipo dedicado a la resolución de problemas contables y de cumplimiento tributario. Progresivamente, se fueron ampliando el alcance de nuestros servicios, incorporando áreas de contabilidad especializada, soporte en recursos humanos, asesoría tributaria y legal, conformando una oferta verdaderamente integral. Este crecimiento nos impulsó a explorar la apertura de una nueva sucursal, reflejando la consolidación del proyecto en el Maule.",
+          "La masificación del trabajo remoto y las herramientas digitales permitieron expandir nuestros servicios a todo el país mediante alianzas estratégicas, sin depender exclusivamente de oficinas físicas. Transformamos una contracción forzada en un nuevo modelo de crecimiento, más flexible y de alcance nacional. Hoy, TAXTIC cuenta con un equipo de 40 profesionales."
+        ]
+      }
+    ],
+    "closing": "El camino recorrido desde 2015 ha transformado aquel proyecto inicial de dos personas en una consultora de prestigio con fuerte presencia en la zona centro del país, manteniendo siempre el propósito original: ser el socio estratégico que apoya el crecimiento sostenible de sus clientes."
+  }
 }

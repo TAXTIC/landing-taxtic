@@ -1,10 +1,9 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion, type Variants } from "motion/react";
 
 import { Section } from "@/components/common/Section";
-import { SectionHeader } from "@/components/common/SectionHeader";
 import { Button } from "@/components/ui/button";
 import type { ResolvedCta } from "@/content-lib/schemas/cta.schema";
 import type { HomeContent } from "@/content-lib/schemas/home.schema";
@@ -16,8 +15,12 @@ interface CTASectionProps {
 }
 
 const fadeUpVariants: Variants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 36 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.2, 0.8, 0.2, 1] },
+  },
 };
 
 export function CTASection({ content, button }: CTASectionProps) {
@@ -26,20 +29,22 @@ export function CTASection({ content, button }: CTASectionProps) {
   }
 
   return (
-    <Section variant="orange-soft" id="contacto">
+    <Section variant="light" id="contacto">
       <motion.div
-        className="max-w-[600px] mx-auto text-center"
+        className="bg-(--surface-inverse) px-6 py-30 text-center sm:px-20"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeUpVariants}
       >
-        <SectionHeader
-          title={content.title}
-          subtitle={content.subtitle}
-          align="center"
-        />
-        <div className="mt-8">
+        <span className="label-upper text-(--brand-orange)">Conversemos</span>
+        <h2 className="mx-auto mt-4 max-w-[18ch] font-display font-normal uppercase text-4xl leading-[0.98] tracking-tight text-(--brand-white) sm:text-5xl lg:text-display-l">
+          {content.title}
+        </h2>
+        <p className="mx-auto mt-6 max-w-[34rem] text-lg leading-normal text-(--gray-300)">
+          {content.subtitle}
+        </p>
+        <div className="mt-9">
           <Button variant="primary-orange" size="lg" asChild>
             <a
               href={button.href}
@@ -47,8 +52,8 @@ export function CTASection({ content, button }: CTASectionProps) {
               rel={button.external ? "noopener noreferrer" : undefined}
               onClick={handleClick}
             >
-              <MessageCircle size={20} strokeWidth={1.75} aria-hidden="true" />
               {button.label}
+              <ArrowRight size={20} strokeWidth={1.75} aria-hidden="true" />
             </a>
           </Button>
         </div>

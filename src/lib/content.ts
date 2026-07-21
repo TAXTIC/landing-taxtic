@@ -6,10 +6,6 @@ import {
   aboutSchema,
 } from "@/content-lib/schemas/about.schema";
 import {
-  type AISectionContent,
-  aiSectionSchema,
-} from "@/content-lib/schemas/ai-section.schema";
-import {
   type ContactContent,
   contactSchema,
 } from "@/content-lib/schemas/contact.schema";
@@ -29,6 +25,10 @@ import {
   type SiteContent,
   siteSchema,
 } from "@/content-lib/schemas/site.schema";
+import {
+  type TechSectionContent,
+  techSectionSchema,
+} from "@/content-lib/schemas/tech-section.schema";
 
 export type Locale = "es" | "en";
 
@@ -50,11 +50,6 @@ export async function loadServicesIndex(
 ): Promise<ServicesIndex> {
   const raw = await readJson<unknown>(`${locale}/services/_index.json`);
   return servicesIndexSchema.parse(raw);
-}
-
-export async function loadAISection(locale: Locale): Promise<AISectionContent> {
-  const raw = await readJson<unknown>(`${locale}/ai-section.json`);
-  return aiSectionSchema.parse(raw);
 }
 
 export async function loadProcess(locale: Locale): Promise<ProcessContent> {
@@ -82,4 +77,11 @@ export async function loadAbout(locale: Locale): Promise<AboutContent> {
 export async function loadContact(locale: Locale): Promise<ContactContent> {
   const raw = await readJson<unknown>(`${locale}/contact.json`);
   return contactSchema.parse(raw);
+}
+
+export async function loadTechSection(
+  locale: Locale,
+): Promise<TechSectionContent> {
+  const raw = await readJson<unknown>(`${locale}/tech-section.json`);
+  return techSectionSchema.parse(raw);
 }

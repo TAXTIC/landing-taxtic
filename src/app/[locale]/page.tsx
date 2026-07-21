@@ -3,19 +3,18 @@ import { setRequestLocale } from "next-intl/server";
 import { Section } from "@/components/common/Section";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { AboutTeaser } from "@/components/sections/AboutTeaser";
-import { AISection } from "@/components/sections/AISection";
 import { CTASection } from "@/components/sections/CTASection";
 import { Hero } from "@/components/sections/Hero";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
-import { ServicesGrid } from "@/components/sections/ServicesGrid";
-import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n/navigation";
+import { ServicesShowcase } from "@/components/sections/ServicesShowcase";
+import { StatsStrip } from "@/components/sections/StatsStrip";
+import { TechSection } from "@/components/sections/TechSection";
 import {
-  loadAISection,
   loadHome,
   loadProcess,
   loadServicesIndex,
   loadSite,
+  loadTechSection,
   type Locale,
 } from "@/lib/content";
 import { resolveCtaHref } from "@/lib/cta";
@@ -30,13 +29,17 @@ export default async function Home({ params }: Props) {
 
   const locale = rawLocale as Locale;
 
-  const [home, services, aiSection, process, site] = await Promise.all([
+  const [home, services, techSection, process, site] = await Promise.all([
     loadHome(locale),
     loadServicesIndex(locale),
-    loadAISection(locale),
+    loadTechSection(locale),
     loadProcess(locale),
     loadSite(),
   ]);
+
+  const homeServices = home.servicesTeaser.serviceSlugs
+    .map((slug) => services.services.find((s) => s.slug === slug))
+    .filter((s): s is (typeof services.services)[number] => Boolean(s));
 
   const heroCtaPrimary = resolveCtaHref(home.hero.ctaPrimary, site);
   const heroCtaSecondary = resolveCtaHref(home.hero.ctaSecondary, site);
@@ -50,24 +53,23 @@ export default async function Home({ params }: Props) {
         ctaPrimary={heroCtaPrimary}
         ctaSecondary={heroCtaSecondary}
       />
-      <Section variant="muted" id="servicios">
+      <StatsStrip stats={home.stats} />
+      <Section variant="light" id="servicios">
         <SectionHeader
           eyebrow={home.servicesTeaser.eyebrow}
           title={home.servicesTeaser.title}
-          align="center"
+          align="left"
+          display
+          eyebrowAccent
         />
-        <div className="mt-10">
-          <ServicesGrid services={services.services} />
-        </div>
-        <div className="mt-10 flex justify-center">
-          <Button variant="ghost-light" asChild>
-            <Link href={"/servicios" as never}>
-              {home.servicesTeaser.seeAllLabel} →
-            </Link>
-          </Button>
+        <div className="mt-12">
+          <ServicesShowcase
+            services={homeServices}
+            seeDetailLabel={home.servicesTeaser.seeDetailLabel}
+          />
         </div>
       </Section>
-      <AISection content={aiSection} />
+      <TechSection content={techSection} />
       <ProcessSteps content={process} />
       <AboutTeaser content={home.aboutTeaser} cta={aboutCta} />
       <CTASection content={home.cta} button={ctaButton} />

@@ -1,54 +1,65 @@
-import { Check } from "lucide-react";
-
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { Section } from "@/components/common/Section";
-import { SectionHeader } from "@/components/common/SectionHeader";
-import { Button } from "@/components/ui/button";
 import type { ResolvedCta } from "@/content-lib/schemas/cta.schema";
 import type { HomeContent } from "@/content-lib/schemas/home.schema";
 import { Link } from "@/i18n/navigation";
+import { splitOnWord } from "@/lib/text";
 
 interface AboutTeaserProps {
   content: Omit<HomeContent["aboutTeaser"], "cta">;
   cta: ResolvedCta;
 }
 
-export function AboutTeaser({ content, cta }: AboutTeaserProps) {
-  if (!content.highlights.length) return null;
+/** Parte la frase antes de la palabra acentuada y la pinta en naranjo. */
+function renderQuote(quote: string, accentWord: string) {
+  const parts = splitOnWord(quote, accentWord);
+  if (!parts) return quote;
+  return (
+    <>
+      {parts.before.trimEnd()}
+      <br />
+      <span className="text-(--brand-orange)">{accentWord}</span>
+      {parts.after}
+    </>
+  );
+}
 
+export function AboutTeaser({ content, cta }: AboutTeaserProps) {
   return (
     <Section variant="light" id="nosotros">
-      <div className="max-w-(--container-prose) mx-auto">
-        <SectionHeader
-          eyebrow={content.eyebrow}
-          title={content.title}
-          align="left"
+      <span className="label-upper mb-12 inline-flex items-center gap-2.5 text-(--foreground-muted)">
+        <span
+          className="inline-block size-2 bg-(--brand-orange)"
+          aria-hidden="true"
         />
-        <p className="text-base leading-relaxed text-(--foreground-muted) mt-6">
-          {content.lead}
-        </p>
-        <ul className="space-y-3 mt-8">
-          {content.highlights.map((h) => (
-            <li key={h} className="flex items-start gap-3">
-              <Check
-                size={20}
-                strokeWidth={1.75}
-                className="text-(--brand-orange) shrink-0 mt-0.5"
-                aria-hidden="true"
-              />
-              <span className="text-(--gray-900)">{h}</span>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-10">
-          <Button variant="outline-dark" asChild>
-            {cta.external ? (
-              <a href={cta.href} target="_blank" rel="noopener noreferrer">
-                {cta.label} →
-              </a>
-            ) : (
-              <Link href={cta.href as never}>{cta.label} →</Link>
-            )}
-          </Button>
+        {content.eyebrow}
+      </span>
+
+      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <div>
+          <h2 className="font-display font-normal uppercase text-4xl leading-[1.05] tracking-tight text-(--foreground) lg:text-5xl">
+            {renderQuote(content.quote, content.accentWord)}
+          </h2>
+          <p className="mt-6 text-lg leading-normal text-(--foreground-muted)">
+            {content.body}
+          </p>
+          <Link
+            href={cta.href as never}
+            className="mt-8 inline-flex items-center gap-2 border-b border-current pb-0.5 text-sm font-medium text-(--foreground) transition-colors hover:text-(--brand-orange)"
+          >
+            {cta.label} →
+          </Link>
+        </div>
+
+        <div className="flex aspect-square items-center justify-center bg-(--brand-orange) p-12">
+          <div className="w-3/5 [&_img]:h-auto [&_img]:w-full">
+            <BrandLogo
+              variant="principal"
+              surface="orange"
+              clearSpace="compact"
+              size="xl"
+            />
+          </div>
         </div>
       </div>
     </Section>

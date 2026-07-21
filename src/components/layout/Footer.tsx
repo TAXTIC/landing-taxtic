@@ -22,7 +22,6 @@ export function Footer({ siteData }: FooterProps) {
     { href: "/servicios", label: tNav("items.servicios") },
     { href: "/nosotros", label: tNav("items.nosotros") },
     { href: "/contacto", label: tNav("items.contacto") },
-    { href: "/recursos", label: tNav("items.recursos") },
   ] as const;
 
   return (
@@ -31,8 +30,15 @@ export function Footer({ siteData }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
           <div className="flex flex-col gap-4">
-            <BrandLogo variant="principal" surface="dark" size="md" />
-            <p className="text-sm leading-normal text-(--gray-300)">
+            {/* El chrome oscuro del footer ya da el aire visual; el diseño
+                lo renderiza flush con el texto a 180px de ancho (50px de alto). */}
+            <BrandLogo
+              variant="principal"
+              surface="dark"
+              size={50}
+              clearSpace="compact"
+            />
+            <p className="max-w-[280px] text-sm leading-normal text-(--gray-300)">
               {tFooter("tagline")}
             </p>
           </div>
@@ -118,7 +124,7 @@ export function Footer({ siteData }: FooterProps) {
         </div>
 
         <hr className="mt-12 border-(--gray-700)" />
-        <p className="mt-6 text-xs text-(--gray-300)">
+        <p className="mt-6 font-mono text-xs uppercase tracking-[0.06em] text-(--gray-400)">
           © {year} Taxtic. {tFooter("rights")}
         </p>
       </div>

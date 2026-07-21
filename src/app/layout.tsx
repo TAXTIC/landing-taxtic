@@ -5,5 +5,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return (
+    <>
+      <link
+        rel="preload"
+        href="/fonts/Prototype.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      {children}
+    </>
+  );
 }

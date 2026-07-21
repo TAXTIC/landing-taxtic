@@ -3,13 +3,15 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { JSX } from "react";
 
+import { Reveal } from "@/components/common/Reveal";
 import { Section } from "@/components/common/Section";
 import { CTASection } from "@/components/sections/CTASection";
-import { EntregablesCard } from "@/components/sections/EntregablesCard";
 import { ProseWrapper } from "@/components/sections/ProseWrapper";
-import { ServicePageHero } from "@/components/sections/ServicePageHero";
+import { ServiceCatalogNav } from "@/components/sections/ServiceCatalogNav";
+import { ServiceDetailHero } from "@/components/sections/ServiceDetailHero";
 import { ServiceJsonLd } from "@/components/seo/ServiceJsonLd";
 import { serviceMdxFrontmatterSchema } from "@/content-lib/schemas/service-mdx.schema";
+import { Link } from "@/i18n/navigation";
 import {
   getAllServiceSlugs,
   loadServicesIndex,
@@ -44,40 +46,78 @@ export default async function ServiceSlugPage({ params }: Props) {
     getTranslations({ locale, namespace: "services" }),
   ]);
 
-  const service = services.services.find((s) => s.slug === slug);
-  if (!service) notFound();
+  const index = services.services.findIndex((s) => s.slug === slug);
+  if (index === -1) notFound();
+  const service = services.services[index]!;
+  const nextService =
+    services.services[(index + 1) % services.services.length]!;
 
   const mdxModule = await import(`@content/${locale}/services/${slug}.mdx`);
   const Content = mdxModule.default as () => JSX.Element;
   serviceMdxFrontmatterSchema.parse(mdxModule.service);
 
+  const whatsapp = resolveCtaHref(
+    { kind: "whatsapp", label: t("catalogNav.whatsappButton") },
+    site,
+  );
   const ctaButton = resolveCtaHref(
-    {
-      kind: "whatsapp",
-      label: t("slugCta.buttonLabel"),
-    },
+    { kind: "whatsapp", label: t("cta.buttonLabel") },
     site,
   );
 
   return (
     <>
       <Section variant="light">
-        <ServicePageHero service={service} />
-        <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-16 mt-12 lg:mt-16">
-          <ProseWrapper>
-            <Content />
-          </ProseWrapper>
-          <EntregablesCard
-            title={t("slugHero.entregablesLabel")}
-            items={service.entregables}
-          />
+        <Reveal>
+          <ServiceDetailHero service={service} />
+        </Reveal>
+        <div className="mt-16 grid gap-10 lg:mt-24 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
+          <div className="lg:sticky lg:top-30 lg:self-start">
+            <Reveal>
+              <ServiceCatalogNav
+                services={services.services.map((s) => ({
+                  slug: s.slug,
+                  title: s.title,
+                }))}
+                currentSlug={slug}
+                eyebrow={t("catalogNav.eyebrow")}
+                whatsappHeading={t("catalogNav.whatsappHeading")}
+                whatsappBody={t("catalogNav.whatsappBody")}
+                whatsapp={whatsapp}
+              />
+            </Reveal>
+          </div>
+          <div>
+            <Reveal mode="scroll">
+              <ProseWrapper>
+                <Content />
+              </ProseWrapper>
+            </Reveal>
+            <Reveal mode="scroll">
+              <div className="mt-20 border-t border-(--border) pt-14">
+                <span className="label-upper inline-flex items-center gap-2.5 text-(--foreground-muted)">
+                  <span
+                    className="inline-block size-2 bg-(--brand-orange)"
+                    aria-hidden="true"
+                  />
+                  {t("nextService")}
+                </span>
+                <h3 className="mt-3 font-display text-[36px] font-normal uppercase leading-none tracking-[-0.01em]">
+                  <Link
+                    href={`/servicios/${nextService.slug}` as never}
+                    className="inline-flex items-center gap-2 border-b border-current text-(--brand-orange) transition-opacity hover:opacity-80"
+                  >
+                    {nextService.title}
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </h3>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </Section>
       <CTASection
-        content={{
-          title: t("slugCta.title"),
-          subtitle: t("slugCta.subtitle"),
-        }}
+        content={{ title: t("cta.title"), subtitle: t("cta.subtitle") }}
         button={ctaButton}
       />
       <ServiceJsonLd service={service} site={site} />

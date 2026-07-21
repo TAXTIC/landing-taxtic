@@ -2,70 +2,93 @@ import { describe, expect, it } from "vitest";
 
 import { aboutSchema } from "./about.schema";
 
-const validAbout = {
-  metaTitle: "Quiénes somos — Taxtic, contabilidad y tributaria en Curicó",
-  metaDescription:
-    "Conoce a Taxtic: firma de asesoría contable, tributaria, laboral y legal con base en Curicó. Misión, visión y valores institucionales.",
-  mission: {
-    label: "Misión",
-    text: "Entregar un servicio de excelencia en contabilidad, asesoría tributaria y remuneraciones.",
-  },
-  vision: {
-    label: "Visión",
-    text: "Ser reconocidos a nivel nacional como una empresa de excelencia.",
-  },
-  valuesLabel: "Valores",
-  values: [
-    { title: "Excelencia", description: "Estandar alto.", iconName: "Award" },
+const validHistory = {
+  lede: "Una década construyendo soluciones tributarias.",
+  milestones: [
     {
-      title: "Ética",
-      description: "Principios morales sólidos.",
-      iconName: "ShieldCheck",
+      year: "2015",
+      title: "Nuestros orígenes",
+      paragraphs: [
+        "TAXTIC nace en 2015 en Curicó, fundada por dos profesionales con trayectoria previa en el Servicio de Impuestos Internos.",
+      ],
+    },
+  ],
+  closing:
+    "El camino recorrido desde 2015 transformó aquel proyecto inicial de dos personas en una consultora con presencia en la zona centro.",
+};
+
+const validAbout = {
+  metaTitle: "Quiénes somos — Taxtic, contabilidad en Curicó",
+  metaDescription:
+    "Conoce a Taxtic: firma de asesoría contable, tributaria y laboral con base en Curicó. Manifiesto, valores y equipo multidisciplinario.",
+  values: [
+    {
+      title: "Responsabilidad",
+      description: "Respondemos en el tiempo y la forma prevista.",
     },
     {
-      title: "Compromiso",
-      description: "Relaciones duraderas.",
-      iconName: "Handshake",
+      title: "Excelencia",
+      description: "Buscamos el más alto estándar en cada etapa.",
     },
     {
       title: "Profesionalismo",
-      description: "Competencias completas.",
-      iconName: "Briefcase",
+      description: "Aplicamos todas las competencias necesarias.",
     },
     {
-      title: "Responsabilidad",
-      description: "Seriedad y calidad.",
-      iconName: "BadgeCheck",
+      title: "Confianza",
+      description: "Generamos una relación sólida y permanente.",
     },
+    {
+      title: "Integridad",
+      description: "Cumplimos nuestros principios con ética.",
+    },
+    { title: "Compromiso", description: "Asumimos con seriedad cada entrega." },
   ],
+  history: validHistory,
 };
 
 describe("aboutSchema", () => {
-  it("parses valid about content", () => {
+  it("acepta un about válido con 6 valores e historia", () => {
     expect(() => aboutSchema.parse(validAbout)).not.toThrow();
   });
 
-  it("rejects values array with !== 5 items", () => {
-    const bad = structuredClone(validAbout);
-    bad.values = bad.values.slice(0, 4);
-    expect(() => aboutSchema.parse(bad)).toThrow(/5/);
+  it("rechaza si hay distinto de 6 valores", () => {
+    const five = { ...validAbout, values: validAbout.values.slice(0, 5) };
+    expect(() => aboutSchema.parse(five)).toThrow();
   });
 
-  it("rejects metaDescription shorter than 50 chars", () => {
-    const bad = structuredClone(validAbout);
-    bad.metaDescription = "too short";
-    expect(() => aboutSchema.parse(bad)).toThrow();
+  it("rechaza un valor con description demasiado corta", () => {
+    const broken = {
+      ...validAbout,
+      values: [
+        { title: "X", description: "corta" },
+        ...validAbout.values.slice(1),
+      ],
+    };
+    expect(() => aboutSchema.parse(broken)).toThrow();
   });
 
-  it("rejects mission.text shorter than 20 chars", () => {
-    const bad = structuredClone(validAbout);
-    bad.mission.text = "short";
-    expect(() => aboutSchema.parse(bad)).toThrow();
+  it("rechaza un about sin historia", () => {
+    const withoutHistory = { ...validAbout, history: undefined };
+    expect(() => aboutSchema.parse(withoutHistory)).toThrow();
   });
 
-  it("rejects value with empty iconName", () => {
-    const bad = structuredClone(validAbout);
-    bad.values[0]!.iconName = "";
-    expect(() => aboutSchema.parse(bad)).toThrow();
+  it("rechaza una historia sin hitos", () => {
+    const empty = {
+      ...validAbout,
+      history: { ...validHistory, milestones: [] },
+    };
+    expect(() => aboutSchema.parse(empty)).toThrow();
+  });
+
+  it("rechaza un hito sin párrafos", () => {
+    const noParagraphs = {
+      ...validAbout,
+      history: {
+        ...validHistory,
+        milestones: [{ year: "2015", title: "Orígenes", paragraphs: [] }],
+      },
+    };
+    expect(() => aboutSchema.parse(noParagraphs)).toThrow();
   });
 });

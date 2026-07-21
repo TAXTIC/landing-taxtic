@@ -6,15 +6,15 @@
     "items": {
       "servicios": "Servicios",
       "nosotros": "Nosotros",
-      "contacto": "Contacto",
-      "recursos": "Recursos"
+      "contacto": "Contacto"
     },
     "portal": "Portal de clientes",
     "menuToggle": "Abrir menú",
-    "menuClose": "Cerrar menú"
+    "menuClose": "Cerrar menú",
+    "menuDescription": "Enlaces de navegación del sitio y acceso al portal de clientes."
   },
   "footer": {
-    "tagline": "Asesoría tributaria integral en Curicó, Chile.",
+    "tagline": "Asesoría tributaria integral. Más de diez años acompañando el desarrollo de nuestros clientes.",
     "navHeader": "Navegación",
     "branchesHeader": "Branches",
     "socialHeader": "Síguenos",
@@ -26,140 +26,92 @@
   },
   "locale": {
     "switchLabel": "Idioma",
+    "currentLabel": "Current language",
     "es": "Español",
     "en": "English"
   },
   "services": {
     "indexHero": {
-      "eyebrow": "LO QUE HACEMOS",
-      "title": "Servicios oficiales",
-      "subtitle": "Seis servicios diseñados para que tu empresa cumpla con el SII, ordene sus finanzas y tome decisiones con datos claros.",
-      "anchorHighlights": {
-        "label": "POR QUÉ TAXTIC",
-        "items": [
-          "Equipo multidisciplinario in-house — contable, tributario, laboral y legal.",
-          "Atención directa con tu contador asignado, sin call centers.",
-          "Base en Curicó, presencia regional con alcance nacional."
-        ]
-      }
+      "eyebrow": "Lo que hacemos",
+      "title": "Nuestros servicios.",
+      "accentWord": "servicios.",
+      "subtitle": "Tres servicios diseñados para que tu empresa cumpla con el SII, ordene sus finanzas y gestione su equipo con claridad."
     },
-    "slugHero": {
-      "eyebrow": "SERVICIO",
-      "anchorLabel": "Lo que incluye",
-      "entregablesLabel": "Entregables"
+    "cards": {
+      "seeDetailLabel": "Ver detalles"
     },
-    "slugCta": {
-      "title": "¿Te interesa este servicio?",
-      "subtitle": "Hablemos por WhatsApp y revisemos tu caso.",
+    "cta": {
+      "title": "Listo para el siguiente paso.",
+      "subtitle": "Cuéntanos en qué podemos ayudarte. Respondemos por WhatsApp en horario hábil.",
       "buttonLabel": "Hablemos por WhatsApp"
     },
     "breadcrumb": {
-      "back": "Servicios"
-    }
+      "back": "Todos los servicios"
+    },
+    "catalogNav": {
+      "eyebrow": "Catálogo de servicios",
+      "whatsappHeading": "¿Conversamos?",
+      "whatsappBody": "Respondemos por WhatsApp en horario hábil.",
+      "whatsappButton": "Hablemos"
+    },
+    "nextService": "Siguiente servicio"
   },
   "nosotros": {
-    "pageHero": {
-      "eyebrow": "QUIÉNES SOMOS",
-      "title": "La evolución de la contabilidad tradicional",
-      "subtitle": "Somos la evolución de la contabilidad tradicional hacia un concepto de modernidad, cercanía y profesionalismo. Nuestro propósito es acompañar a cada cliente en sus necesidades, aspiraciones y desafíos, con un soporte personalizado y siempre disponible."
+    "hero": {
+      "eyebrow": "Quiénes somos",
+      "title": "Nuestra historia.",
+      "accentWord": "historia.",
+      "subtitle": "Acompañamos a cada cliente con un equipo multidisciplinario y disponibilidad real para resolver lo que aparezca, sin derivar a terceros."
     },
-    "differentiators": {
-      "eyebrow": "POR QUÉ TAXTIC",
-      "title": "Cuatro razones por las que las empresas eligen quedarse",
+    "manifesto": {
+      "eyebrow": "Manifiesto",
+      "quote": "Tu partner estratégico.",
+      "accentWord": "estratégico.",
+      "body": "Somos la evolución de la contabilidad tradicional hacia un servicio cercano, tecnológico y profesional. Acompañamos a cada cliente en sus desafíos con soporte personalizado y siempre disponible.",
+      "logoAlt": "Taxtic"
+    },
+    "history": {
+      "eyebrow": "Historia de TAXTIC"
+    },
+    "values": {
+      "eyebrow": "Seis principios",
+      "title": "Nuestros valores.",
+      "accentWord": "valores."
+    },
+    "disciplines": {
+      "eyebrow": "Multidisciplinario",
+      "title": "Tres disciplinas. Un mismo equipo.",
+      "accentWord": "Un mismo equipo.",
       "items": [
         {
-          "title": "Multidisciplinarios bajo un mismo techo",
-          "description": "Contable, tributario, laboral y legal in-house. Tu interlocutor único, sin reenvíos a terceros ni gestión cruzada de proveedores.",
-          "iconName": "Layers"
+          "areaLabel": "▸ Área contable",
+          "title": "Contadores auditores",
+          "body": "Te acompañamos a tomar decisiones con una contabilidad clara, precisa y actualizada, evitando riesgos de error y contingencias."
         },
         {
-          "title": "Atención directa con tu contador asignado",
-          "description": "Tienes un contador y un asesor asignados que conocen tu empresa. No pasas por un call center ni rota tu interlocutor cada vez que llamas.",
-          "iconName": "Headset"
+          "areaLabel": "▸ Área tributaria",
+          "title": "Especialistas en impuestos",
+          "body": "Una asesoría integral que combina estrategia y cumplimiento eficiente de tus obligaciones fiscales."
         },
         {
-          "title": "Presencia regional, alcance nacional",
-          "description": "Base en Curicó, atendiendo a empresas de la Región del Maule y todo Chile. Conocemos la realidad operativa fuera de Santiago.",
-          "iconName": "MapPin"
-        },
-        {
-          "title": "Tecnología con propósito, no decoración",
-          "description": "Procesos digitalizados, integración con Haulmer (certificada por el SII) y automatización donde agrega valor real.",
-          "iconName": "Cpu"
+          "areaLabel": "▸ Área laboral",
+          "title": "Especialistas en gestión de personas",
+          "body": "Remuneraciones, contratos y obligaciones previsionales. Soporte directo según las necesidades de tu empresa."
         }
       ]
     },
-    "howWeWork": {
-      "eyebrow": "CÓMO TRABAJAMOS",
-      "title": "Un acompañamiento ordenado y proactivo",
-      "lead": "Desde la primera reunión sabes qué necesitas resolver, en qué plazos y con qué entregables. Después nuestro equipo opera y tú recibes reportes mensuales con información para decidir.",
-      "principles": [
-        {
-          "label": "Diagnóstico inicial sin costo",
-          "description": "Sabes desde la primera reunión qué necesitas resolver y cómo."
-        },
-        {
-          "label": "Plan documentado con entregables y plazos",
-          "description": "Recibes por escrito qué te entregamos y cuándo."
-        },
-        {
-          "label": "Operación gestionada por nuestro equipo",
-          "description": "Tu equipo se enfoca en su negocio, nosotros llevamos la contabilidad."
-        },
-        {
-          "label": "Reportes mensuales para decidir",
-          "description": "Cada mes recibes la información que tu gerencia necesita, en lenguaje claro."
-        }
-      ],
-      "ctaLabel": "Ver proceso completo",
-      "ctaHref": "/#proceso"
-    },
-    "missionVision": {
-      "eyebrow": "INSTITUCIONAL",
-      "title": "Misión, visión y valores"
-    },
-    "areas": {
-      "eyebrow": "EN QUÉ TE ACOMPAÑAMOS",
-      "title": "Áreas de trabajo",
-      "lead": "Estructuramos nuestro servicio en cuatro frentes según el tipo de necesidad. Cada cliente puede combinar las que le hagan sentido.",
-      "items": [
-        {
-          "title": "Acompañamiento contable y tributario",
-          "description": "Contabilidad mensual, declaraciones F29 y F22, planificación tributaria, cierre anual y respaldo ante el SII.",
-          "iconName": "BookOpen"
-        },
-        {
-          "title": "Gestión laboral y remuneraciones",
-          "description": "Cálculo de remuneraciones, contratos, finiquitos y cumplimiento ante la Dirección del Trabajo.",
-          "iconName": "Users"
-        },
-        {
-          "title": "Asesoría legal in-house",
-          "description": "Constitución y modificación de sociedades, contratos y soporte legal sin derivar a partners externos.",
-          "iconName": "Scale"
-        },
-        {
-          "title": "Documentos electrónicos y operación diaria",
-          "description": "Facturación electrónica integrada con Haulmer, automatización de tareas repetitivas y soporte al equipo del cliente.",
-          "iconName": "FileText"
-        }
-      ]
+    "location": {
+      "eyebrow": "Ubicación",
+      "quote": "Visítanos.",
+      "ctaLabel": "Cómo llegar",
+      "imageAlt": "Profesional de Taxtic con tablet en oficina"
     }
   },
   "contacto": {
     "ctaSection": {
-      "title": "Prefieres conversar primero",
-      "subtitle": "Si tienes una pregunta puntual o quieres entender si te podemos ayudar, escríbenos por WhatsApp y te respondemos en horario hábil.",
+      "title": "¿Hablamos?",
+      "subtitle": "Cuéntanos en qué podemos ayudarte. Respondemos por WhatsApp en horario hábil.",
       "buttonLabel": "Hablemos por WhatsApp"
-    }
-  },
-  "recursos": {
-    "pageHero": {
-      "eyebrow": "RECURSOS",
-      "title": "Próximamente",
-      "lead": "Estamos preparando guías, casos prácticos y artículos sobre tributación chilena. Mientras tanto, conversemos sobre tu situación específica.",
-      "buttonLabel": "Hablemos por WhatsApp",
-      "secondaryLinkLabel": "Volver al inicio"
     }
   },
   "notFound": {

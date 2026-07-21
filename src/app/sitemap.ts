@@ -8,13 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { services } = await loadServicesIndex("es");
   const lastModified = new Date();
 
-  const staticRoutes = [
-    "",
-    "/nosotros",
-    "/contacto",
-    "/servicios",
-    "/recursos",
-  ];
+  const staticRoutes = ["", "/nosotros", "/contacto", "/servicios"];
   const serviceRoutes = services.map((s) => `/servicios/${s.slug}`);
 
   return [...staticRoutes, ...serviceRoutes].map((route) => ({

@@ -27,7 +27,6 @@ export function MobileNavMenu({
     { href: "/servicios" as const, label: tNav("items.servicios") },
     { href: "/nosotros" as const, label: tNav("items.nosotros") },
     { href: "/contacto" as const, label: tNav("items.contacto") },
-    { href: "/recursos" as const, label: tNav("items.recursos") },
   ];
 
   const handleClose = () => onOpenChange(false);
@@ -93,6 +92,9 @@ export function MobileNavMenu({
           <DialogPrimitive.Title className="sr-only">
             {tNav("menuToggle")}
           </DialogPrimitive.Title>
+          <DialogPrimitive.Description className="sr-only">
+            {tNav("menuDescription")}
+          </DialogPrimitive.Description>
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     </DialogPrimitive.Root>

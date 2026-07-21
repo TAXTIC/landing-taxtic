@@ -4,20 +4,33 @@ import { cn } from "@/lib/utils";
 
 type Variant = "principal" | "secundario" | "isologo";
 type Surface = "light" | "dark" | "orange" | "photo";
-type Tone = "black" | "orange";
-type Size = "sm" | "md" | "lg";
+type Tone = "black" | "orange" | "color";
+type Size = "sm" | "md" | "lg" | "xl";
 
 interface BrandLogoProps {
   variant?: Variant;
   surface?: Surface;
   tone?: Tone;
-  size?: Size;
+  /**
+   * Token de escala (`sm`–`xl`) o altura exacta en px, para superficies cuyo
+   * diseño fija dimensiones precisas (p. ej. el logo de 180px de ancho del
+   * footer). El valor numérico es escape-hatch consciente — preferir tokens.
+   */
+  size?: Size | number;
+  /**
+   * Controls the padding wrapper that enforces the brand-manual clear-space rule.
+   * - `"manual"` (default): 0.5X on standard surfaces, 1.0X on photos — full manual compliance.
+   * - `"compact"`: removes the padding entirely, for contexts like the glass navbar where the
+   *   surrounding chrome already provides visual breathing room and the compact isologo is
+   *   deliberately flush. Intentional, documented deviation from the manual's clear-space.
+   */
+  clearSpace?: "manual" | "compact";
   preload?: boolean;
   className?: string;
   alt?: string;
 }
 
-const sizePx: Record<Size, number> = { sm: 24, md: 40, lg: 56 };
+const sizePx: Record<Size, number> = { sm: 24, md: 40, lg: 56, xl: 112 };
 
 // Aspect ratios derivados de los viewBox reales de cada SVG en public/brand/.
 // Garantizan que el width que pasamos a <Image> coincide con la geometría
@@ -32,8 +45,9 @@ const variantWidthRatio: Record<Variant, number> = {
 function resolveSuffix(
   surface: Surface,
   tone: Tone,
-): "negro" | "naranjo" | "blanco" {
+): "negro" | "naranjo" | "blanco" | "color" {
   if (surface === "light") {
+    if (tone === "color") return "color";
     return tone === "orange" ? "naranjo" : "negro";
   }
   return "blanco";
@@ -41,7 +55,7 @@ function resolveSuffix(
 
 function fileFor(
   variant: Variant,
-  suffix: "negro" | "naranjo" | "blanco",
+  suffix: "negro" | "naranjo" | "blanco" | "color",
 ): string {
   const prefix = variant === "isologo" ? "isologo" : `imagotipo-${variant}`;
   return `/brand/${prefix}-${suffix}.svg`;
@@ -62,6 +76,7 @@ export function BrandLogo({
   surface = "light",
   tone = "black",
   size = "md",
+  clearSpace = "manual",
   preload = false,
   className,
   alt = "Taxtic — Asesoría Tributaria Integral",
@@ -77,10 +92,20 @@ export function BrandLogo({
     );
   }
 
-  const suffix = resolveSuffix(surface, enforcedTone);
-  const height = sizePx[size];
-  const safeAreaPx = surface === "photo" ? height : Math.round(height * 0.5);
-  const file = fileFor(variant, suffix);
+  // El tono "color" (cuadrado naranjo + texto negro) solo existe para el
+  // imagotipo principal; otras variantes caen a su versión monocromática.
+  const effectiveTone: Tone =
+    enforcedTone === "color" && variant !== "principal"
+      ? "black"
+      : enforcedTone;
+  const height = typeof size === "number" ? size : sizePx[size];
+  const safeAreaPx =
+    clearSpace === "compact"
+      ? 0
+      : surface === "photo"
+        ? height
+        : Math.round(height * 0.5);
+  const file = fileFor(variant, resolveSuffix(surface, effectiveTone));
   return (
     <span
       className={cn("inline-flex items-center", className)}
@@ -91,7 +116,7 @@ export function BrandLogo({
         alt={alt}
         width={Math.round(height * variantWidthRatio[variant])}
         height={height}
-        preload={preload}
+        priority={preload}
       />
     </span>
   );
