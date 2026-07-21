@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { ArrowUpRight, Menu } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
@@ -12,10 +12,10 @@ import type { SiteContent } from "@/content-lib/schemas/site.schema";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-const SCROLL_THRESHOLD = 16;
+const SCROLL_THRESHOLD = 32;
 
 type NavItem = {
-  href: "/servicios" | "/nosotros" | "/contacto" | "/recursos";
+  href: "/servicios" | "/nosotros" | "/contacto";
   label: string;
 };
 
@@ -40,37 +40,37 @@ export function Navbar({ siteData }: NavbarProps) {
     { href: "/servicios", label: tNav("items.servicios") },
     { href: "/nosotros", label: tNav("items.nosotros") },
     { href: "/contacto", label: tNav("items.contacto") },
-    { href: "/recursos", label: tNav("items.recursos") },
   ];
 
   return (
     <>
       <header
         className={cn(
-          "sticky top-0 z-(--z-sticky) bg-(--surface) border-b transition-colors duration-200 ease-out",
-          scrolled ? "border-(--border)" : "border-transparent",
+          "fixed inset-x-4 top-4 z-(--z-sticky)",
+          "nav-glass border transition-colors duration-200 ease-out",
+          scrolled
+            ? "bg-(--glass-bg-condensed) border-(--glass-border)"
+            : "bg-(--glass-bg) border-(--glass-border)",
         )}
       >
-        <div className="mx-auto max-w-(--container-max) px-(--space-section-x-mobile) lg:px-(--space-section-x-desktop) h-14 lg:h-16 flex items-center justify-between">
-          <Link href="/" aria-label="Taxtic">
-            <BrandLogo
-              variant="principal"
-              surface="light"
-              tone="black"
-              size="md"
-              preload
-              className="hidden md:inline-flex"
-            />
+        <div
+          className={cn(
+            "flex items-center justify-between transition-all duration-200 ease-out",
+            scrolled ? "py-2 pl-4 pr-3" : "py-3 pl-5 pr-4",
+          )}
+        >
+          <Link href="/" aria-label="Taxtic" className="inline-flex">
             <BrandLogo
               variant="isologo"
               surface="light"
-              tone="black"
+              tone="orange"
               size="md"
-              className="md:hidden"
+              clearSpace="compact"
+              preload
             />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-1">
             {items.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -78,10 +78,12 @@ export function Navbar({ siteData }: NavbarProps) {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "text-sm transition-colors border-b-2",
+                    "relative px-3.5 py-2.5 text-[13px] text-(--foreground) transition-colors",
+                    "after:absolute after:bottom-1.5 after:left-3.5 after:right-3.5 after:h-1.5 after:-z-10",
+                    "after:bg-(--brand-orange) after:opacity-[0.85] after:origin-left after:transition-transform after:duration-200",
                     isActive
-                      ? "font-bold text-(--foreground) border-(--brand-orange)"
-                      : "text-(--foreground) border-transparent hover:text-(--brand-orange)",
+                      ? "after:scale-x-100"
+                      : "after:scale-x-0 hover:after:scale-x-100",
                   )}
                 >
                   {item.label}
@@ -92,13 +94,23 @@ export function Navbar({ siteData }: NavbarProps) {
 
           <div className="hidden md:flex items-center gap-3">
             <LocaleSwitcher tone="light" />
-            <Button variant="primary-orange" size="sm" asChild>
+            <Button
+              variant="solid-dark"
+              size="sm"
+              className="group gap-2 uppercase tracking-[0.04em] font-medium text-[11px]"
+              asChild
+            >
               <a
                 href={siteData.portal.url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {tNav("portal")}
+                <ArrowUpRight
+                  size={16}
+                  strokeWidth={1.75}
+                  className="transition-transform group-hover:translate-x-0.5"
+                />
               </a>
             </Button>
           </div>

@@ -1,0 +1,19 @@
+{
+  "eyebrow": "Tecnología aplicada",
+  "title": "Qué hace la tecnología por los servicios de Taxtic.",
+  "intro": "No usamos 'IA' como decoración. Usamos automatización y procesamiento de datos para tareas específicas donde agregan valor medible.",
+  "areas": [
+    {
+      "title": "Tributario",
+      "body": "Tu equipo tributario respaldado por herramientas que automatizan los procesos más complejos."
+    },
+    {
+      "title": "Contable",
+      "body": "Tu contabilidad gestionada con tecnología. Un equipo contable dedicado que usa herramientas digitales para que cada proceso sea preciso, trazable y confiable."
+    },
+    {
+      "title": "Laboral",
+      "body": "Tu área de personas respaldada por especialistas y tecnología. Liquidaciones, contratos, finiquitos y asesoría en legislación laboral y previsional gestionados con eficiencia."
+    }
+  ]
+}

@@ -4,107 +4,88 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Section } from "@/components/common/Section";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { CTASection } from "@/components/sections/CTASection";
-import { HowWeWorkBlock } from "@/components/sections/HowWeWorkBlock";
-import { IconCardGrid } from "@/components/sections/IconCardGrid";
-import { MissionVisionValuesBlock } from "@/components/sections/MissionVisionValuesBlock";
-import { PageHero } from "@/components/sections/PageHero";
+import {
+  type Discipline,
+  DisciplinesList,
+} from "@/components/sections/DisciplinesList";
+import { HistoryTimeline } from "@/components/sections/HistoryTimeline";
+import { LocationTeaser } from "@/components/sections/LocationTeaser";
+import { ManifestoBlock } from "@/components/sections/ManifestoBlock";
+import { ValuesBlock } from "@/components/sections/ValuesBlock";
 import { loadAbout, loadSite, type Locale } from "@/lib/content";
 import { resolveCtaHref } from "@/lib/cta";
 
-type Props = {
-  params: Promise<{ locale: string }>;
-};
+type Props = { params: Promise<{ locale: string }> };
+
+function formatHours(site: Awaited<ReturnType<typeof loadSite>>): string {
+  const { open, close } = site.hours.weekdays;
+  return `Lun a Vie · ${open} – ${close}`;
+}
 
 export default async function NosotrosPage({ params }: Props) {
   const { locale: rawLocale } = await params;
   setRequestLocale(rawLocale);
   const locale = rawLocale as Locale;
 
-  const [aboutContent, t, tContacto, site] = await Promise.all([
+  const [about, site, t, tContacto] = await Promise.all([
     loadAbout(locale),
+    loadSite(),
     getTranslations({ locale, namespace: "nosotros" }),
     getTranslations({ locale, namespace: "contacto" }),
-    loadSite(),
   ]);
 
   const ctaButton = resolveCtaHref(
-    {
-      kind: "whatsapp",
-      label: tContacto("ctaSection.buttonLabel"),
-    },
+    { kind: "whatsapp", label: tContacto("ctaSection.buttonLabel") },
     site,
   );
 
   return (
     <>
-      <PageHero
-        eyebrow={t("pageHero.eyebrow")}
-        title={t("pageHero.title")}
-        subtitle={t("pageHero.subtitle")}
+      <Section variant="light">
+        <SectionHeader
+          as="h1"
+          display
+          eyebrowAccent
+          eyebrow={t("hero.eyebrow")}
+          title={t("hero.title")}
+          accentWord={t("hero.accentWord")}
+          subtitle={t("hero.subtitle")}
+        />
+      </Section>
+
+      <ManifestoBlock
+        eyebrow={t("manifesto.eyebrow")}
+        quote={t("manifesto.quote")}
+        accentWord={t("manifesto.accentWord")}
+        body={t("manifesto.body")}
+        logoAlt={t("manifesto.logoAlt")}
       />
 
-      <Section variant="muted">
-        <SectionHeader
-          eyebrow={t("differentiators.eyebrow")}
-          title={t("differentiators.title")}
-          align="center"
-        />
-        <IconCardGrid
-          items={
-            t.raw("differentiators.items") as Array<{
-              title: string;
-              description: string;
-              iconName: string;
-            }>
-          }
-        />
-      </Section>
+      <HistoryTimeline eyebrow={t("history.eyebrow")} history={about.history} />
 
-      <Section variant="light">
-        <SectionHeader
-          eyebrow={t("howWeWork.eyebrow")}
-          title={t("howWeWork.title")}
-          align="left"
-        />
-        <HowWeWorkBlock
-          lead={t("howWeWork.lead")}
-          principles={
-            t.raw("howWeWork.principles") as Array<{
-              label: string;
-              description: string;
-            }>
-          }
-          ctaLabel={t("howWeWork.ctaLabel")}
-          ctaHref={t("howWeWork.ctaHref")}
-        />
-      </Section>
+      <ValuesBlock
+        eyebrow={t("values.eyebrow")}
+        title={t("values.title")}
+        accentWord={t("values.accentWord")}
+        values={about.values}
+      />
 
-      <Section variant="orange-soft">
-        <SectionHeader
-          eyebrow={t("missionVision.eyebrow")}
-          title={t("missionVision.title")}
-          align="center"
-        />
-        <MissionVisionValuesBlock content={aboutContent} />
-      </Section>
+      <DisciplinesList
+        eyebrow={t("disciplines.eyebrow")}
+        title={t("disciplines.title")}
+        accentWord={t("disciplines.accentWord")}
+        items={t.raw("disciplines.items") as Discipline[]}
+      />
 
-      <Section variant="light">
-        <SectionHeader
-          eyebrow={t("areas.eyebrow")}
-          title={t("areas.title")}
-          subtitle={t("areas.lead")}
-          align="center"
-        />
-        <IconCardGrid
-          items={
-            t.raw("areas.items") as Array<{
-              title: string;
-              description: string;
-              iconName: string;
-            }>
-          }
-        />
-      </Section>
+      <LocationTeaser
+        eyebrow={t("location.eyebrow")}
+        quote={t("location.quote")}
+        ctaLabel={t("location.ctaLabel")}
+        imageAlt={t("location.imageAlt")}
+        branches={site.branches}
+        email={site.channels.email}
+        hoursDisplay={formatHours(site)}
+      />
 
       <CTASection
         content={{
@@ -121,8 +102,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
   const about = await loadAbout(locale);
-  return {
-    title: about.metaTitle,
-    description: about.metaDescription,
-  };
+  return { title: about.metaTitle, description: about.metaDescription };
 }

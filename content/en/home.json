@@ -1,40 +1,37 @@
 {
   "hero": {
-    "eyebrow": "Consultoría contable y tributaria",
-    "title": "Partner Estratégico.",
-    "subtitle": "Impulsamos el crecimiento de las empresas con el respaldo de la experiencia tributaria y la potencia de la Inteligencia Artificial.",
-    "ctaPrimary": {
-      "kind": "whatsapp",
-      "label": "Hablemos por WhatsApp"
-    },
+    "lede": "Impulsamos el crecimiento de las empresas con la experiencia tributaria y la potencia de la Inteligencia Artificial.",
+    "ctaPrimary": { "kind": "whatsapp", "label": "Hablemos por WhatsApp" },
     "ctaSecondary": {
       "kind": "anchor",
       "label": "Ver servicios",
       "href": "#servicios"
     },
     "image": {
-      "src": "/images/hero-reunion-cliente.png",
-      "alt": "Reunión de trabajo entre equipo de Taxtic y cliente revisando informe sobre la mesa"
-    },
-    "stats": [
-      { "value": "10+", "label": "años en Curicó", "verified": true },
-      { "value": "200+", "label": "clientes activos", "verified": true },
-      { "value": "98%", "label": "tasa de retención", "verified": false }
-    ]
+      "src": "/images/hero-bg.webp",
+      "alt": "Ejecutivo revisando información financiera en una tablet"
+    }
   },
+  "stats": [
+    { "value": "10+", "label": "Años de experiencia", "variant": "count" },
+    { "value": "500+", "label": "Clientes activos", "variant": "count" },
+    { "value": "IA", "label": "Potenciado por IA", "variant": "accent" }
+  ],
   "servicesTeaser": {
     "eyebrow": "Lo que hacemos",
-    "title": "Servicios oficiales",
-    "seeAllLabel": "Ver todos los servicios"
+    "title": "Servicios.",
+    "serviceSlugs": [
+      "asesoria-contable",
+      "asesoria-tributaria",
+      "asesoria-laboral"
+    ],
+    "seeDetailLabel": "Ver detalle"
   },
   "aboutTeaser": {
     "eyebrow": "Quiénes somos",
-    "title": "La evolución de la contabilidad tradicional",
-    "lead": "Acompañamos a cada cliente con un equipo multidisciplinario, presencia regional y la disponibilidad real para resolver lo que aparezca, sin derivar a terceros.",
-    "highlights": [
-      "Contable, tributario, laboral y legal en una sola firma.",
-      "Base en Curicó, atención presencial y remota a todo Chile."
-    ],
+    "quote": "Tu partner estratégico.",
+    "accentWord": "estratégico.",
+    "body": "Acompañamos a cada cliente con un equipo multidisciplinario y disponibilidad real para resolver lo que aparezca, sin derivar a terceros.",
     "cta": {
       "kind": "internal",
       "label": "Conoce más sobre nosotros",

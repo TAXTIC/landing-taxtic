@@ -5,7 +5,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-bold rounded-none transition-colors " +
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium uppercase tracking-[0.04em] rounded-none transition-colors " +
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--background) " +
     "disabled:opacity-50 disabled:pointer-events-none",
   {
@@ -21,11 +21,14 @@ const buttonVariants = cva(
         "ghost-light":
           "text-(--foreground) bg-transparent " +
           "hover:bg-(--surface-muted) active:bg-(--surface-muted)",
+        "solid-dark":
+          "bg-(--surface-inverse) text-(--brand-white) " +
+          "hover:bg-(--gray-800) active:bg-(--gray-700)",
       },
       size: {
         sm: "h-8 px-3 text-xs",
         md: "h-10 px-4 text-sm",
-        lg: "h-12 px-6 text-base",
+        lg: "h-12 px-6 text-sm",
         icon: "h-10 w-10",
       },
     },

@@ -4,8 +4,8 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 
 import { Footer } from "@/components/layout/Footer";
+import { MotionProvider } from "@/components/layout/MotionProvider";
 import { Navbar } from "@/components/layout/Navbar";
-import { PageTransition } from "@/components/layout/PageTransition";
 import { WhatsAppFab } from "@/components/layout/WhatsAppFab";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import { routing } from "@/i18n/routing";
@@ -69,8 +69,10 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <OrganizationJsonLd site={site} />
           <Navbar siteData={site} />
-          <main className="flex-1">
-            <PageTransition>{children}</PageTransition>
+          {/* El navbar es fixed y no reserva espacio en el flujo; el padding-top
+              evita que el contenido quede bajo la barra flotante. */}
+          <main className="flex-1 pt-(--nav-space)">
+            <MotionProvider>{children}</MotionProvider>
           </main>
           <Footer siteData={site} />
           <WhatsAppFab siteData={site} />

@@ -1,0 +1,125 @@
+"use client";
+
+import type { LucideIcon } from "lucide-react";
+import * as LucideIcons from "lucide-react";
+import { motion, type Variants } from "motion/react";
+
+import type { ServicesIndex } from "@/content-lib/schemas/services.schema";
+import { Link } from "@/i18n/navigation";
+import { splitFirstWord } from "@/lib/text";
+
+interface ServicesShowcaseProps {
+  services: ServicesIndex["services"];
+  seeDetailLabel: string;
+  showHighlights?: boolean;
+  /**
+   * Nivel del encabezado de cada card. El consumer lo fija según la jerarquía
+   * de la página: `h3` cuando la grilla vive bajo un encabezado de sección
+   * `h2`, `h2` cuando cuelga directo del `h1` de la página.
+   */
+  headingLevel?: "h2" | "h3";
+}
+
+const gridVariants: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 36 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.2, 0.8, 0.2, 1] },
+  },
+};
+
+function resolveIcon(name: string): LucideIcon {
+  const icons = LucideIcons as unknown as Record<string, LucideIcon>;
+  return icons[name] ?? LucideIcons.Square;
+}
+
+export function ServicesShowcase({
+  services,
+  seeDetailLabel,
+  showHighlights = false,
+  headingLevel: Heading = "h3",
+}: ServicesShowcaseProps) {
+  const total = services.length;
+
+  return (
+    <motion.div
+      className="grid grid-cols-1 border-l border-t border-(--border) sm:grid-cols-2 lg:grid-cols-3"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={gridVariants}
+    >
+      {services.map((service, i) => {
+        const Icon = resolveIcon(service.iconName);
+        const [titleFirst, titleRest] = splitFirstWord(service.title);
+        return (
+          <motion.div key={service.slug} variants={cardVariants}>
+            <Link
+              href={`/servicios/${service.slug}` as never}
+              className="group flex h-full min-h-[20rem] flex-col justify-between border-r border-b border-(--border) bg-(--surface) px-8 pt-10 pb-14 transition-colors duration-200 ease-out hover:bg-(--surface-inverse)"
+            >
+              <div className="flex items-start justify-between">
+                <span className="flex size-14 items-center justify-center bg-(--brand-orange)">
+                  <Icon
+                    size={24}
+                    strokeWidth={1.75}
+                    className="text-(--brand-white)"
+                  />
+                </span>
+                <span className="font-mono text-xs tracking-wide text-(--foreground-subtle) group-hover:text-(--brand-orange)">
+                  {String(i + 1).padStart(2, "0")} /{" "}
+                  {String(total).padStart(2, "0")}
+                </span>
+              </div>
+              <div className="mt-6 flex-1">
+                <Heading className="font-display font-normal text-[22px] uppercase leading-none tracking-tight text-(--foreground) group-hover:text-(--brand-white)">
+                  {titleFirst}
+                  {titleRest ? (
+                    <>
+                      <br />
+                      {titleRest}
+                    </>
+                  ) : null}
+                </Heading>
+                <p className="mt-3.5 text-sm leading-normal text-(--foreground-muted) group-hover:text-(--gray-300)">
+                  {service.shortDescription}
+                </p>
+                {showHighlights ? (
+                  <ul className="mt-5 border-t border-(--border) group-hover:border-(--gray-700)">
+                    {service.highlights.map((h) => (
+                      <li
+                        key={h}
+                        className="relative border-b border-(--border) py-3 pl-5 text-[13px] leading-snug text-(--foreground-muted) group-hover:border-(--gray-700) group-hover:text-(--gray-300)"
+                      >
+                        <span
+                          className="absolute left-0 top-[15px] size-2 bg-(--brand-orange)"
+                          aria-hidden="true"
+                        />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+              <span className="mt-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.08em] text-(--foreground) group-hover:text-(--brand-orange)">
+                {seeDetailLabel}
+                <span
+                  aria-hidden="true"
+                  className="transition-transform duration-200 group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </span>
+            </Link>
+          </motion.div>
+        );
+      })}
+    </motion.div>
+  );
+}

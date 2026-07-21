@@ -30,38 +30,35 @@ describe("loadSite", () => {
 });
 
 describe("getAllServiceSlugs", () => {
-  it("returns 6 slugs from _index.json", async () => {
+  it("returns 3 slugs from _index.json", async () => {
     const slugs = await getAllServiceSlugs();
-    expect(slugs).toHaveLength(6);
+    expect(slugs).toHaveLength(3);
     expect(slugs).toContain("asesoria-contable");
     expect(slugs).toContain("asesoria-tributaria");
-    expect(slugs).toContain("outsourcing");
-    expect(slugs).toContain("asesoria-legal");
     expect(slugs).toContain("asesoria-laboral");
-    expect(slugs).toContain("documentos-electronicos");
   });
 
   it("returns slugs in the order declared in _index.json", async () => {
     const slugs = await getAllServiceSlugs();
     expect(slugs[0]).toBe("asesoria-contable");
-    expect(slugs[5]).toBe("documentos-electronicos");
+    expect(slugs[2]).toBe("asesoria-laboral");
   });
 });
 
 describe("loadAbout", () => {
-  it("loads about content with valid metadata and 5 values for ES", async () => {
+  it("loads about content with valid metadata and 6 values for ES", async () => {
     const { loadAbout } = await import("./content");
     const about = await loadAbout("es");
     expect(about.metaTitle.length).toBeGreaterThanOrEqual(10);
     expect(about.metaDescription.length).toBeGreaterThanOrEqual(50);
-    expect(about.values.length).toBe(5);
+    expect(about.values.length).toBe(6);
   });
 
   it("loads about content for EN", async () => {
     const { loadAbout } = await import("./content");
     const about = await loadAbout("en");
     expect(about.metaTitle.length).toBeGreaterThanOrEqual(10);
-    expect(about.values.length).toBe(5);
+    expect(about.values.length).toBe(6);
   });
 });
 
@@ -69,16 +66,35 @@ describe("loadContact", () => {
   it("loads contact JSON for ES", async () => {
     const { loadContact } = await import("./content");
     const contact = await loadContact("es");
-    expect(contact.hero.title.length).toBeGreaterThanOrEqual(10);
-    expect(contact.channels.labels.whatsapp).toBeTruthy();
-    expect(contact.branches.sectionTitle).toBe("Visítanos");
-    expect(contact.branches.iframeTitleTemplate).toContain("{{label}}");
+    expect(contact.hero.title.length).toBeGreaterThanOrEqual(5);
+    expect(contact.whatsappPanel.altEmailPrefix).toBeTruthy();
+    expect(contact.map.badge).toContain("Taxtic");
+    expect(contact.dataColumn.hoursDisplay).toContain("08:00");
   });
 
   it("loads contact JSON for EN", async () => {
     const { loadContact } = await import("./content");
     const contact = await loadContact("en");
-    expect(contact.hero.title.length).toBeGreaterThanOrEqual(10);
-    expect(contact.branches.sectionTitle).toBe("Visit us");
+    expect(contact.hero.title.length).toBeGreaterThanOrEqual(5);
+    expect(contact.whatsappPanel.title.length).toBeGreaterThan(0);
+  });
+});
+
+describe("loadTechSection", () => {
+  it("carga la sección de tecnología ES con 3 áreas", async () => {
+    const { loadTechSection } = await import("./content");
+    const tech = await loadTechSection("es");
+    expect(tech.areas).toHaveLength(3);
+    expect(tech.areas.map((a) => a.title)).toEqual([
+      "Tributario",
+      "Contable",
+      "Laboral",
+    ]);
+  });
+
+  it("carga la sección de tecnología EN", async () => {
+    const { loadTechSection } = await import("./content");
+    const tech = await loadTechSection("en");
+    expect(tech.areas).toHaveLength(3);
   });
 });

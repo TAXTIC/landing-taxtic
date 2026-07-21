@@ -1,23 +1,26 @@
 {
   "hero": {
-    "eyebrow": "Let's talk",
-    "title": "We're here to answer your question",
-    "lead": "Tell us about your business and how we can help. We reply via WhatsApp during business hours; email or landline also work."
+    "eyebrow": "Conversemos",
+    "title": "Contacto directo.",
+    "accentWord": "directo.",
+    "lead": "Cuéntanos en qué podemos ayudarte. Respondemos por WhatsApp en horario hábil y agendamos una primera conversación dentro de 24 horas."
   },
-  "channels": {
-    "sectionTitle": "How to reach us",
-    "labels": {
-      "hours": "Business hours",
-      "email": "Email",
-      "whatsapp": "WhatsApp",
-      "social": "Social",
-      "portal": "Client portal"
-    },
-    "hoursDisplay": "Monday to Friday · 08:00 – 17:30 (continuous)"
+  "dataColumn": {
+    "eyebrow": "Datos directos",
+    "emailLabel": "Email",
+    "hoursLabel": "Horario",
+    "hoursDisplay": "Lunes a viernes · 08:00 – 17:30 (jornada continua)"
   },
-  "branches": {
-    "sectionTitle": "Visit us",
-    "iframeTitleTemplate": "Map of {{label}} at {{street}}, {{city}}",
-    "openInMapsLabel": "Open in Google Maps"
+  "whatsappPanel": {
+    "eyebrow": "Conversemos",
+    "title": "Escríbenos por WhatsApp",
+    "lead": "Cuéntanos sobre tu empresa y en qué podemos ayudarte. Respondemos en horario hábil y agendamos una primera conversación.",
+    "altEmailPrefix": "¿Prefieres correo?"
+  },
+  "map": {
+    "eyebrow": "Cómo llegar",
+    "title": "Nuestras oficinas en Curicó.",
+    "accentWord": "Curicó.",
+    "badge": "Taxtic · Curicó"
   }
 }

@@ -11,23 +11,44 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
+import { enabledLocales, routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
+
+type Locale = (typeof routing.locales)[number];
 
 interface LocaleSwitcherProps {
   tone?: "light" | "dark";
 }
 
 export function LocaleSwitcher({ tone = "light" }: LocaleSwitcherProps) {
-  const locale = useLocale() as (typeof routing.locales)[number];
+  const locale = useLocale() as Locale;
   const router = useRouter();
   const pathname = usePathname();
   const tLocale = useTranslations("locale");
 
-  const handleSelect = (next: (typeof routing.locales)[number]) => {
+  const handleSelect = (next: Locale) => {
     if (next === locale) return;
     router.replace(pathname, { locale: next });
   };
+
+  // Un solo idioma habilitado: indicador estático, no interactivo.
+  if (enabledLocales.length <= 1) {
+    return (
+      <span
+        className={cn(
+          "inline-flex items-center font-mono text-[11px] tracking-[0.1em] px-2 py-1.5 border select-none",
+          tone === "dark"
+            ? "text-(--brand-white) border-(--brand-white)/30"
+            : "text-(--foreground-muted) border-(--border)",
+        )}
+      >
+        <span aria-hidden="true">{locale.toUpperCase()}</span>
+        <span className="sr-only">
+          {`${tLocale("currentLabel")}: ${locale.toUpperCase()}`}
+        </span>
+      </span>
+    );
+  }
 
   const triggerClass = cn(
     "gap-1",
@@ -50,7 +71,7 @@ export function LocaleSwitcher({ tone = "light" }: LocaleSwitcherProps) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        {routing.locales.map((option) => (
+        {enabledLocales.map((option) => (
           <DropdownMenuItem
             key={option}
             onSelect={() => handleSelect(option)}
