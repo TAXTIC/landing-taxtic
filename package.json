@@ -2,6 +2,10 @@
   "name": "landing-taxtic",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taxtic/landing-taxtic.git"
+  },
   "scripts": {
     "dev": "next dev",
     "dev:clean": "node -e \"require('node:fs').rmSync('.next',{recursive:true,force:true})\" && next dev",
